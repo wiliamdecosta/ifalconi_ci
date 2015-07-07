@@ -29,7 +29,11 @@ class P_bank_branch extends Abstract_model {
 								'update_by'	            => array('nullable' => true, 'type' => 'str', 'unique' => false, 'display' => 'Updated By')
 							);
 
-	public $selectClause 	= "bank_branch.*, bank_branch.code as branch_code, bank.code as bank_code, bank_area.code as bank_area_code";
+	public $selectClause 	= "bank_branch.p_bank_branch_id, bank_branch.code as branch_code, bank_branch.p_bank_id, bank_branch.address, 
+	                                bank_branch.loket_no, bank_branch.loket_type, bank_branch.max_user, bank_branch.status as bank_branch_status,
+	                                bank_branch.p_area_id, bank_branch.description, 
+	                                bank_branch.create_date, bank_branch.create_by, bank_branch.update_date, bank_branch.update_by,
+	                                bank.code as bank_code, bank_area.code as bank_area_code";
 	public $fromClause 		= "p_bank_branch as bank_branch
                                     LEFT JOIN p_bank as bank ON bank_branch.p_bank_id = bank.p_bank_id
                                     LEFT JOIN p_area as bank_area ON bank_branch.p_area_id = bank_area.p_area_id";

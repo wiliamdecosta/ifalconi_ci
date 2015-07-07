@@ -82,6 +82,7 @@
                     return '<a href="#" onclick="bank_show_form_edit(\''+ row.p_bank_id +'\')" class="green"><i class="ace-icon fa fa-pencil bigger-130"></i></a> &nbsp; <a href="#" onclick="bank_delete_records(\''+ row.p_bank_id +'\')" class="red"><i class="ace-icon glyphicon glyphicon-trash bigger-130"></i></a>';
                 }
              },
+             statusMappings : {"info":1},
     	     rowCount:[10,25,50,100,-1],
     		 ajax: true,
     	     requestHandler:function(request) {
