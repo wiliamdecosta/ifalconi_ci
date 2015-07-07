@@ -78,7 +78,7 @@
                     return '<a href="#" onclick="modal_lov_bank_set_value(\''+ row.p_bank_id +'\', \''+ row.code +'\')" class="green"><i class="ace-icon fa 	fa-pencil-square-o bigger-130"></i></a>';
                 }
              },
-    	     rowCount:[10,25,50,100,-1],
+    	     rowCount:[5,10,25,50,100,-1],
     		 ajax: true,
     	     requestHandler:function(request) {
     	        if(request.sort) {
