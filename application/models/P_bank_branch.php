@@ -23,6 +23,7 @@ class P_bank_branch extends Abstract_model {
 								'status'	            => array('nullable' => false, 'type' => 'int', 'unique' => false, 'display' => 'Status'),
 							    'p_area_id'	            => array('nullable' => true, 'type' => 'int', 'unique' => false, 'display' => 'ID P_area'),
 								'description'	        => array('nullable' => true, 'type' => 'str', 'unique' => false, 'display' => 'Description'),
+								
 								'create_date'	        => array('nullable' => true, 'type' => 'date', 'unique' => false, 'display' => 'Creation Date'),
 								'create_by'	            => array('nullable' => true, 'type' => 'str', 'unique' => false, 'display' => 'Created By'),
 								'update_date'	        => array('nullable' => true, 'type' => 'date', 'unique' => false, 'display' => 'Updated Date'),

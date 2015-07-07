@@ -79,13 +79,13 @@
     function bank_show_form_add() {
         bank_toggle_main_content();
         $("#bank_form_add_edit").show("slow");
-        $("#bank_form_title").html("Add Bank Branch");
+        $("#bank_form_title").html("Add Bank");
     }
 
     function bank_show_form_edit(theID) {
         bank_toggle_main_content();
         $("#bank_form_add_edit").show("slow");
-        $("#bank_form_title").html("Edit Bank Branch");
+        $("#bank_form_title").html("Edit Bank");
         
         $("#form_p_bank_id").val(theID);
         $.post( "<?php echo WS_URL.'p_bank_controller/read'; ?>",

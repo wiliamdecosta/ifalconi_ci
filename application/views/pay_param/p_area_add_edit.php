@@ -79,13 +79,13 @@
     function area_show_form_add() {
         area_toggle_main_content();
         $("#area_form_add_edit").show("slow");
-        $("#area_form_title").html("Add Area Branch");
+        $("#area_form_title").html("Add Area");
     }
 
     function area_show_form_edit(theID) {
         area_toggle_main_content();
         $("#area_form_add_edit").show("slow");
-        $("#area_form_title").html("Edit Area Branch");
+        $("#area_form_title").html("Edit Area");
         
         $("#form_p_area_id").val(theID);
         $.post( "<?php echo WS_URL.'p_area_controller/read'; ?>",
