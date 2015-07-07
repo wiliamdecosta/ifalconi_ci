@@ -100,7 +100,7 @@
 			<li class="nav-menu-content" data-source="pay_process-stp_pay_acc.php">
 				<a href="#">
 					<i class="menu-icon fa fa-caret-right"></i>
-					STP Pay Acc
+					STP PAY ACC
 				</a>
 				<b class="arrow"></b>
 			</li>

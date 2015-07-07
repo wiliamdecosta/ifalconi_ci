@@ -50,6 +50,10 @@ class Ws extends CI_Controller {
 			$result['rows'] = $result['items'];
 			unset($result['items']);
 			
+			$result['current'] = (int)$result['current'];
+			$result['rowCount'] = (int)$result['rowCount'];
+			$result['total'] = (int)$result['total'];
+			
 		}catch(Exception $e) {
 			$result = array('rows' => array(), 'success' => false, 'current' => 1, 'rowCount' => 1, 'total' => 0, 'message' => $e->getMessage());
 		}
