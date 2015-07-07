@@ -44,7 +44,7 @@ class P_bank_branch extends Abstract_model {
 
 	function __construct() {
 		parent::__construct();
-		$this->db = $this->load->database('ifp_db', TRUE);
+		$this->db = $this->load->database('ifp_db', TRUE); // <-- Please Modified This : ifp_db,ifb_db,ifc_db
 	}
 
 	function validate() {
