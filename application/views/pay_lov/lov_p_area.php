@@ -23,7 +23,7 @@
                   <tr>
                      <th data-column-id="p_area_id" data-sortable="false" data-visible="false">Area ID</th>
                      <th data-header-align="center" data-align="center" data-formatter="opt-edit" data-sortable="false" data-width="100">Options</th>
-                     <th data-column-id="code" data-header-align="center" data-align="center" data-width="170">Area Name</th>
+                     <th data-column-id="code" data-width="170">Area Name</th>
                      <th data-column-id="description"> Description </th>
                   </tr>
                 </thead>
