@@ -39,7 +39,8 @@
                   <tr>
                     <th data-identifier="true" data-visible = "false" data-header-align="center" data-align="center" data-column-id="p_bank_branch_id"> ID Bank Branch</th>
                      <th data-header-align="center" data-align="center" data-formatter="opt-edit" data-sortable="false" data-width="100">Options</th>
-                     <th data-column-id="branch_code" data-width="200">Branch Name</th>
+                     <th data-column-id="code" data-width="200">Branch Name</th>
+                     <th data-column-id="bank_code"> Bank </th>
                      <th data-column-id="bank_area_code"> Area </th>
                      <th data-column-id="address"> Address </th>
                      <th data-column-id="loket_no"> No. Counter </th>
