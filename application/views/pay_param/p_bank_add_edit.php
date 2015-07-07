@@ -8,7 +8,7 @@
                 <label class="col-sm-3 control-label no-padding-right"> Code *</label>
                 <div class="col-sm-9">
                     <input id="form_p_bank_id" type="hidden" placeholder="Bank ID">
-                    <input id="form_code" class="col-xs-10 col-sm-5" type="text">
+                    <input id="form_code" class="col-xs-10 col-sm-5 required" type="text">
                 </div>
             </div>
 

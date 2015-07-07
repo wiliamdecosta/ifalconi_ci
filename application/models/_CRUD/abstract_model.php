@@ -264,12 +264,12 @@ class Abstract_model extends  CI_Model {
 			if($field['nullable'] == false) {
 				if($this->actionType == 'CREATE') {
 					if(!isset($record[$key]) or $record[$key] == '') {
-						throw new Exception($field['display']." cannot be empty");
+						throw new Exception($field['display']." required");
 					}
 				}else {
 					if (!isset($record[$key])) continue;
 					if($record[$key] == '') {
-						throw new Exception($field['display']." cannot be empty");
+						throw new Exception($field['display']." required");
 					}
 				}
 			}

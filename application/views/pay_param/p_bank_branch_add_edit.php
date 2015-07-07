@@ -8,7 +8,7 @@
                 <label class="col-sm-3 control-label no-padding-right"> Code *</label>
                 <div class="col-sm-9">
                     <input id="form_p_bank_branch_id" type="hidden" placeholder="Bank Branch ID">
-                    <input id="form_code" class="col-xs-10 col-sm-5" type="text">
+                    <input id="form_code" class="col-xs-10 col-sm-5 required" type="text">
                 </div>
             </div>
 
@@ -16,7 +16,7 @@
                 <label class="col-sm-3 control-label no-padding-right"> Bank *</label>
                 <div class="col-sm-8">
                     <input id="form_p_bank_id" type="hidden" placeholder="Bank ID">
-                    <input id="form_bank_code" readonly class="col-xs-8 col-sm-5" type="text" placeholder="Choose Bank">
+                    <input id="form_bank_code" class="col-xs-8 col-sm-5 required" type="text" placeholder="Choose Bank">
                     <span class="input-group-btn">
 						<button class="btn btn-success btn-sm" type="button" id="btn_lov_bank">
 							<span class="ace-icon fa fa-pencil-square-o icon-on-right bigger-110"></span>
@@ -29,7 +29,7 @@
                 <label class="col-sm-3 control-label no-padding-right"> Area *</label>
                 <div class="col-sm-8">
                     <input id="form_p_area_id" type="hidden" placeholder="Area ID">
-                    <input id="form_bank_area_code" readonly class="col-xs-8 col-sm-5" type="text" placeholder="Choose Area">
+                    <input id="form_bank_area_code" class="col-xs-8 col-sm-5 required" type="text" placeholder="Choose Area">
                     <span class="input-group-btn">
 						<button class="btn btn-success btn-sm" type="button" id="btn_lov_area">
 							<span class="ace-icon fa fa-pencil-square-o icon-on-right bigger-110"></span>
@@ -48,7 +48,7 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right"> Counter Number * </label>
                 <div class="col-sm-9">
-                    <input id="form_loket_no" class="col-xs-10 col-sm-5" type="text">
+                    <input id="form_loket_no" class="col-xs-10 col-sm-5 required" type="text">
                 </div>
             </div>
 

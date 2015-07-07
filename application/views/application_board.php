@@ -87,6 +87,11 @@
                 -webkit-filter: grayscale(100%);
                 filter: gray; filter: grayscale(100%);
             }
+            
+            .widget-main img.img-app {
+                width:100%;    
+            }
+            
         </style>
 	</head>
 
@@ -205,7 +210,7 @@
                     
                     foreach($items as $item):
                 ?>
-                    <div class="col-xs-12 col-lg-3">
+                    <div class="col-xs-6 col-md-3">
                         <div class="widget-box <?php echo ($item['is_on']) ? "widget-color-green":"widget-color-dark lighter"; ?>">
                         	<div class="widget-header">
                         		<h5 class="widget-title smaller"><strong><?php echo $item['code'];?></strong></h5>
@@ -214,7 +219,7 @@
                         	<div class="widget-body" data-module="<?php echo ($item['is_on']) ? $item['p_application_id']:0; ?>">
                         		<div class="widget-main">
                         		    <a href="#">
-                        			    <img <?php echo ($item['is_on']) ? '':'class="desaturate"'; ?> width="256" height="256" src="<?php echo IMAGE_APP_PATH.substr($item['md_on'],10,5)."_on.png"; ?>" alt="256x256">
+                        			    <img class="img-app <?php echo ($item['is_on']) ? '':'desaturate'; ?>"  src="<?php echo IMAGE_APP_PATH.substr($item['md_on'],10,5)."_on.png"; ?>" alt="256x256">
                         	    	</a>
                         		</div>
                         	</div>
