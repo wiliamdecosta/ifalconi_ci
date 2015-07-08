@@ -29,7 +29,7 @@
                 </p>
                 
 		        <div class="well well-sm">
-		            <div class="inline middle blue bigger-150"> Counter <?php echo " : ".getVarClean('p_bank_code','str',''); ?></div>
+		            <div class="inline middle pink2 bigger-150"> Counter <?php echo " : ".getVarClean('p_bank_code','str',''); ?></div>
 		        </div>
 		        
 		        <p>
@@ -84,7 +84,7 @@
 
         $("#loket_btn_delete").on(ace.click_event, function(){
             if($("#loket_grid_selection").bootgrid("getSelectedRows") == "") {
-                showBootDialog(true, BootstrapDialog.TYPE_INFO, 'Information', 'Plese select data on the table to execute delete operation');
+                showBootDialog(true, BootstrapDialog.TYPE_INFO, 'Information', 'Plese select <span class="glyphicon glyphicon-check" /> data on the table to execute delete operation');
             }else {
                 loket_delete_records( $("#loket_grid_selection").bootgrid("getSelectedRows") );
             }
@@ -104,7 +104,7 @@
                     return dataarr[row.loket_type];
                 },
                 "opt-edit" : function(col, row) {
-                    return '<a href="#" onclick="loket_show_form_edit(\''+ row.p_bank_branch_id +'\')" class="green"><i class="ace-icon fa fa-pencil bigger-130"></i></a> &nbsp; <a href="#" onclick="loket_delete_records(\''+ row.p_bank_branch_id +'\')" class="red"><i class="ace-icon glyphicon glyphicon-trash bigger-130"></i></a> &nbsp; <a href="#" onclick="loket_show_user_loket(\''+ row.p_bank_branch_id +'\',\''+ row.code +'\')" class="orange"><i class="ace-icon glyphicon glyphicon-user bigger-130"></i></a>';
+                    return '<a href="#" onclick="loket_show_form_edit(\''+ row.p_bank_branch_id +'\')" class="green"><i class="ace-icon fa fa-pencil bigger-130"></i></a> &nbsp; <a href="#" onclick="loket_delete_records(\''+ row.p_bank_branch_id +'\')" class="red"><i class="ace-icon glyphicon glyphicon-trash bigger-130"></i></a> &nbsp; <a href="#" onclick="loket_show_user_loket(\''+ row.p_bank_branch_id +'\',\''+ row.code +'\')"><i class="ace-icon glyphicon glyphicon-user bigger-130"></i></a>';
                 }
              },
     	     rowCount:[10,25,50,100,-1],
