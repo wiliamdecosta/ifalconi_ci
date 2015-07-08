@@ -20,7 +20,7 @@
 		<div class="row">
 		    <div class="col-xs-12">
 		        <div class="well well-sm">
-		            <div class="inline middle blue bigger-150"> Area List </div>
+		            <div class="inline middle pink2 bigger-150"> Area List </div>
 		        </div>
 		        <p>
 					<button class="btn btn-white btn-success btn-round" id="area_btn_add">
@@ -67,7 +67,7 @@
 
         $("#area_btn_delete").on(ace.click_event, function(){
             if($("#area_grid_selection").bootgrid("getSelectedRows") == "") {
-                showBootDialog(true, BootstrapDialog.TYPE_INFO, 'Information', 'Plese select data on the table to execute delete operation');
+                showBootDialog(true, BootstrapDialog.TYPE_INFO, 'Information', 'Plese select <span class="glyphicon glyphicon-check" /> data on the table to execute delete operation');
             }else {
                 area_delete_records( $("#area_grid_selection").bootgrid("getSelectedRows") );
             }
