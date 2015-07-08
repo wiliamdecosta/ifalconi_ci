@@ -92,6 +92,18 @@
        		    }, 500 );
 			}
 			
+			function loadContentWithParams(id, params) {
+                $("#main-content").html('<div align="center"><h3 class="smaller lighter grey"> <i class="ace-icon fa fa-spinner fa-spin orange bigger-300"></i> <br/> Loading . . . </h3></div>');
+			    setTimeout( function(){
+			        $.post( "<?php echo BASE_URL.'panel/load_content/'; ?>" + id,
+                        params,
+                        function( data ) {
+                            $( "#main-content" ).html( data );
+                        }
+                    );
+       		    }, 500 );
+			}
+			
 			/* called by ace.settings-skin.js */
 			function updateVarTheme(skin_class) {
 			    $.post( "<?php echo WS_URL.'base.variables_controller/set_theme'; ?>", 

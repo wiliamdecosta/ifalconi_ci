@@ -61,7 +61,7 @@
 		    <li class="nav-menu-content" data-source="pay_param-p_bank.php">
 				<a href="#">
 					<i class="menu-icon fa fa-caret-right"></i>
-					BANK
+					GROUP COUNTER
 				</a>
 				<b class="arrow"></b>
 			</li>
@@ -70,14 +70,6 @@
 				<a href="#">
 					<i class="menu-icon fa fa-caret-right"></i>
 					AREA
-				</a>
-				<b class="arrow"></b>
-			</li>
-			
-			<li class="nav-menu-content" data-source="pay_param-p_bank_branch.php">
-				<a href="#">
-					<i class="menu-icon fa fa-caret-right"></i>
-					BANK BRANCH
 				</a>
 				<b class="arrow"></b>
 			</li>

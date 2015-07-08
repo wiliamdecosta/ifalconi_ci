@@ -16,7 +16,6 @@ class P_bank_controller {
     	
         $searchPhrase = getVarClean('searchPhrase', 'str', '');
         $p_bank_id = getVarClean('p_bank_id', 'int', 0);
-    	       
     	$data = array('items' => array(), 'success' => false, 'message' => '', 'current' => $start, 'rowCount' => $limit, 'total' => 0);
 
     	try {

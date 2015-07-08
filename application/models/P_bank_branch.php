@@ -14,14 +14,14 @@ class P_bank_branch extends Abstract_model {
 
 	public $fields 			= array(
 								'p_bank_branch_id' 		=> array('pkey' => true, 'type' => 'int', 'nullable' => false, 'unique' => true, 'display' => 'ID P_bank_branch'),
-								'code'	                => array('nullable' => false, 'type' => 'str', 'unique' => true, 'display' => 'Bank Branch Code'),
+								'code'	                => array('nullable' => false, 'type' => 'str', 'unique' => true, 'display' => 'Counter Code'),
 								'p_bank_id'	            => array('nullable' => false, 'type' => 'int', 'unique' => false, 'display' => 'Bank'),
 								'address'	            => array('nullable' => true, 'type' => 'str', 'unique' => false, 'display' => 'Address'),
 								'loket_no'	            => array('nullable' => false, 'type' => 'str', 'unique' => true, 'display' => 'Counter Number'),
                                 'loket_type'	        => array('nullable' => true, 'type' => 'int', 'unique' => false, 'display' => 'Counter Type'),
 								'max_user'	            => array('nullable' => true, 'type' => 'int', 'unique' => false, 'display' => 'Max User'),
 								'status'	            => array('nullable' => false, 'type' => 'int', 'unique' => false, 'display' => 'Status'),
-							    'p_area_id'	            => array('nullable' => true, 'type' => 'int', 'unique' => false, 'display' => 'ID P_area'),
+							    'p_area_id'	            => array('nullable' => false, 'type' => 'int', 'unique' => false, 'display' => 'Area'),
 								'description'	        => array('nullable' => true, 'type' => 'str', 'unique' => false, 'display' => 'Description'),
 								
 								'create_date'	        => array('nullable' => true, 'type' => 'date', 'unique' => false, 'display' => 'Creation Date'),
