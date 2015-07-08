@@ -26,7 +26,7 @@ class P_bank extends Abstract_model {
 	public $selectClause 	= "bank.*";
 	public $fromClause 		= "p_bank as bank";
 
-	public $refs			= array();
+	public $refs			= array('p_bank_branch' => 'p_bank_id');
 
 	public $comboDisplay	= array();
 

@@ -39,7 +39,7 @@ class P_bank_branch extends Abstract_model {
                                     LEFT JOIN p_bank as bank ON bank_branch.p_bank_id = bank.p_bank_id
                                     LEFT JOIN p_area as bank_area ON bank_branch.p_area_id = bank_area.p_area_id";
 	
-	public $refs			= array();
+	public $refs			= array('p_user_loket' => 'p_bank_branch_id');
 	
 	public $comboDisplay	= array();
 
