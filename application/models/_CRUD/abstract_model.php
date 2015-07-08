@@ -375,10 +375,10 @@ class Abstract_model extends  CI_Model {
 
 	public function remove($id) {
 	    
-		if(empty($id)) throw new Exception("Dibutuhkan ID untuk menghapus data");
+		if(empty($id)) throw new Exception("ID is empty");
 
 		if ($this->isRefferenced($id)){
-            throw new Exception('ID '.$id.' tidak bisa di hapus karena sudah di referensi oleh data lain');
+            throw new Exception('ID '.$id.' cannot be removed because it was in reference to another data');
         }
 
         try {
