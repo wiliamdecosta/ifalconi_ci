@@ -178,7 +178,7 @@
                     	        loadContentWithParams('pay_param-p_user_loket.php', 
                                     {
                                      p_bank_branch_id : $("#form_p_bank_branch_id").val(),
-                                     p_bank_branch_code : $("#p_bank_branch_code").val(),   
+                                     p_bank_branch_code : $("#form_p_bank_branch_code").val(),   
                                      p_bank_id : $("#form_p_bank_id").val(), 
                                      p_bank_code : $("#form_p_bank_code").val()
                                     }

@@ -99,7 +99,7 @@ class P_area_controller {
         		$data['message'] = $numErrors." from ".$numItems." record(s) failed to be saved.<br/><br/><b>System Response:</b><br/>- ".implode("<br/>- ", $errors)."";
         	}else{
         		$data['success'] = true;
-        		$data['message'] = 'Data saved successfully';
+        		$data['message'] = 'Data added successfully';
         	}
         	$data['items'] =$items;
 		}else {
@@ -113,7 +113,7 @@ class P_area_controller {
                 $table->db->trans_commit(); //Commit Trans
                 
     	        $data['success'] = true;
-    	        $data['message'] = 'Data saved successfully';
+    	        $data['message'] = 'Data added successfully';
         
 	        }catch (Exception $e) {
 	            $table->db->trans_rollback(); //Rollback Trans
