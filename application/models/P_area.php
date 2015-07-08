@@ -26,7 +26,7 @@ class P_area extends Abstract_model {
 	public $selectClause 	= "area.*";
 	public $fromClause 		= "p_area as area";
 
-	public $refs			= array();
+	public $refs			= array('p_bank_branch' => 'p_area_id');
 
 	public $comboDisplay	= array();
 
