@@ -35,7 +35,7 @@
                 </p>
                 
 		        <div class="well well-sm">
-		            <div class="inline middle blue bigger-150"> Counter User <?php echo " : ".getVarClean('p_bank_branch_code','str',''); ?></div>
+		            <div class="inline middle pink2 bigger-150"> Counter User <?php echo " : ".getVarClean('p_bank_branch_code','str',''); ?></div>
 		        </div>
 		        
 		        <p>
@@ -92,7 +92,7 @@
 
         $("#user_loket_btn_delete").on(ace.click_event, function(){
             if($("#user_loket_grid_selection").bootgrid("getSelectedRows") == "") {
-                showBootDialog(true, BootstrapDialog.TYPE_INFO, 'Information', 'Plese select data on the table to execute delete operation');
+                showBootDialog(true, BootstrapDialog.TYPE_INFO, 'Information', 'Plese select <span class="glyphicon glyphicon-check" /> data on the table to execute delete operation');
             }else {
                 user_loket_delete_records( $("#user_loket_grid_selection").bootgrid("getSelectedRows") );
             }
