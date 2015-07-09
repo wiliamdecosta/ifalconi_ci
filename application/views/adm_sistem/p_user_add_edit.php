@@ -10,6 +10,11 @@
                     <input id="form_p_user_id" type="hidden" placeholder="Area ID">
                     <input id="form_user_name" class="col-xs-10 col-sm-5 required" type="text">
                 </div>
+                
+                <label class="col-sm-3 control-label no-padding-right"> Full Name *</label>
+                <div class="col-sm-9">
+                    <input id="form_full_name" class="col-xs-10 col-sm-5 required" type="text">
+                </div>
             </div>
 
             <div class="form-group">
