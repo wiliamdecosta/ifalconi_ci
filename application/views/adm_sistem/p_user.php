@@ -39,7 +39,7 @@
                   <tr>
                     <th data-identifier="true" data-visible="false" data-header-align="center" data-align="center" data-column-id="p_user_id"> ID User</th>
                      <th data-header-align="center" data-align="center" data-formatter="opt-edit" data-sortable="false" data-width="100">Options</th>
-                     <th data-column-id="user_name" data-header-align="center" data-align="center" data-width="150">User Name</th>
+                     <th data-column-id="user_name" data-width="200">User Name</th>
                      <th data-column-id="full_name"> Full Name </th>
                      <th data-column-id="user_status"> Status </th>
                      <th data-column-id="email_address"> Email </th>
