@@ -23,8 +23,8 @@
 		<div class="row">
 		    <div class="col-xs-12">
 		        <p>
-                  <button type="button" class="btn btn-default btn-sm" id="backButton">
-      	            <span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span> Group Counter
+                  <button type="button" class="btn btn-pink btn-xs" id="backButton">
+      	            <span class="ace-icon fa fa-angle-double-left" aria-hidden="true"></span> Group Counter
                   </button>
                 </p>
                 
@@ -125,7 +125,7 @@
     	        }
     	        return response;
     	     },
-       	     url: '<?php echo WS_URL2."p_bank_branch_controller/read"; ?>',
+       	     url: '<?php echo WS_URL2."pay_param.p_bank_branch_controller/read"; ?>',
        	     post: function () {
     	         return { p_bank_id : $("#form_p_bank_id").val() };
     	     },
@@ -153,7 +153,7 @@
             btnOKLabel: 'Yes, Delete',
 		    callback: function(result) {
     	        if(result) {
-    	            $.post( "<?php echo WS_URL.'p_bank_branch_controller/destroy'; ?>",
+    	            $.post( "<?php echo WS_URL.'pay_param.p_bank_branch_controller/destroy'; ?>",
             		    { items: JSON.stringify(theID) },
                         function( response ) {
                             if(response.success == false) {

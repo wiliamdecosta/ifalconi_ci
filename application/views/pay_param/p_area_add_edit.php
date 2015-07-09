@@ -61,13 +61,14 @@
 
 
 <script>
-
-    $("#area_form_btn_cancel").on(ace.click_event, function() {
-        area_toggle_main_content();
-    });
-
-    $("#area_form_btn_save").on(ace.click_event, function() {
-        area_save();
+    jQuery(function($) {
+        $("#area_form_btn_cancel").on(ace.click_event, function() {
+            area_toggle_main_content();
+        });
+    
+        $("#area_form_btn_save").on(ace.click_event, function() {
+            area_save();
+        });
     });
 
     function area_toggle_main_content() {
@@ -88,7 +89,7 @@
         $("#area_form_title").html("Edit Area");
         
         $("#form_p_area_id").val(theID);
-        $.post( "<?php echo WS_URL.'p_area_controller/read'; ?>",
+        $.post( "<?php echo WS_URL.'pay_param.p_area_controller/read'; ?>",
             {
                 p_area_id : $("#form_p_area_id").val()
             },
@@ -118,7 +119,7 @@
 
         //jika ID kosong, panggil method create. Jika ID ada, maka panggil method update
         action_execute = ( $("#form_p_area_id").val() == "") ? "create" : "update";
-        $.post( "<?php echo WS_URL.'p_area_controller/'; ?>" + action_execute,
+        $.post( "<?php echo WS_URL.'pay_param.p_area_controller/'; ?>" + action_execute,
             {items: JSON.stringify({
                     p_area_id           : $("#form_p_area_id").val(),
                     code                : $("#form_code").val(),

@@ -1,3 +1,13 @@
+<?php 
+    if( getVarClean("user_name","str","") == "" ) :
+?>
+<script>
+    loadContentWithParams("pay_process-payment_login.php",{
+        url_redirect : "pay_process-stp_pay_acc.php"    
+    });
+</script>
+<?php endif; ?>
+
 <!-- Bootgrid Dialog -->
 <link rel="stylesheet" href="<?php echo BS_PATH; ?>bootgrid/jquery.bootgrid.css" />
 <link rel="stylesheet" href="<?php echo BS_PATH; ?>bootgrid/modification.css" />
@@ -78,7 +88,7 @@
 
 /* jquery on load */
 jQuery(function($) {
-
+      
 	  $(".priceformat").number( true, 0 , ',', '.'); /* price number format on summary group */
 	  $(".priceformat").css("font-weight", "bold");
 

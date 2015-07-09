@@ -61,13 +61,14 @@
 
 
 <script>
-
-    $("#group_loket_form_btn_cancel").on(ace.click_event, function() {
-        group_loket_toggle_main_content();
-    });
-
-    $("#group_loket_form_btn_save").on(ace.click_event, function() {
-        group_loket_save();
+    jQuery(function($) {
+        $("#group_loket_form_btn_cancel").on(ace.click_event, function() {
+            group_loket_toggle_main_content();
+        });
+    
+        $("#group_loket_form_btn_save").on(ace.click_event, function() {
+            group_loket_save();
+        });
     });
 
     function group_loket_toggle_main_content() {
@@ -88,7 +89,7 @@
         $("#group_loket_form_title").html("Edit Group Loket");
         
         $("#form_p_group_loket_id").val(theID);
-        $.post( "<?php echo WS_URL.'p_bank_controller/read'; ?>",
+        $.post( "<?php echo WS_URL.'pay_param.p_bank_controller/read'; ?>",
             {
                 p_bank_id : $("#form_p_group_loket_id").val()
             },
@@ -118,7 +119,7 @@
 
         //jika ID kosong, panggil method create. Jika ID ada, maka panggil method update
         action_execute = ( $("#form_p_group_loket_id").val() == "") ? "create" : "update";
-        $.post( "<?php echo WS_URL.'p_bank_controller/'; ?>" + action_execute,
+        $.post( "<?php echo WS_URL.'pay_param.p_bank_controller/'; ?>" + action_execute,
             {items: JSON.stringify({
                     p_bank_id           : $("#form_p_group_loket_id").val(),
                     code                : $("#form_code").val(),

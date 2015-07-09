@@ -109,19 +109,21 @@
 
 <script>
     
-    $("#form_exp_pass").datepicker({
-       autoclose: true,
-       todayHighlight: true
-    });
-
-    $("#user_loket_form_btn_cancel").on(ace.click_event, function() {
-        user_loket_toggle_main_content();
-    });
-
-    $("#user_loket_form_btn_save").on(ace.click_event, function() {
-        user_loket_save();
-    });
+    jQuery(function($) {
+        $("#form_exp_pass").datepicker({
+           autoclose: true,
+           todayHighlight: true
+        });
     
+        $("#user_loket_form_btn_cancel").on(ace.click_event, function() {
+            user_loket_toggle_main_content();
+        });
+    
+        $("#user_loket_form_btn_save").on(ace.click_event, function() {
+            user_loket_save();
+        });
+    });
+
     function user_loket_toggle_main_content() {
 
         $("#user_loket_form")[0].reset();
@@ -142,7 +144,7 @@
         $("#user_loket_form_title").html("Edit Counter User" + " : " + $("#form_p_bank_branch_code").val());
         
         $("#form_p_user_loket_id").val(theID);
-        $.post( "<?php echo WS_URL.'p_user_loket_controller/read'; ?>",
+        $.post( "<?php echo WS_URL.'pay_param.p_user_loket_controller/read'; ?>",
             {
                 p_user_loket_id : $("#form_p_user_loket_id").val()
             },
@@ -177,7 +179,7 @@
 
         //jika ID kosong, panggil method create. Jika ID ada, maka panggil method update
         action_execute = ( $("#form_p_user_loket_id").val() == "") ? "create" : "update";
-        $.post( "<?php echo WS_URL.'p_user_loket_controller/'; ?>" + action_execute,
+        $.post( "<?php echo WS_URL.'pay_param.p_user_loket_controller/'; ?>" + action_execute,
             {items: JSON.stringify({
                     p_user_loket_id     : $("#form_p_user_loket_id").val(),
                     p_bank_branch_id    : $("#form_p_bank_branch_id").val(),

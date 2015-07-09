@@ -102,18 +102,19 @@
 <?php $this->load->view('pay_lov/lov_p_area.php'); ?>
 
 <script>
-
-    $("#loket_form_btn_cancel").on(ace.click_event, function() {
-        loket_toggle_main_content();
-    });
-
-    $("#loket_form_btn_save").on(ace.click_event, function() {
-        loket_save();
-    });
-
+    jQuery(function($) {
+        $("#loket_form_btn_cancel").on(ace.click_event, function() {
+            loket_toggle_main_content();
+        });
     
-    $("#btn_lov_area").on(ace.click_event, function() {
-        modal_lov_area_show("form_p_area_id","form_bank_area_code");
+        $("#loket_form_btn_save").on(ace.click_event, function() {
+            loket_save();
+        });
+    
+        
+        $("#btn_lov_area").on(ace.click_event, function() {
+            modal_lov_area_show("form_p_area_id","form_bank_area_code");
+        });
     });
 
     function loket_toggle_main_content() {
@@ -136,7 +137,7 @@
         $("#loket_form_title").html("Edit Counter" + " : " + $("#form_p_bank_code").val());
         
         $("#form_p_bank_branch_id").val(theID);
-        $.post( "<?php echo WS_URL.'p_bank_branch_controller/read'; ?>",
+        $.post( "<?php echo WS_URL.'pay_param.p_bank_branch_controller/read'; ?>",
             {
                 p_bank_branch_id : $("#form_p_bank_branch_id").val()
             },
@@ -173,7 +174,7 @@
 
         //jika ID kosong, panggil method create. Jika ID ada, maka panggil method update
         action_execute = ( $("#form_p_bank_branch_id").val() == "") ? "create" : "update";
-        $.post( "<?php echo WS_URL.'p_bank_branch_controller/'; ?>" + action_execute,
+        $.post( "<?php echo WS_URL.'pay_param.p_bank_branch_controller/'; ?>" + action_execute,
             {items: JSON.stringify({
                     p_bank_branch_id    : $("#form_p_bank_branch_id").val(),
                     code                : $("#form_code").val(),

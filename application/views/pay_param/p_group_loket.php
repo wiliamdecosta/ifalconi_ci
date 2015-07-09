@@ -100,7 +100,7 @@
     	        }
     	        return response;
     	     },
-       	     url: '<?php echo WS_URL2."p_bank_controller/read"; ?>',
+       	     url: '<?php echo WS_URL2."pay_param.p_bank_controller/read"; ?>',
     	     selection: true,
     	     multiSelect: true,
     	     sorting:true,
@@ -125,7 +125,7 @@
             btnOKLabel: 'Yes, Delete',
 		    callback: function(result) {
     	        if(result) {
-    	            $.post( "<?php echo WS_URL.'p_bank_controller/destroy'; ?>",
+    	            $.post( "<?php echo WS_URL.'pay_param.p_bank_controller/destroy'; ?>",
             		    { items: JSON.stringify(theID) },
                         function( response ) {
                             if(response.success == false) {

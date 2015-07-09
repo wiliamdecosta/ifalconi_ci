@@ -106,7 +106,7 @@
 	    
 <script>
     jQuery(function($) {
-        $.post( "<?php echo WS_URL.'base.user_controller/getInfo'; ?>", function( response ) {
+        $.post( "<?php echo WS_URL.'adm_sistem.p_user_controller/getInfo'; ?>", function( response ) {
             var item = response.data;
             
             $("#form-field-userid").val( item.p_user_id );
@@ -119,7 +119,7 @@
         $("#btn-update").on(ace.click_event,function(){
             if(validForm()) {
                 
-                $.post( "<?php echo WS_URL.'base.user_controller/UpdateInfo'; ?>", 
+                $.post( "<?php echo WS_URL.'adm_sistem.p_user_controller/UpdateInfo'; ?>", 
                 {
                     user_id: $("#form-field-userid").val(),
                     user_name: $("#form-field-username").val(),
