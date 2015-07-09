@@ -48,7 +48,7 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
+$db['default']['hostname'] = '192.168.1.101';
 $db['default']['username'] = 'ifl';
 $db['default']['password'] = 'ifl123';
 $db['default']['port']     = 5444;
@@ -66,7 +66,7 @@ $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
 
-$db['ifc_db']['hostname'] = 'localhost';
+$db['ifc_db']['hostname'] = '192.168.1.101';
 $db['ifc_db']['username'] = 'ifc';
 $db['ifc_db']['password'] = 'ifc123';
 $db['ifc_db']['port']     = 5444;
@@ -84,7 +84,7 @@ $db['ifc_db']['autoinit'] = TRUE;
 $db['ifc_db']['stricton'] = FALSE;
 
 
-$db['ifb_db']['hostname'] = 'localhost';
+$db['ifb_db']['hostname'] = '192.168.1.101';
 $db['ifb_db']['username'] = 'ifb';
 $db['ifb_db']['password'] = 'ifb123';
 $db['ifb_db']['port']     = 5444;
@@ -102,7 +102,7 @@ $db['ifb_db']['autoinit'] = TRUE;
 $db['ifb_db']['stricton'] = FALSE;
 
 
-$db['ifp_db']['hostname'] = 'localhost';
+$db['ifp_db']['hostname'] = '192.168.1.101';
 $db['ifp_db']['username'] = 'ifp';
 $db['ifp_db']['password'] = 'ifp123';
 $db['ifp_db']['port']     = 5444;
@@ -120,7 +120,7 @@ $db['ifp_db']['autoinit'] = TRUE;
 $db['ifp_db']['stricton'] = FALSE;
 
 
-$db['ifl_db']['hostname'] = 'localhost';
+$db['ifl_db']['hostname'] = '192.168.1.101';
 $db['ifl_db']['username'] = 'ifl';
 $db['ifl_db']['password'] = 'ifl123';
 $db['ifl_db']['port']     = 5444;
