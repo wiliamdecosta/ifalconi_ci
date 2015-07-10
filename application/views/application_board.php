@@ -83,11 +83,12 @@
 
 		</script>
         <style>
-            img.desaturate{
-                -webkit-filter: grayscale(100%);
-                filter: gray; filter: grayscale(100%);
+            img.grayscale {
+                filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */
+                filter: gray; /* IE6-9 */
+                -webkit-filter: grayscale(100%); /* Chrome 19+, Safari 6+, Safari 6+ iOS */
             }
-            
+
             .widget-main img.img-app {
                 width:100%;    
             }
@@ -219,7 +220,7 @@
                         	<div class="widget-body" data-module="<?php echo ($item['is_on']) ? $item['p_application_id']:0; ?>">
                         		<div class="widget-main">
                         		    <a href="#">
-                        			    <img class="img-app <?php echo ($item['is_on']) ? '':'desaturate'; ?>"  src="<?php echo IMAGE_APP_PATH.substr($item['md_on'],10,5)."_on.png"; ?>" alt="256x256">
+                        			    <img class="img-app <?php echo ($item['is_on']) ? '':'grayscale'; ?>"  src="<?php echo IMAGE_APP_PATH.substr($item['md_on'],10,5)."_on.png"; ?>" alt="256x256">
                         	    	</a>
                         		</div>
                         	</div>
