@@ -79,7 +79,7 @@
         $("#area_grid_selection").bootgrid({
     	     formatters: {
                 "opt-edit" : function(col, row) {
-                    return '<a href="#" onclick="area_show_form_edit(\''+ row.p_area_id +'\')" class="green"><i class="ace-icon fa fa-pencil bigger-130"></i></a> &nbsp; <a href="#" onclick="area_delete_records(\''+ row.p_area_id +'\')" class="red"><i class="ace-icon glyphicon glyphicon-trash bigger-130"></i></a>';
+                    return '<a href="#" title="Edit" onclick="area_show_form_edit(\''+ row.p_area_id +'\')" class="green"><i class="ace-icon fa fa-pencil bigger-130"></i></a> &nbsp; <a href="#" title="Delete" onclick="area_delete_records(\''+ row.p_area_id +'\')" class="red"><i class="ace-icon glyphicon glyphicon-trash bigger-130"></i></a>';
                 }
              },
     	     rowCount:[10,25,50,100,-1],
