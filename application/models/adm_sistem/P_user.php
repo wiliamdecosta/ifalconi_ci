@@ -104,6 +104,12 @@ class P_user extends Abstract_model {
                 $this->record['user_pwd'] = md5($this->record['user_pwd']);
             }
             
+            if (isset($this->record['email_address'])){
+                if(!isValidEmail( $this->record['email_address'] )) {
+                    throw new Exception("Email Format is Not Valid");
+                }
+            }
+            
             $this->record['updated_date'] = date('Y-m-d');
             $this->record['updated_by'] = $user_name;
 		}
