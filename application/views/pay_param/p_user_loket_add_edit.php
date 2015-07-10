@@ -110,10 +110,8 @@
 <script>
     
     jQuery(function($) {
-        $("#form_exp_pass").datepicker({
-           autoclose: true,
-           todayHighlight: true
-        });
+        
+        $("#form_exp_pass").datepicker({ autoclose: true, todayHighlight: true });
     
         $("#user_loket_form_btn_cancel").on(ace.click_event, function() {
             user_loket_toggle_main_content();
