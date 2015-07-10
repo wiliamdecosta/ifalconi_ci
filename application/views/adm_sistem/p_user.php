@@ -81,7 +81,7 @@
         $("#user_grid_selection").bootgrid({
     	     formatters: {
                 "opt-edit" : function(col, row) {
-                    return '<a href="#" onclick="user_show_form_edit(\''+ row.p_user_id +'\')" class="green"><i class="ace-icon fa fa-pencil bigger-130"></i></a> &nbsp; <a href="#" onclick="user_delete_records(\''+ row.p_user_id +'\')" class="red"><i class="ace-icon glyphicon glyphicon-trash bigger-130"></i></a>';
+                    return '<a href="#" title="Edit" onclick="user_show_form_edit(\''+ row.p_user_id +'\')" class="green"><i class="ace-icon fa fa-pencil bigger-130"></i></a> &nbsp; <a href="#" title="Delete" onclick="user_delete_records(\''+ row.p_user_id +'\')" class="red"><i class="ace-icon glyphicon glyphicon-trash bigger-130"></i></a> &nbsp; <a href="#" title="User Role" onclick="user_show_user_role(\''+ row.p_user_id +'\', \''+ row.user_name +'\')" class="purple"><i class="ace-icon fa fa-users bigger-130"></i></a>';
                 },
                 "user_status" : function (col, row) {
                     var dataarr = {"1":"ACTIVE", "0":"NEW USER", "2":"INACTIVE", "3":"BLOCKED"};
@@ -145,7 +145,10 @@
     	        }
 		    }
 		});
-
+    }
+    
+    function user_show_user_role(theID, theCode) {
+        loadContentWithParams("adm_sistem-p_user_role.php", {p_user_id: theID, user_name: theCode});   
     }
 
 </script>
