@@ -31,6 +31,7 @@
 		<div class="row">
 		    <div id="filter-group" class="col-xs-12 col-lg-4">
               <div class="input-group">
+                <input id="form_user_name" type="hidden" value="<?php echo getVarClean("user_name","str",""); ?>">
                 <input id="inputServiceNo" class="form-control" placeholder="Input Your Service Number">
                 <span class="input-group-btn">
                     <button id="btnProses" class="btn btn-info btn-sm">
@@ -45,8 +46,8 @@
             
             <div class="col-xs-12">
               <p>
-                <button type="button" class="btn btn-default" id="backButton">
-  	            <span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span> Back
+                <button type="button" class="btn btn-pink btn-xs" id="backButton">
+      	          <span class="ace-icon fa fa-angle-double-left" aria-hidden="true"></span> Back
                 </button>
               </p>
               <table id="grid-selection" class="table table-striped table-bordered table-hover">
@@ -103,7 +104,10 @@ jQuery(function($) {
 	  });
 	  
 	  $("#backButton").on(ace.click_event, function () {
-          loadContent('pay_process-stp_pay_acc.php');
+          loadContentWithParams('pay_process-stp_pay_acc.php',
+          {
+            user_name : $("#form_user_name").val() 
+          });
       });
 
       $("#btnPembayaran").on(ace.click_event, function () {
