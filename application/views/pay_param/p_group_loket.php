@@ -9,7 +9,7 @@
 		Parameter
 		<small>
 			<i class="ace-icon fa fa-angle-double-right"></i>
-			Counter Group List
+			Counter Group
 		</small>
 	</h1>
 </div><!-- /.page-header -->
@@ -79,7 +79,7 @@
         $("#group_loket_grid_selection").bootgrid({
     	     formatters: {
                 "opt-edit" : function(col, row) {
-                    return '<a href="#" onclick="group_loket_show_form_edit(\''+ row.p_bank_id +'\')" class="green"><i class="ace-icon fa fa-pencil bigger-130"></i></a> &nbsp; <a href="#" onclick="group_loket_delete_records(\''+ row.p_bank_id +'\')" class="red"><i class="ace-icon glyphicon glyphicon-trash bigger-130"></i></a> &nbsp; <a href="#" onclick="group_loket_show_loket(\''+ row.p_bank_id +'\',\''+ row.code +'\')"><i class="ace-icon glyphicon glyphicon-home bigger-130"></i></a>';
+                    return '<a href="#" title="Edit" onclick="group_loket_show_form_edit(\''+ row.p_bank_id +'\')" class="green"><i class="ace-icon fa fa-pencil bigger-130"></i></a> &nbsp; <a href="#" title="Delete" onclick="group_loket_delete_records(\''+ row.p_bank_id +'\')" class="red"><i class="ace-icon glyphicon glyphicon-trash bigger-130"></i></a> &nbsp; <a href="#" title="Counter" onclick="group_loket_show_loket(\''+ row.p_bank_id +'\',\''+ row.code +'\')"><i class="ace-icon glyphicon glyphicon-home bigger-130"></i></a>';
                 }
              },
     	     rowCount:[10,25,50,100,-1],
