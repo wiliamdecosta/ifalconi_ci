@@ -15,7 +15,7 @@ class P_user extends Abstract_model {
 	public $fields 			= array(
 								'p_user_id' 		    => array('pkey' => true, 'type' => 'int', 'nullable' => false, 'unique' => true, 'display' => 'ID User'),
 								'user_name'	            => array('nullable' => false, 'type' => 'str', 'unique' => true, 'display' => 'User Name'),
-								'user_pwd'	            => array('nullable' => false, 'type' => 'str', 'unique' => false, 'display' => 'Password'),
+								'user_pwd'	            => array('nullable' => true, 'type' => 'str', 'unique' => false, 'display' => 'Password'),
 								'full_name'	            => array('nullable' => false, 'type' => 'str', 'unique' => false, 'display' => 'Full Name'),
 								'email_address'	        => array('nullable' => false, 'type' => 'str', 'unique' => false, 'display' => 'Email Address'),
 								'user_status'	        => array('nullable' => false, 'type' => 'str', 'unique' => false, 'display' => 'Status'),
@@ -71,17 +71,15 @@ class P_user extends Abstract_model {
 		    
 			$this->record['user_name'] = trim($this->record['user_name']);
             $this->record['full_name'] = trim($this->record['full_name']);
+            $this->record['user_pwd'] = md5($this->record['user_name']);
             
-            if (empty($this->record['user_name'])) throw new Exception('Username Field is Empty');
-            if (empty($this->record['full_name'])) throw new Exception('Fullname Field is Empty');
+            if (isset($this->record['email_address'])){
+                if(!isValidEmail( $this->record['email_address'] )) {
+                    throw new Exception("Email Format is Not Valid");
+                }
+            }
             
-            if (trim($this->record['user_pwd']) == '') throw new Exception('Password Field is Empty');
-            
-            if (strlen($this->record['user_pwd']) < 5) throw new Exception('Mininum password length is 5 characters');
-            
-            $this->record['user_pwd'] = md5($this->record['user_pwd']);
             $this->record['p_user_id'] = $this->generate_id('ifl','p_user','p_user_id');
-            
             $this->record['creation_date'] = date('Y-m-d');
             $this->record['created_by'] = $user_name;
             $this->record['updated_date'] = date('Y-m-d');
