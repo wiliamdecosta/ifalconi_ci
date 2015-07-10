@@ -41,7 +41,7 @@
                      <th data-header-align="center" data-align="center" data-formatter="opt-edit" data-sortable="false" data-width="100">Options</th>
                      <th data-column-id="user_name" data-width="200">User Name</th>
                      <th data-column-id="full_name"> Full Name </th>
-                     <th data-column-id="user_status"> Status </th>
+                     <th data-column-id="user_status" data-formatter="user_status"> Status </th>
                      <th data-column-id="email_address"> Email </th>
                   </tr>
                 </thead>
@@ -69,7 +69,7 @@
 
         $("#user_btn_delete").on(ace.click_event, function(){
             if($("#user_grid_selection").bootgrid("getSelectedRows") == "") {
-                showBootDialog(true, BootstrapDialog.TYPE_INFO, 'Information', 'Plese select <span class="glyphicon glyphicon-check" /> data on the table to execute delete operation');
+                showBootDialog(true, BootstrapDialog.TYPE_INFO, 'Information', properties.bootgridinfo.no_delete_records);
             }else {
                 user_delete_records( $("#user_grid_selection").bootgrid("getSelectedRows") );
             }
@@ -82,6 +82,10 @@
     	     formatters: {
                 "opt-edit" : function(col, row) {
                     return '<a href="#" onclick="user_show_form_edit(\''+ row.p_user_id +'\')" class="green"><i class="ace-icon fa fa-pencil bigger-130"></i></a> &nbsp; <a href="#" onclick="user_delete_records(\''+ row.p_user_id +'\')" class="red"><i class="ace-icon glyphicon glyphicon-trash bigger-130"></i></a>';
+                },
+                "user_status" : function (col, row) {
+                    var dataarr = {"1":"ACTIVE", "0":"NEW USER", "2":"INACTIVE", "3":"BLOCKED"};
+                    return dataarr[row.user_status];
                 }
              },
     	     rowCount:[10,25,50,100,-1],
@@ -121,8 +125,8 @@
     function user_delete_records(theID) {
         BootstrapDialog.confirm({
             type: BootstrapDialog.TYPE_WARNING,
-		    title:'Delete Confirmation',
-		    message: 'Do you really want to delete the data(s)?',
+		    title: 'Delete Confirmation',
+		    message: properties.bootgridinfo.delete_confirmation_question,
 		    btnCancelLabel: 'Cancel',
             btnOKLabel: 'Yes, Delete',
 		    callback: function(result) {
