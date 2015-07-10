@@ -80,7 +80,7 @@
         $("#role_grid_selection").bootgrid({
     	     formatters: {
                 "opt-edit" : function(col, row) {
-                    return '<a href="#" onclick="role_show_form_edit(\''+ row.p_role_id +'\')" class="green"><i class="ace-icon fa fa-pencil bigger-130"></i></a> &nbsp; <a href="#" onclick="role_delete_records(\''+ row.p_role_id +'\')" class="red"><i class="ace-icon glyphicon glyphicon-trash bigger-130"></i></a>';
+                    return '<a href="#" title="Edit" onclick="role_show_form_edit(\''+ row.p_role_id +'\')" class="green"><i class="ace-icon fa fa-pencil bigger-130"></i></a> &nbsp; <a href="#" title="Delete" onclick="role_delete_records(\''+ row.p_role_id +'\')" class="red"><i class="ace-icon glyphicon glyphicon-trash bigger-130"></i></a>';
                 },
                 "is_active" : function (col, row) {
                     var dataarr = {"":"","Y":"ACTIVE", "N":"NOT ACTIVE"};
