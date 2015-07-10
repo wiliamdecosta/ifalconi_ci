@@ -84,7 +84,7 @@
 
         $("#loket_btn_delete").on(ace.click_event, function(){
             if($("#loket_grid_selection").bootgrid("getSelectedRows") == "") {
-                showBootDialog(true, BootstrapDialog.TYPE_INFO, 'Information', 'Plese select <span class="glyphicon glyphicon-check" /> data on the table to execute delete operation');
+                showBootDialog(true, BootstrapDialog.TYPE_INFO, 'Information', properties.bootgridinfo.no_delete_records);
             }else {
                 loket_delete_records( $("#loket_grid_selection").bootgrid("getSelectedRows") );
             }
@@ -100,7 +100,7 @@
         $("#loket_grid_selection").bootgrid({
     	     formatters: {
                 "loket_type" : function (col, row) {
-                    var dataarr = new Array('','H2H','P2H','WEB');
+                    var dataarr = {"":"", "1":"H2H", "2":"P2H", "3":"WEB"};
                     return dataarr[row.loket_type];
                 },
                 "opt-edit" : function(col, row) {
@@ -148,7 +148,7 @@
         BootstrapDialog.confirm({
             type: BootstrapDialog.TYPE_WARNING,
 		    title:'Delete Confirmation',
-		    message: 'Do you really want to delete the data(s)?',
+		    message: properties.bootgridinfo.delete_confirmation_question,
 		    btnCancelLabel: 'Cancel',
             btnOKLabel: 'Yes, Delete',
 		    callback: function(result) {
