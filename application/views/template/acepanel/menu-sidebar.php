@@ -69,7 +69,7 @@
 		    <li class="nav-menu-content" data-source="pay_param-p_bank.php">
 				<a href="#">
 					<i class="menu-icon fa fa-caret-right"></i>
-					GROUP COUNTER
+					COUNTER GROUP
 				</a>
 				<b class="arrow"></b>
 			</li>
