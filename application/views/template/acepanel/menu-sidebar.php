@@ -23,13 +23,21 @@
 		<b class="arrow"></b>
 
 		<ul class="submenu">
+		    <li class="nav-menu-content" data-source="adm_sistem-p_role.php">
+				<a href="#">
+					<i class="menu-icon fa fa-caret-right"></i>
+					ROLE ADMINISTRATION
+				</a>
+				<b class="arrow"></b>
+			</li>
+			
 			<li class="nav-menu-content" data-source="adm_sistem-p_user.php">
 				<a href="#">
 					<i class="menu-icon fa fa-caret-right"></i>
 					USERS ADMINISTRATION
 				</a>
 				<b class="arrow"></b>
-			</li>
+			</li>			
 		</ul>
 	</li>
 
