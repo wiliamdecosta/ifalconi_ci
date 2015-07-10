@@ -37,7 +37,7 @@
                             
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <button class="btn width-35 btn-sm btn-pink" type="button" id="btn-login">
+                                    <button class="btn width-35 pull-right btn-sm btn-pink" type="button" id="btn-login">
                     					<i class="ace-icon fa fa-key"></i>
                     					<span class="bigger-110">Login</span>
                     				</button>
