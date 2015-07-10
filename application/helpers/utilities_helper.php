@@ -13,4 +13,8 @@ function jsonDecode($data) {
     return $items;
 }
 
+function isValidEmail($email){ 
+    return filter_var($email, FILTER_VALIDATE_EMAIL);
+}
+
 ?>
