@@ -96,7 +96,7 @@
     	        }
     	        return response;
     	     },
-       	     url: '<?php echo WS_URL2."p_bank_controller/read"; ?>',
+       	     url: '<?php echo WS_URL2."pay_param.p_bank_controller/read"; ?>',
     	     selection: true,
     	     sorting:true,
     	     labels: {
