@@ -5,22 +5,73 @@
 		</div>
         <form class="form-horizontal" role="form" id="user_form">
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right"> User Name *</label>
-                <div class="col-sm-9">
-                    <input id="form_p_user_id" type="hidden" placeholder="Area ID">
-                    <input id="form_user_name" class="col-xs-10 col-sm-5 required" type="text">
+                <label class="col-sm-2 control-label no-padding-right"> User Name *</label>
+                <div class="col-sm-3">
+                    <input id="form_p_user_id" type="hidden" placeholder="ID User">
+                    <input id="form_user_name" class="col-xs-12 required" type="text">
                 </div>
                 
-                <label class="col-sm-3 control-label no-padding-right"> Full Name *</label>
-                <div class="col-sm-9">
-                    <input id="form_full_name" class="col-xs-10 col-sm-5 required" type="text">
+                <label class="col-sm-2 col-lg-1 control-label no-padding-right"> Full Name *</label>
+                <div class="col-sm-3">
+                    <input id="form_full_name" class="col-xs-12 required" type="text">
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right"> Description </label>
-                <div class="col-sm-9">
-                    <textarea id="form_description" class="col-xs-10 col-sm-5" type="text"></textarea>
+                <label class="col-sm-2 control-label no-padding-right"> Employee Number </label>
+                <div class="col-sm-3">
+                    <input id="form_employee_no" class="col-xs-12" type="text">
+                </div>
+                
+                <label class="col-sm-2 col-lg-1 control-label no-padding-right">Employee Status</label>
+                <div class="col-sm-3">
+                    <select id="form_is_employee" class="col-xs-12">
+                		<option value="N">EXTERNAL</option>
+                		<option value="Y">INTERNAL</option>
+                	</select>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                
+                <label class="col-sm-2 control-label no-padding-right"> Status * </label>
+                <div class="col-sm-3">
+                    <select id="form_user_status" class="col-xs-12 required">
+                		<option value="1">ACTIVE</option>
+                        <option value="0">NEW USER</option>
+                        <option value="2">INACTIVE</option>
+                        <option value="3">BLOCKED</option>
+                	</select>
+                </div>
+                
+                <label class="col-sm-2 col-lg-1 control-label no-padding-right">Email *</label>
+                <div class="col-sm-3">
+                    <input id="form_email_address" class="col-xs-12 required" type="text">
+                </div>
+                
+            </div>
+            
+            <div class="form-group">
+                
+                <label class="col-sm-2 control-label no-padding-right"> Is New User ? * </label>
+                <div class="col-sm-3">
+                    <select id="form_is_new_user" class="col-xs-12 required">
+                		<option value="Y">YES</option>
+                        <option value="N">NO</option>
+                	</select>
+                </div>
+                
+                <label class="col-sm-2 col-lg-1 control-label no-padding-right">Last Login</label>
+                <div class="col-sm-3">
+                    <input id="form_last_login_time" disabled class="col-xs-12" type="text">
+                </div>
+                
+            </div>
+            
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right"> Description </label>
+                <div class="col-sm-7">
+                    <textarea id="form_description" class="col-xs-12" type="text" rows="1"></textarea>
                 </div>
             </div>
             
@@ -29,7 +80,7 @@
 	            $user_name = $ci->session->userdata('user_name');
 			?>
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right"> Created By </label>
+                <label class="col-sm-2 control-label no-padding-right"> Created By </label>
                 <div class="col-sm-9">
                     <input id="form_created_by" disabled type="text" value="<?php echo $user_name; ?>">
                     &nbsp;  <input id="form_creation_date" disabled type="text" value="<?php echo date("Y-m-d"); ?>">
@@ -37,7 +88,7 @@
             </div>
 
             <div class="form-group">
-                <label class="col-sm-3 control-label no-padding-right"> Updated By </label>
+                <label class="col-sm-2 control-label no-padding-right"> Updated By </label>
                 <div class="col-sm-9">
                     <input id="form_updated_by" disabled type="text" value="<?php echo $user_name; ?>">
                     &nbsp; <input id="form_updated_date" disabled type="text" value="<?php echo date("Y-m-d"); ?>">
@@ -105,7 +156,15 @@
         	        var obj = response.items[0];
         	        
         	        $("#form_p_user_id").val(obj.p_user_id);
-        	        $("#form_description").val(obj.description);
+                    $("#form_user_name").val(obj.user_name);
+                    $("#form_full_name").val(obj.full_name);
+                    $("#form_employee_no").val(obj.employee_no);
+                    $("#form_is_employee").val(obj.is_employee);
+                    $("#form_user_status").val(obj.user_status);
+                    $("#form_email_address").val(obj.email_address);
+                    $("#form_is_new_user").val(obj.is_new_user);
+                    $("#form_last_login_time").val(obj.last_login_time);
+                    $("#form_description").val(obj.description);
         	        
         	        $("#form_created_by").val(obj.created_by);
         	        $("#form_creation_date").val(obj.creation_date);
@@ -125,8 +184,15 @@
         action_execute = ( $("#form_p_user_id").val() == "") ? "create" : "update";
         $.post( "<?php echo WS_URL.'adm_sistem.p_user_controller/'; ?>" + action_execute,
             {items: JSON.stringify({
-                    p_user_id           : $("#form_p_user_id").val(),
-                    description         : $("#form_description").val()
+                    p_user_id           :   $("#form_p_user_id").val(),
+                    user_name           :   $("#form_user_name").val(),
+                    full_name           :   $("#form_full_name").val(),
+                    employee_no         :   $("#form_employee_no").val(),
+                    is_employee         :   $("#form_is_employee").val(),
+                    user_status         :   $("#form_user_status").val(),
+                    email_address       :   $("#form_email_address").val(),
+                    is_new_user         :   $("#form_is_new_user").val(),
+                    description         :   $("#form_description").val()
                 })
             },
             function( response ) {
