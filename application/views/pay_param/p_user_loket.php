@@ -12,7 +12,7 @@
 		Parameter
 		<small>
 		    <i class="ace-icon fa fa-angle-double-right"></i>
-			Group Counter
+			Counter Group
 			
 			<i class="ace-icon fa fa-angle-double-right"></i>
 			Counter
@@ -30,16 +30,16 @@
 		    <div class="col-xs-12">
 		        <p>
 		          <button type="button" class="btn btn-pink btn-xs" id="backButtonGroupCounter">
-      	            <span class="ace-icon fa fa-angle-double-left" aria-hidden="true"></span> Group Counter
+      	            <span> &larr; Counter Group </span> 
                   </button>
                   
                   <button type="button" class="btn btn-pink btn-xs" id="backButtonCounter">
-      	            <span class="ace-icon fa fa-angle-double-left" aria-hidden="true"></span> Counter
+      	            <span> &larr; Counter </span> 
                   </button>
                 </p>
                 
 		        <div class="well well-sm">
-		            <div class="inline middle pink2 bigger-150"> Counter User <?php echo " : ".getVarClean('p_bank_branch_code','str',''); ?></div>
+		            <div class="inline middle pink2 bigger-150"> Counter User List : <span class="label label-xlg label-yellow label-white"> <?php echo getVarClean('p_bank_branch_code','str',''); ?> </span></div>
 		        </div>
 		        
 		        <p>
@@ -145,7 +145,7 @@
     	     },
     	     responseHandler:function (response) {
     	        if(response.success == false) {
-    	            showBootDialog(true, BootstrapDialog.TYPE_DANGER, 'Warning', response.message);
+    	            showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
     	        }
     	        return response;
     	     },
@@ -181,7 +181,7 @@
             		    { items: JSON.stringify(theID) },
                         function( response ) {
                             if(response.success == false) {
-                	            showBootDialog(true, BootstrapDialog.TYPE_DANGER, 'Warning', response.message);
+                	            showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
                 	        }else {
                     	        loadContentWithParams('pay_param-p_user_loket.php', 
                                     {
