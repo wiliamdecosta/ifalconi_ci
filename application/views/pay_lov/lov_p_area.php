@@ -47,10 +47,12 @@
 
 <script>
     
-    $("#modal_lov_area_btn_blank").on(ace.click_event, function() {
-        $("#"+ $("#modal_lov_area_id_val").val()).val("");
-        $("#"+ $("#modal_lov_area_code_val").val()).val(""); 
-        $("#modal_lov_area").modal("toggle"); 
+    jQuery(function($) {
+        $("#modal_lov_area_btn_blank").on(ace.click_event, function() {
+            $("#"+ $("#modal_lov_area_id_val").val()).val("");
+            $("#"+ $("#modal_lov_area_code_val").val()).val(""); 
+            $("#modal_lov_area").modal("toggle"); 
+        });
     });
     
     function modal_lov_area_show(the_id_field, the_code_field) {
@@ -92,7 +94,7 @@
     	     },
     	     responseHandler:function (response) {
     	        if(response.success == false) {
-    	            showBootDialog(true, BootstrapDialog.TYPE_DANGER, 'Warning', response.message);
+    	            showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
     	        }
     	        return response;
     	     },
