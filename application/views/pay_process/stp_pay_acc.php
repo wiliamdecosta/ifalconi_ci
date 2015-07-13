@@ -206,7 +206,7 @@ function doProses() {
 	        /* cek response if needed */
 	        if(response.success == false) {
 	            progressBarDialog.close();
-	            showBootDialog(true, BootstrapDialog.TYPE_DANGER, 'Warning', response.message);
+	            showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
 	            responseError = true;
 	        }
 	        return response;
