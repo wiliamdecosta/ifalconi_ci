@@ -280,7 +280,7 @@
                             if(response.success) {
                                 $(location).attr('href','<?php echo BASE_URL."panel/index";?>');
                             }else {
-                                showBootDialog(true, BootstrapDialog.TYPE_DANGER, 'Perhatian', response.message);
+                                showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
                             }
                         }
                    );
@@ -303,7 +303,7 @@
 		            { var_name: 'panel-theme' },
         		    function( response ) {
         		        if(response.success == false) {
-    	                    showBootDialog(false, BootstrapDialog.TYPE_DEFAULT, 'Perhatian', response.message);
+    	                    showBootDialog(false, BootstrapDialog.TYPE_DEFAULT, 'Attention', response.message);
     	                }else {
     	                    setThemeSkin2( response.items );
                         }
