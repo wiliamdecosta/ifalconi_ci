@@ -9,7 +9,7 @@
 		Parameter
 		<small>
 			<i class="ace-icon fa fa-angle-double-right"></i>
-			Role
+			Roles Administration
 		</small>
 	</h1>
 </div><!-- /.page-header -->
@@ -80,7 +80,7 @@
         $("#role_grid_selection").bootgrid({
     	     formatters: {
                 "opt-edit" : function(col, row) {
-                    return '<a href="#" title="Edit" onclick="role_show_form_edit(\''+ row.p_role_id +'\')" class="green"><i class="ace-icon fa fa-pencil bigger-130"></i></a> &nbsp; <a href="#" title="Delete" onclick="role_delete_records(\''+ row.p_role_id +'\')" class="red"><i class="ace-icon glyphicon glyphicon-trash bigger-130"></i></a>';
+                    return '<a href="#" title="Edit" onclick="role_show_form_edit(\''+ row.p_role_id +'\')" class="green"><i class="ace-icon fa fa-pencil bigger-130"></i></a> &nbsp; <a href="#" title="Delete" onclick="role_delete_records(\''+ row.p_role_id +'\')" class="red"><i class="ace-icon glyphicon glyphicon-trash bigger-130"></i></a>&nbsp; <a href="#" title="Module Role" onclick="role_show_application_role(\''+ row.p_role_id +'\', \''+ row.code +'\')" class="purple"><i class="ace-icon fa fa-cogs bigger-130"></i></a>';
                 },
                 "is_active" : function (col, row) {
                     var dataarr = {"":"","Y":"ACTIVE", "N":"NOT ACTIVE"};
@@ -101,7 +101,7 @@
     	     },
     	     responseHandler:function (response) {
     	        if(response.success == false) {
-    	            showBootDialog(true, BootstrapDialog.TYPE_DANGER, 'Warning', response.message);
+    	            showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
     	        }
     	        return response;
     	     },
@@ -134,7 +134,7 @@
             		    { items: JSON.stringify(theID) },
                         function( response ) {
                             if(response.success == false) {
-                	            showBootDialog(true, BootstrapDialog.TYPE_DANGER, 'Warning', response.message);
+                	            showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
                 	        }else {
                     	        loadContent('adm_sistem-p_role');
                                 showBootDialog(true, BootstrapDialog.TYPE_SUCCESS, 'Information', response.message);
@@ -146,5 +146,9 @@
 		});
 
     }
-
+    
+    function role_show_application_role(theID, theCode) {
+        loadContentWithParams("adm_sistem-p_application_role.php", {p_role_id: theID, role_code: theCode});   
+    }
+    
 </script>
