@@ -56,14 +56,22 @@ class P_user_loket extends Abstract_model {
 	    $user_name = $ci->session->userdata('user_name');
 
 		if($this->actionType == 'CREATE') {
+		    
+		    if(empty($this->record['exp_pass'])) {
+		        $this->record['exp_pass'] = null;        
+		    }
+		    
 			//do something
 			$this->record['p_user_loket_id'] = $this->generate_id('ifp','p_user_loket','p_user_loket_id');
-
+            
 			$this->record['create_date'] = date('Y-m-d');
             $this->record['create_by'] = $user_name;
             $this->record['update_date'] = date('Y-m-d');
             $this->record['update_by'] = $user_name;
 		}else {
+		    if(empty($this->record['exp_pass'])) {
+		        $this->record['exp_pass'] = null;        
+		    }
 			//do something
 			$this->record['update_date'] = date('Y-m-d');
             $this->record['update_by'] = $user_name;
