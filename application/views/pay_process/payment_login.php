@@ -61,7 +61,7 @@ jQuery(function($) {
             },
             function( response ) {
                 if(response.success == false) {
-                    showBootDialog(true, BootstrapDialog.TYPE_DANGER, 'Warning', response.message);
+                    showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
                 }else {
         	        
                 }
