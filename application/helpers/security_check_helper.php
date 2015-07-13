@@ -7,7 +7,7 @@ function check_login($ws = '') {
 	if(empty($isLoggedIn)) {
 		
 		if(!empty($ws)) { //request from Web Service (ws.php)
-			throw new Exception('Maaf, Session login Anda telah habis atau Anda belum login. <br/> Silahkan <a href="'.BASE_URL.'base/index">Login</a> terlebih dahulu agar dapat mengakses halaman ini.');
+			throw new Exception('Sorry, Your login session has been expired. <br/> Please <a href="'.BASE_URL.'base/index">Login</a> first so that You can access this page. Thank You');
 		}else {
 			redirect('base/index');
 		}
