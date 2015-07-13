@@ -157,7 +157,7 @@
                     }else {
                         showBootDialog(true,
                                         BootstrapDialog.TYPE_WARNING,
-                                        'Warning',
+                                        'Attention',
                                         response.message);
                     }
                 });
