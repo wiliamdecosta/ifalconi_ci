@@ -96,7 +96,7 @@
     	     },
     	     responseHandler:function (response) {
     	        if(response.success == false) {
-    	            showBootDialog(true, BootstrapDialog.TYPE_DANGER, 'Warning', response.message);
+    	            showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
     	        }
     	        return response;
     	     },
@@ -129,7 +129,7 @@
             		    { items: JSON.stringify(theID) },
                         function( response ) {
                             if(response.success == false) {
-                	            showBootDialog(true, BootstrapDialog.TYPE_DANGER, 'Warning', response.message);
+                	            showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
                 	        }else {
                     	        loadContent('pay_param-p_loket');
                                 showBootDialog(true, BootstrapDialog.TYPE_SUCCESS, 'Information', response.message);
