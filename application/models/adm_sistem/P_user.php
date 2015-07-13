@@ -75,7 +75,7 @@ class P_user extends Abstract_model {
             
             if (isset($this->record['email_address'])){
                 if(!isValidEmail( $this->record['email_address'] )) {
-                    throw new Exception("Email Format is Not Valid");
+                    throw new Exception("Your email address format is incorrect");
                 }
             }
             
