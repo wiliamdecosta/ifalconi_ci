@@ -9,7 +9,7 @@
 		Parameter
 		<small>
 		    <i class="ace-icon fa fa-angle-double-right"></i>
-			User
+			Users Administration
 			<i class="ace-icon fa fa-angle-double-right"></i>
 			User Role
 		</small>
@@ -23,12 +23,12 @@
 		    <div class="col-xs-12">
 		        <p>
                   <button type="button" class="btn btn-pink btn-xs" id="backButton">
-      	            <span class="ace-icon fa fa-angle-double-left" aria-hidden="true"></span> User
+      	            <span>&larr; Users Administration </span> 
                   </button>
                 </p>
                 
 		        <div class="well well-sm">
-		            <div class="inline middle pink2 bigger-150"> User Role List : <?php echo getVarClean('user_name','str',''); ?> </div>
+		            <div class="inline middle pink2 bigger-150"> User Role List : <span class="label label-xlg label-yellow label-white"> <?php echo getVarClean('user_name','str',''); ?> </span> </div>
 		        </div>
 		        <p>
 					<button class="btn btn-white btn-success btn-round" id="user_role_btn_add">
@@ -109,7 +109,7 @@
     	     },
     	     responseHandler:function (response) {
     	        if(response.success == false) {
-    	            showBootDialog(true, BootstrapDialog.TYPE_DANGER, 'Warning', response.message);
+    	            showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
     	        }
     	        return response;
     	     },
@@ -145,7 +145,7 @@
             		    { items: JSON.stringify(theID) },
                         function( response ) {
                             if(response.success == false) {
-                	            showBootDialog(true, BootstrapDialog.TYPE_DANGER, 'Warning', response.message);
+                	            showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
                 	        }else {
                     	        loadContentWithParams('adm_sistem-p_user_role',{
                     	            p_user_id : $("#form_p_user_id").val(),
