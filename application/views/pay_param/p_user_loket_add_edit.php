@@ -112,7 +112,7 @@
     jQuery(function($) {
         
         $("#form_exp_pass").datepicker({ autoclose: true, todayHighlight: true });
-    
+        
         $("#user_loket_form_btn_cancel").on(ace.click_event, function() {
             user_loket_toggle_main_content();
         });
@@ -148,7 +148,7 @@
             },
             function( response ) {
                 if(response.success == false) {
-                    showBootDialog(true, BootstrapDialog.TYPE_DANGER, 'Warning', response.message);
+                    showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
                 }else {
         	        var obj = response.items[0];
         	        
@@ -192,7 +192,7 @@
             },
             function( response ) {
                 if(response.success == false) {
-                    showBootDialog(true, BootstrapDialog.TYPE_DANGER, 'Warning', response.message);
+                    showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
                 }else {
         	        loadContentWithParams('pay_param-p_user_loket.php', 
                         {
