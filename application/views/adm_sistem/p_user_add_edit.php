@@ -151,7 +151,7 @@
             },
             function( response ) {
                 if(response.success == false) {
-                    showBootDialog(true, BootstrapDialog.TYPE_DANGER, 'Warning', response.message);
+                    showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
                 }else {
         	        var obj = response.items[0];
         	        
@@ -197,7 +197,7 @@
             },
             function( response ) {
                 if(response.success == false) {
-                    showBootDialog(true, BootstrapDialog.TYPE_DANGER, 'Warning', response.message);
+                    showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
                 }else {
         	        loadContent('adm_sistem-p_user');
                     showBootDialog(true, BootstrapDialog.TYPE_SUCCESS, 'Information', response.message);
