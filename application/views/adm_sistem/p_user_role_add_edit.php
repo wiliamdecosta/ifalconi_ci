@@ -99,7 +99,7 @@
             },
             function( response ) {
                 if(response.success == false) {
-                    showBootDialog(true, BootstrapDialog.TYPE_DANGER, 'Warning', response.message);
+                    showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
                 }else {
         	        loadContentWithParams('adm_sistem-p_user_role',{
         	            p_user_id : $("#form_p_user_id").val(),
