@@ -26,8 +26,8 @@ class Panel extends CI_Controller {
 	        echo "
     	        <script>
     	            showBootDialog(false,
-    	                            BootstrapDialog.TYPE_DEFAULT,
-                                    'Perhatian',
+    	                            BootstrapDialog.TYPE_WARNING,
+                                    'Attention',
                                     '".$e->getMessage()."' );
     	        </script>
 	        ";
