@@ -33,7 +33,7 @@
 						Delete
 					</button>
 				</p>
-
+                <div class="col-xs-12">
 		        <table id="area_grid_selection" class="table table-striped table-bordered table-hover">
                 <thead>
                   <tr>
@@ -44,12 +44,13 @@
                   </tr>
                 </thead>
               </table>
+            </div>
 		    </div>
 	    </div>
         <!-- PAGE CONTENT ENDS -->
 	</div><!-- /.col -->
 </div><!-- /.row -->
-
+					
 <?php $this->load->view('pay_param/p_area_add_edit.php'); ?>
 
 <script>
@@ -96,7 +97,7 @@
     	     },
     	     responseHandler:function (response) {
     	        if(response.success == false) {
-    	            showBootDialog(true, BootstrapDialog.TYPE_DANGER, 'Warning', response.message);
+    	            showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
     	        }
     	        return response;
     	     },
@@ -129,7 +130,7 @@
             		    { items: JSON.stringify(theID) },
                         function( response ) {
                             if(response.success == false) {
-                	            showBootDialog(true, BootstrapDialog.TYPE_DANGER, 'Warning', response.message);
+                	            showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
                 	        }else {
                     	        loadContent('pay_param-p_area');
                                 showBootDialog(true, BootstrapDialog.TYPE_SUCCESS, 'Information', response.message);
