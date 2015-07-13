@@ -14,8 +14,8 @@ class P_user_role extends Abstract_model {
 
 	public $fields 			= array(
 								'p_user_role_id' 		=> array('pkey' => true, 'type' => 'int', 'nullable' => false, 'unique' => true, 'display' => 'ID P_role'),
-								'p_user_id'	            => array('nullable' => false, 'type' => 'int', 'unique' => false, 'display' => 'ID User'),
-							    'p_role_id'	            => array('nullable' => false, 'type' => 'int', 'unique' => false, 'display' => 'ID Role'),
+								'p_user_id'	            => array('nullable' => false, 'type' => 'int', 'unique' => false, 'display' => 'User'),
+							    'p_role_id'	            => array('nullable' => false, 'type' => 'int', 'unique' => false, 'display' => 'Role'),
 							
 								'creation_date'	        => array('nullable' => true, 'type' => 'date', 'unique' => false, 'display' => 'Creation Date'),
 								'created_by'	        => array('nullable' => true, 'type' => 'str', 'unique' => false, 'display' => 'Created By')
