@@ -47,20 +47,20 @@
 					<input id="form_parent_id" type="hidden" placeholder="ID Parent" value="<?php echo getVarClean('parent_id','int',0); ?>">
 					<input id="form_parent_code" type="hidden" placeholder="Code Parent">
 				</p>
-                <div class="col-xs-9">
-    		        <table id="menu_grid_selection" class="table table-striped table-bordered table-hover">
-                    <thead>
-                      <tr>
-                        <th data-identifier="true" data-visible="false" data-header-align="center" data-align="center" data-column-id="p_menu_id"> ID Menu</th>
-                         <th data-header-align="center" data-align="center" data-formatter="opt-edit" data-sortable="false" data-width="100">Options</th>
-                         <th data-column-id="code" data-width="200">Menu Name</th>
-                         <th data-column-id="file_name">File Name</th>
-                         <th data-column-id="listing_no">Listing Number</th>
-                         <th data-column-id="is_active" data-formatter="is_active">Active</th>
-                      </tr>
-                    </thead>
-                   </table>
-               </div>
+                
+    		     <table id="menu_grid_selection" class="table table-striped table-bordered table-hover">
+                 <thead>
+                   <tr>
+                     <th data-identifier="true" data-visible="false" data-header-align="center" data-align="center" data-column-id="p_menu_id"> ID Menu</th>
+                      <th data-header-align="center" data-align="center" data-formatter="opt-edit" data-sortable="false" data-width="100">Options</th>
+                      <th data-column-id="code" data-width="200">Menu Name</th>
+                      <th data-column-id="file_name">File Name</th>
+                      <th data-column-id="listing_no">Listing Number</th>
+                      <th data-column-id="is_active" data-formatter="is_active">Active</th>
+                   </tr>
+                 </thead>
+                </table>
+               
 		    </div>
 	    </div>
         <!-- PAGE CONTENT ENDS -->
