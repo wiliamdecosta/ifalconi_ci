@@ -10663,6 +10663,27 @@ td .lbl:only-child {
   opacity: 0.75;
   filter: alpha(opacity=75);
 }
+
+/* added by wiliam 13/07/2015 1:21:07*/
+.table-header-success {
+  background-color: #629b58;
+  color: #FFF;
+  font-size: 14px;
+  line-height: 38px;
+  padding-left: 12px;
+  margin-bottom: 1px;
+}
+.table-header-success .close {
+  margin-right: 8px;
+  margin-top: 0;
+  opacity: 0.45;
+  filter: alpha(opacity=45);
+}
+.table-header-success .close:hover {
+  opacity: 0.75;
+  filter: alpha(opacity=75);
+}
+/* end added */
 .widget-box {
   padding: 0;
   -webkit-box-shadow: none;
@@ -13092,6 +13113,11 @@ li[class*="item-"] {
   border: 1px solid #DDD;
   border-left-width: 3px;
 }
+/*added by wiliam 13/07/2015 16:00:44*/
+li[class*="jqx-tree-item-li"] {
+    border:none;
+}
+/*end added*/
 li.item-orange {
   border-left-color: #e8b110;
 }
