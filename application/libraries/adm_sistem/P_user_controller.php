@@ -308,6 +308,12 @@ class P_user_controller {
 
                 $record['user_pwd'] = $user_password1;
 	        }
+	        
+	        if(!empty($user_email)) {
+	            if(!isValidEmail($user_email)) {
+                    throw new Exception("Your email address format is incorrect");    	                
+	            }    
+	        }
 
 	        $table->setRecord($record);
 	        $table->update();
