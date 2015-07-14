@@ -30,7 +30,11 @@ class P_menu extends Abstract_model {
 
 	public $selectClause 	= "menu.p_menu_id, menu.p_application_id, menu.code, menu.parent_id, menu.file_name,  menu.listing_no, menu.is_active, menu.description, to_char(menu.creation_date, 'yyyy-mm-dd') as creation_date,
                                     to_char(menu.updated_date, 'yyyy-mm-dd') as updated_date, menu.created_by, menu.updated_by,
-                                    application.code as application_code";
+                                    application.code as application_code,
+                                    (CASE WHEN menu.is_active = 'N' OR menu.is_active = '' THEN 3
+                                    ELSE 4
+                                    END) as status
+                                    ";
 	public $fromClause 		= "p_menu as menu
 	                            LEFT JOIN p_application as application ON menu.p_application_id = application.p_application_id";
 
