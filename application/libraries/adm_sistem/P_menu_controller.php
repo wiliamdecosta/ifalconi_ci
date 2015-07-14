@@ -15,7 +15,6 @@ class P_menu_controller {
     	$dir  = getVarClean('dir','str','ASC');
     	
         $searchPhrase = getVarClean('searchPhrase', 'str', '');
-        $p_menu_id = getVarClean('p_menu_id', 'int', 0);
         $parent_id = getVarClean('parent_id', 'int', 0);
         $p_application_id = getVarClean('p_application_id', 'int', 0);
     	       
@@ -38,10 +37,6 @@ class P_menu_controller {
                 }
             }*/
             
-            if(!empty($p_menu_id)) {
-                $table->setCriteria("menu.p_menu_id = $p_menu_id");       
-            }
-            
             if(!empty($p_application_id)) {
                 $table->setCriteria("menu.p_application_id = $p_application_id");       
             }
@@ -54,7 +49,7 @@ class P_menu_controller {
 		    }
 		    		    
             $start = ($start-1) * $limit;
-        	$items = $table->getAll($start, $limit, "coalesce(menu.listing_no,999)", $dir);
+        	$items = $table->getAll($start, $limit, "coalesce(menu.listing_no,999), menu.p_menu_id", $dir);
         	$totalcount = $table->countAll();
     
         	$data['items'] = $items;
