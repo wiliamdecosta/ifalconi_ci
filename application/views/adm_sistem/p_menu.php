@@ -110,7 +110,7 @@
              },
     	     rowCount:[5,10,25,50,100,-1],
     		 ajax: true,
-    		 navigation: 2,
+    		 
     	     requestHandler:function(request) {
     	        if(request.sort) {
     	            var sortby = Object.keys(request.sort)[0];
