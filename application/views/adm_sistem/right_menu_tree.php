@@ -60,7 +60,7 @@ jQuery(function($) {
             */
             $total = count($items);
             for($i = 0; $i < $total; $i++) {
-                $icon = '"icon" : "",';
+                $icon = '"icon" : "'.BS_PATH.'jqwidgets/images/folder-close.png",';
                 $sql = "SELECT count(1) as total FROM p_menu WHERE parent_id = ".$items[$i]['p_menu_id'];
                 $query = $ci->db->query($sql);
 		        $row = $query->row_array();
