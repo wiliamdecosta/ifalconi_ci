@@ -9,6 +9,7 @@
                 $ci =& get_instance(); 
                 $ci->load->model('adm_sistem/p_role');
 		        $table = $ci->p_role;
+		        $table->setCriteria("role.p_role_id NOT IN (SELECT p_role_id FROM p_user_role WHERE p_user_id = ".getVarClean('p_user_id','int',0).")");
 		        $itemsRole = $table->getAll(0, -1, "p_role_id", "DESC");
             ?>           
             <div class="form-group">
