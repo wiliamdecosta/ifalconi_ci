@@ -7,7 +7,8 @@
 
             <?php
                 $ci =& get_instance();
-                $sql = "SELECT * FROM v_p_menu_tree WHERE p_application_id = ".getVarClean('p_application_id','int',0);
+                $sql = "SELECT * FROM v_p_menu_tree WHERE p_application_id = ".getVarClean('p_application_id','int',0)."
+                        AND p_menu_id NOT IN (SELECT p_menu_id FROM p_role_menu WHERE p_role_id = ".getVarClean('p_role_id','int',0).")";
                 $query = $ci->db->query($sql);
                 $itemsMenu = $query->result_array();
             ?>
@@ -102,8 +103,10 @@
                     showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
                 }else {
         	        loadContentWithParams('adm_sistem-p_role_menu',{
-        	            p_role_id : $("#form_p_role_id").val(),
-        	            role_code : $("#form_role_code").val()
+        	            p_role_id           : $("#form_p_role_id").val(),
+        	            role_code           : $("#form_role_code").val(),
+        	            p_application_id    : $("#form_p_application_id").val(),
+        	            application_code    : $("#form_application_code").val()
         	        });
                     showBootDialog(true, BootstrapDialog.TYPE_SUCCESS, 'Information', response.message);
                 }
