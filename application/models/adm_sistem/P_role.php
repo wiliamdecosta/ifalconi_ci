@@ -28,7 +28,8 @@ class P_role extends Abstract_model {
                                     to_char(role.updated_date, 'yyyy-mm-dd') as updated_date, role.created_by, role.updated_by";
 	public $fromClause 		= "p_role as role";
 
-	public $refs			= array();
+	public $refs			= array('p_role_menu' => 'p_role_id',
+	                                'p_application_role' => 'p_role_id');
 
 	public $comboDisplay	= array();
 
