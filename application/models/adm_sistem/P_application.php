@@ -29,7 +29,8 @@ class P_application extends Abstract_model {
                                     to_char(application.updated_date, 'yyyy-mm-dd') as updated_date, application.created_by, application.updated_by";
 	public $fromClause 		= "p_application as application";
 
-	public $refs			= array();
+	public $refs			= array('p_application_role' => 'p_application_id',
+	                                 'p_menu' => 'p_application_id');
 
 	public $comboDisplay	= array();
 
