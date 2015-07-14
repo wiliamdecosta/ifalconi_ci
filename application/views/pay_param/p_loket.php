@@ -104,7 +104,7 @@
                     return dataarr[row.loket_type];
                 },
                 "opt-edit" : function(col, row) {
-                    return '<a href="#" title="Edit" onclick="loket_show_form_edit(\''+ row.p_bank_branch_id +'\')" class="green"><i class="ace-icon fa fa-pencil bigger-130"></i></a> &nbsp; <a href="#" title="Delete" onclick="loket_delete_records(\''+ row.p_bank_branch_id +'\')" class="red"><i class="ace-icon glyphicon glyphicon-trash bigger-130"></i></a> &nbsp; <a href="#" title="Counter User" onclick="loket_show_user_loket(\''+ row.p_bank_branch_id +'\',\''+ row.code +'\')"><i class="ace-icon glyphicon glyphicon-user bigger-130"></i></a>';
+                    return '<a href="#" title="Edit" onclick="loket_show_form_edit(\''+ row.p_bank_branch_id +'\')" class="green"><i class="ace-icon fa fa-pencil bigger-130"></i></a> &nbsp; <a href="#" title="Delete" onclick="loket_delete_records(\''+ row.p_bank_branch_id +'\')" class="red"><i class="ace-icon glyphicon glyphicon-trash bigger-130"></i></a> &nbsp; <a href="#" title="Counter User" onclick="loket_show_user_loket(\''+ row.p_bank_branch_id +'\',\''+ row.code +'\')" class="purple"><i class="ace-icon glyphicon glyphicon-user bigger-130"></i></a>';
                 }
              },
     	     rowCount:[10,25,50,100,-1],
