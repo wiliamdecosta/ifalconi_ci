@@ -55,7 +55,7 @@ class P_user extends Abstract_model {
                                 p_user.updated_by";
 	public $fromClause 		= "p_user as p_user";
 	public $joinClause 		= array();
-	public $refs			= array();
+	public $refs			= array('p_user_role' => 'p_user_id');
 	
 	public $comboDisplay	= array();
 
