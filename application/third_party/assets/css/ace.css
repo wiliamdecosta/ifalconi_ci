@@ -10666,7 +10666,8 @@ td .lbl:only-child {
 
 /* added by wiliam 13/07/2015 1:21:07*/
 .table-header-success {
-  background-color: #629b58;
+  /*background-color: #629b58;*/
+  background-color: rgba(50, 180, 0, 0.7);
   color: #FFF;
   font-size: 14px;
   line-height: 38px;
