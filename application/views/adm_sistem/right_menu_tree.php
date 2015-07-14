@@ -11,7 +11,7 @@
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 						<span class="white">&times;</span>
 					</button>
-					Tree Menu
+					<strong>Tree Menu</strong>
 				</div>
 			</div>
 
