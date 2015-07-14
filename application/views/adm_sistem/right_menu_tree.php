@@ -60,7 +60,16 @@ jQuery(function($) {
             */
             $total = count($items);
             for($i = 0; $i < $total; $i++) {
+                $icon = '"icon" : "",';
+                $sql = "SELECT count(1) as total FROM p_menu WHERE parent_id = ".$items[$i]['p_menu_id'];
+                $query = $ci->db->query($sql);
+		        $row = $query->row_array();
+		        
+		        if($row['total'] == 0) 
+                    $icon = '"icon" : "'.BS_PATH.'jqwidgets/images/file-icon.png",';
+                    
                 echo '{';
+                echo $icon;
                 echo '"id" : "'.$items[$i]['p_menu_id'].'",';
                 echo '"parentid" : "'.$items[$i]['parent_id'].'",';
                 echo '"text" : "'.$items[$i]['menu'].'"';
@@ -79,7 +88,8 @@ jQuery(function($) {
         datafields: [
             { name: 'id' },
             { name: 'parentid' },
-            { name: 'text' }
+            { name: 'text' },
+            { name: 'icon' },
         ],
         id: 'id',
         localdata: data
@@ -89,7 +99,7 @@ jQuery(function($) {
     var dataAdapter = new $.jqx.dataAdapter(source);
     dataAdapter.dataBind();
     var records = dataAdapter.getRecordsHierarchy('id', 'parentid', 'items', [{ name: 'text', map: 'label'}]);
-    $('#tree-menu').jqxTree({source: records});
+    $('#tree-menu').jqxTree({source: records, toggleMode: 'click'});
 
     $('#tree-menu').on('select', function (event) {
         var item = $('#tree-menu').jqxTree('getItem', event.args.element);
