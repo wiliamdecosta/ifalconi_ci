@@ -38,7 +38,8 @@ class P_menu extends Abstract_model {
 	public $fromClause 		= "p_menu as menu
 	                            LEFT JOIN p_application as application ON menu.p_application_id = application.p_application_id";
 
-	public $refs			= array();
+	public $refs			= array('p_menu' => 'parent_id',
+	                                    'role_menu' => 'p_menu_id');
 
 	public $comboDisplay	= array();
 
