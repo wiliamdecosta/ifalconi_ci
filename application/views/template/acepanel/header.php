@@ -83,6 +83,11 @@
 		    }
 
 		</script>
+		<style>
+			.img-navbar {
+				width:100%;
+			}
+		</style>
 	</head>
 
 	<body class="no-skin" style="display:none;">
@@ -108,10 +113,7 @@
 				<div class="navbar-header pull-left">
 					<!-- #section:basics/navbar.layout.brand -->
 					<a href="#" class="navbar-brand">
-						<small>
-							<i class="fa fa-desktop"></i>
-							<span class="white">iFalconi</span>
-						</small>
+						<img class="img-navbar" src="<?php echo IMAGE_APP_PATH; ?>ifalconi_h_rb.gif"/>
 					</a>
 				</div>
 
