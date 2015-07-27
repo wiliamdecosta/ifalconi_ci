@@ -172,8 +172,8 @@
 			</script>
 
 
-            <div class="col-xs-12">
-               <div class="row">
+            <div class="">
+               <div class="">
                    <div class="well well-sm">
                        <?php
 					    $ci =& get_instance();
