@@ -92,7 +92,11 @@
             .widget-main img.img-app {
                 width:100%;
             }
-
+            
+            .navbar-brand {
+			    position: relative;
+			}
+			
 			.navbar-brand > img {
 				width:100%;
 			}
