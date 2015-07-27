@@ -1,7 +1,7 @@
 <div class="row" style="display:none;" id="group_loket_form_add_edit">
     <div class="col-xs-12">
         <div class="well well-sm">
-		    <div class="inline middle blue bigger-150" id="group_loket_form_title"> Add/Edit Group Loket </div>
+		    <div class="inline middle blue bigger-150" id="group_loket_form_title"> Add/Edit Counter Group </div>
 		</div>
         <form class="form-horizontal" role="form" id="group_loket_form">
             <div class="form-group">
@@ -80,13 +80,13 @@
     function group_loket_show_form_add() {
         group_loket_toggle_main_content();
         $("#group_loket_form_add_edit").show("slow");
-        $("#group_loket_form_title").html("Add Group Loket");
+        $("#group_loket_form_title").html("Add Counter Group");
     }
 
     function group_loket_show_form_edit(theID) {
         group_loket_toggle_main_content();
         $("#group_loket_form_add_edit").show("slow");
-        $("#group_loket_form_title").html("Edit Group Loket");
+        $("#group_loket_form_title").html("Edit Counter Group");
         
         $("#form_p_group_loket_id").val(theID);
         $.post( "<?php echo WS_URL.'pay_param.p_bank_controller/read'; ?>",
