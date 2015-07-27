@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>iFalconi</title>
+		<title>iFalconi - Rating and Billing System</title>
 
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -92,7 +92,10 @@
             .widget-main img.img-app {
                 width:100%;    
             }
-            
+			
+			.img-navbar {
+				width:100%;
+			}
         </style>
 	</head>
 
@@ -109,10 +112,7 @@
 				<div class="navbar-header pull-left">
 					<!-- #section:basics/navbar.layout.brand -->
 					<a href="#" class="navbar-brand">
-						<small>
-							<i class="fa fa-desktop"></i>
-							<span class="white">iFalconi</span>
-						</small>
+						<img class="img-navbar" src="<?php echo IMAGE_APP_PATH; ?>ifalconi_h_rb.gif"/>
 					</a>
 				</div>
 
@@ -280,7 +280,7 @@
                             if(response.success) {
                                 $(location).attr('href','<?php echo BASE_URL."panel/index";?>');
                             }else {
-                                showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
+                                showBootDialog(true, BootstrapDialog.TYPE_DANGER, 'Perhatian', response.message);
                             }
                         }
                    );
