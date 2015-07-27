@@ -53,7 +53,11 @@ class P_menu extends Abstract_model {
 
 		if($this->actionType == 'CREATE') {
 			//do something
-			$this->record['p_menu_id'] = $this->generate_id('ifl','p_menu','p_menu_id');
+
+            if(!isset($this->record['parent_id'])) {
+                $this->record['parent_id'] = 0;
+            }
+            $this->record['p_menu_id'] = $this->generate_id('ifl','p_menu','p_menu_id');
 
 			$this->record['creation_date'] = date('Y-m-d');
             $this->record['created_by'] = $user_name;
@@ -65,6 +69,24 @@ class P_menu extends Abstract_model {
             $this->record['updated_by'] = $user_name;
 		}
 		return true;
+	}
+
+	public function getMenuItems($is_admin, $p_application_id, $p_user_id) {
+	    if($is_admin) {
+	        $sql = "SELECT p_menu_id, parent_id, menu, menu as title, '#' as link, file_name, description, listing_no from f_display_menu_tree(".$p_application_id.") a";
+	    }else {
+	        $sql = "SELECT p_menu_id, parent_id, menu, menu as title, '#' as link, file_name, description, listing_no from f_display_menu_tree(".$p_application_id.") a "
+				." WHERE a.p_menu_id in ( "
+				."	select rm.p_menu_id "
+				."	from p_role_menu rm, p_user_role ur, p_user u "
+				."	where rm.p_role_id = ur.p_role_id "
+				."	and ur.p_user_id = u.p_user_id "
+				."	and ur.p_user_id = " . $p_user_id . ") ";
+	    }
+	    
+        $query = $this->db->query($sql);
+        $items = $query->result_array();
+        return $items;
 	}
 
 }
