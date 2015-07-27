@@ -213,14 +213,14 @@
                 ?>
                     <div class="col-xs-6 col-md-3">
                         <div class="widget-box <?php echo ($item['is_on']) ? "widget-color-green":"widget-color-dark lighter"; ?>">
-                        	<div class="widget-header">
+                        	<div class="widget-header center">
                         		<h5 class="widget-title smaller"><strong><?php echo $item['code'];?></strong></h5>
                         	</div>
                                                     
                         	<div class="widget-body" data-module="<?php echo ($item['is_on']) ? $item['p_application_id']:0; ?>">
                         		<div class="widget-main">
                         		    <a href="#">
-                        			    <img class="img-app <?php echo ($item['is_on']) ? '':'grayscale'; ?>"  src="<?php echo IMAGE_APP_PATH.substr($item['md_on'],10,5)."_on.png"; ?>" alt="256x256">
+                        			    <img class="img-app"  src="<?php echo ($item['is_on']) ? IMAGE_APP_PATH.substr($item['md_on'],10,5)."_on.png" : IMAGE_APP_PATH.substr($item['md_on'],10,5)."_off.png"; ?>" alt="256x256">
                         	    	</a>
                         		</div>
                         	</div>
@@ -303,7 +303,7 @@
 		            { var_name: 'panel-theme' },
         		    function( response ) {
         		        if(response.success == false) {
-    	                    showBootDialog(false, BootstrapDialog.TYPE_DEFAULT, 'Attention', response.message);
+    	                    showBootDialog(false, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
     	                }else {
     	                    setThemeSkin2( response.items );
                         }
