@@ -71,7 +71,7 @@
 		<!-- Bootstrap Dialog -->
 		<link rel="stylesheet" href="<?php echo BS_PATH; ?>bootdialog/bootstrap-dialog.min.css" />
 		<script src="<?php echo BS_PATH; ?>bootdialog/bootstrap-dialog.min.js"></script>
-		
+
 		<script>
 		    function showBootDialog(bootclosable, boottype, boottitle, bootmessage ) {
 		        BootstrapDialog.show({
@@ -84,8 +84,9 @@
 
 		</script>
 		<style>
-			.img-navbar {
+			.navbar-brand > img{
 				width:100%;
+				height:auto !important;
 			}
 		</style>
 	</head>
@@ -113,7 +114,7 @@
 				<div class="navbar-header pull-left">
 					<!-- #section:basics/navbar.layout.brand -->
 					<a href="#" class="navbar-brand">
-						<img class="img-navbar" src="<?php echo IMAGE_APP_PATH; ?>ifalconi_h_rb.gif"/>
+						<img src="<?php echo IMAGE_APP_PATH; ?>ifalconi_h_rb.gif"/>
 					</a>
 				</div>
 
