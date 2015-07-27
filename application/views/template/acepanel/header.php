@@ -85,9 +85,15 @@
 		</script>
 		<style>
 			.navbar-brand > img{
-				width:100%;
 				height:auto !important;
+				max-width:310px;
+				width:100%;
 			}
+
+			.navbar-brand {
+			    position: fixed;
+			}
+
 		</style>
 	</head>
 
