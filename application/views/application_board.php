@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+    <link href="<?php echo IMAGE_APP_PATH; ?>ccbs.ico" rel="shortcut icon" />
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
