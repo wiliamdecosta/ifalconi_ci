@@ -91,7 +91,7 @@
 			}
 
 			.navbar-brand {
-			    position: fixed;
+			    position: absolute;
 			}
 
 		</style>
