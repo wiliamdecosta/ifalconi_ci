@@ -98,7 +98,7 @@
 			}
 			
 			.navbar-brand > img {
-				width:100%;
+				max-width:310px;
 			}
         </style>
 	</head>
