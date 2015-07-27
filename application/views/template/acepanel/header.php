@@ -119,7 +119,7 @@
 				<!-- /section:basics/sidebar.mobile.toggle -->
 				<div class="navbar-header pull-left">
 					<!-- #section:basics/navbar.layout.brand -->
-					<a href="#" class="navbar-brand">
+					<a href="<?php echo BASE_URL."application/index"; ?>" class="navbar-brand">
 						<img src="<?php echo IMAGE_APP_PATH; ?>ifalconi_h_rb.gif"/>
 					</a>
 				</div>
@@ -136,7 +136,7 @@
 						<!-- #section:basics/navbar.user_menu -->
 						<li class="dark-10" id="nav-bar-user-menu">
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
-								<img class="nav-user-photo" src="<?php echo IMAGE_APP_PATH; ?>user.png" alt="Jason's Photo" />
+								<img class="nav-user-photo" src="<?php echo IMAGE_APP_PATH; ?>user.png" alt="User's Photo" />
 								<span class="user-info">
 									<small>Welcome,</small>
 									<?php
