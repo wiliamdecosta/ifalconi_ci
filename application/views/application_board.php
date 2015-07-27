@@ -115,7 +115,7 @@
 				<!-- /section:basics/sidebar.mobile.toggle -->
 				<div class="navbar-header pull-left">
 					<!-- #section:basics/navbar.layout.brand -->
-					<a href="#" class="navbar-brand">
+					<a href="<?php echo BASE_URL."application/index"; ?>" class="navbar-brand">
 						<img src="<?php echo IMAGE_APP_PATH; ?>ifalconi_h_rb.gif"/>
 					</a>
 				</div>
