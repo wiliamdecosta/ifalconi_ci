@@ -90,10 +90,10 @@
             }
 
             .widget-main img.img-app {
-                width:100%;    
+                width:100%;
             }
-			
-			.img-navbar {
+
+			.navbar-brand > img {
 				width:100%;
 			}
         </style>
@@ -112,7 +112,7 @@
 				<div class="navbar-header pull-left">
 					<!-- #section:basics/navbar.layout.brand -->
 					<a href="#" class="navbar-brand">
-						<img class="img-navbar" src="<?php echo IMAGE_APP_PATH; ?>ifalconi_h_rb.gif"/>
+						<img src="<?php echo IMAGE_APP_PATH; ?>ifalconi_h_rb.gif"/>
 					</a>
 				</div>
 
@@ -170,7 +170,7 @@
 			<script type="text/javascript">
 				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
 			</script>
-            
+
 
             <div class="col-xs-12">
                <div class="row">
@@ -185,30 +185,30 @@
             </div>
 
             <div id="main-content">
-                <?php 
+                <?php
                     $ci = & get_instance();
                     /*$query = $ci->db->query($sql);
 			        $row = $query->row_array();*/
-			        
+
 			        $isdamin = 0;
-        
+
                     if ( $ci->session->userdata('p_user_id') == 1 ) $isadmin = 1;
                     $query = $ci->db->query("select count(*) jml from p_user_role where p_role_id=1 and p_user_id=" . $ci->session->userdata('p_user_id'));
                     $row = $query->row_array();
-                    if($row['jml'] > 0) $isadmin = 1; 
-                    
+                    if($row['jml'] > 0) $isadmin = 1;
+
                     if ($isadmin==1) {
             			  $sql = "select aa.p_application_id, aa.code, aa.description, is_on, aa.md_on " .
             							 "from v_display_app(1,0.0) aa ";
-            		} else {             
-            
+            		} else {
+
             			  $sql = "select aa.p_application_id, aa.code, aa.description, is_on, aa.md_on " .
-            							 "from v_display_app(0," . $ci->session->userdata('p_user_id') . " ) aa "; 
-            		}  
-		            
+            							 "from v_display_app(0," . $ci->session->userdata('p_user_id') . " ) aa ";
+            		}
+
 		            $query = $ci->db->query($sql);
 			        $items = $query->result_array();
-                    
+
                     foreach($items as $item):
                 ?>
                     <div class="col-xs-6 col-md-3">
@@ -216,7 +216,7 @@
                         	<div class="widget-header center">
                         		<h5 class="widget-title smaller"><strong><?php echo $item['code'];?></strong></h5>
                         	</div>
-                                                    
+
                         	<div class="widget-body" data-module="<?php echo ($item['is_on']) ? $item['p_application_id']:0; ?>">
                         		<div class="widget-main">
                         		    <a href="#">
@@ -239,7 +239,7 @@
 		<script src="<?php echo BS_JS_PATH; ?>ace/ace.js"></script>
 		<script src="<?php echo BS_JS_PATH; ?>ace/ace.touch-drag.js"></script>
 		<script src="<?php echo BS_JS_PATH; ?>ace/ace.settings-skin.js"></script>
-		
+
 		<script type="text/javascript">
 
 			jQuery(function($) {
@@ -247,7 +247,7 @@
                 setTimeout( function(){
 			        $("body").show();
 			    }, 500);
-			    
+
 			    $("#btn-logout").on(ace.click_event, function() {
 					BootstrapDialog.confirm({
 					    title:'Logout Confirmation',
@@ -265,14 +265,14 @@
 				$("#btn-user-profile").on(ace.click_event, function() {
 					loadContent('user_profile2.php');
 				});
-                
+
                 $(".widget-body").on(ace.click_event, function(){
                    if($(this).attr('data-module') == 0) {
-                        showBootDialog(true, BootstrapDialog.TYPE_INFO, 'Information', 'Sorry, You have no privilege to access this menu'); 
+                        showBootDialog(true, BootstrapDialog.TYPE_INFO, 'Information', 'Sorry, You have no privilege to access this menu');
                         return;
                    };
-                    
-                   $.post( "<?php echo WS_URL.'base.variables_controller/set_app_module'; ?>", 
+
+                   $.post( "<?php echo WS_URL.'base.variables_controller/set_app_module'; ?>",
                         {
                             module_id: $(this).attr('data-module'),
                         },
@@ -285,7 +285,7 @@
                         }
                    );
                 });
-                
+
                 $(".widget-body").css( 'cursor', 'pointer' );
 			});
 
@@ -297,9 +297,9 @@
                     });
        		    }, 500 );
 			}
-            
+
             function setInitialTheme() {
-		        $.post( "<?php echo WS_URL.'base.variables_controller/get_theme'; ?>", 
+		        $.post( "<?php echo WS_URL.'base.variables_controller/get_theme'; ?>",
 		            { var_name: 'panel-theme' },
         		    function( response ) {
         		        if(response.success == false) {
