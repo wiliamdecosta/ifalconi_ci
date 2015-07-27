@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+    <link href="<?php echo IMAGE_APP_PATH; ?>ccbs.ico" rel="shortcut icon" />
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>iFalconi</title>
+		<title>iFalconi - Rating and Billing System</title>
 
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
