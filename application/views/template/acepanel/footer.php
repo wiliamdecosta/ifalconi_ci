@@ -81,6 +81,11 @@
 				    loadContent(menu_id);
 				});
 				
+				$("#main-container").on(ace.click_event,function(){
+				    $("#sidebar").removeClass("display");
+				});
+				
+				
 			});
 
 			function loadContent(id) {
@@ -115,7 +120,7 @@
 			    $.post( "<?php echo WS_URL.'base.variables_controller/set_theme'; ?>", 
         		    { var_name: 'panel-theme', var_value: skin_class },                
         		    function( response ) {
-        		        if(response.success == false) showBootDialog(false, BootstrapDialog.TYPE_DEFAULT, 'Attention', response.message);
+        		        if(response.success == false) showBootDialog(false, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
         		    }
     		    );
 		    }
@@ -125,7 +130,7 @@
 		            { var_name: 'panel-theme' },
         		    function( response ) {
         		        if(response.success == false) {
-    	                    showBootDialog(false, BootstrapDialog.TYPE_DEFAULT, 'Attention', response.message);
+    	                    showBootDialog(false, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
     	                }else {
             		        setThemeSkin( response.items );
             		        $("#skin-colorpicker option[data-skin='"+ response.items +"']").attr("selected","selected");
