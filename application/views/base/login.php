@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Login Page - iFalconi Payment Point</title>
+		<title>iFalconi - Rating and Billing System</title>
 
 		<meta name="description" content="User login page" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -59,11 +59,8 @@
 					<div class="col-sm-10 col-sm-offset-1">
 						<div class="login-container">
 							<div class="center">
-								<h1>
-									<i class="ace-icon fa fa-globe green"></i>
-									<span class="red">iFalconi</span>
-								</h1>
-								<h4 class="blue" id="id-company-text">PT. Triklin Rekatama &copy; 2015</h4>
+								<h3><img border="0" src="<?php echo IMAGE_APP_PATH; ?>ifalconi_v_rb.gif"/></h3>
+								<h5 class="blue" id="id-company-text">Version: 1.07.15, &copy; PT. Triklin Rekatama, 2015</h5>
 							</div>
 
 							<div class="space-6"></div>
