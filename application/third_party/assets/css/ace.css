@@ -4471,7 +4471,7 @@ body.mob-safari .sidebar.sidebar-fixed {
   font-size: 32px;
 }
 .modal.aside-dark .modal-content {
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(44, 106, 160, 0.7); /* wiliam background-color: rgba(0, 0, 0, 0.85);*/
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#D8000000', endColorstr='#D8000000',GradientType=0 );
 }
 .modal.aside {
