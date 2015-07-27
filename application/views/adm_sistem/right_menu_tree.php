@@ -50,7 +50,10 @@ jQuery(function($) {
                     from ifl.f_display_menu_tree ($p_application_id)";
             $query = $ci->db->query($sql);
             $items = $query->result_array();
-
+            
+            $ci->load->model('adm_sistem/p_application');
+		    $itemApp = $ci->p_application->get($p_application_id);
+            
             /*
                 structure
                 [{ "id": "2",
@@ -58,7 +61,19 @@ jQuery(function($) {
                   "text": "Hot Chocolate"
                 }]
             */
+            
             $total = count($items);
+            echo '{';
+            echo '"icon" : "'.BS_PATH.'jqwidgets/images/home.png",';
+            echo '"expanded" : true,';
+            echo '"id" : 0,';
+            echo '"parentid" : -1,';
+            echo '"text" : "'.$itemApp['code'].'"';
+            if($total > 0)
+            echo '},';
+            else
+            echo '}';
+                
             for($i = 0; $i < $total; $i++) {
                 $icon = '"icon" : "'.BS_PATH.'jqwidgets/images/folder-close.png",';
                 $sql = "SELECT count(1) as total FROM p_menu WHERE parent_id = ".$items[$i]['p_menu_id'];
@@ -88,6 +103,7 @@ jQuery(function($) {
         datafields: [
             { name: 'id' },
             { name: 'parentid' },
+            { name: 'expanded' },
             { name: 'text' },
             { name: 'icon' },
         ],
