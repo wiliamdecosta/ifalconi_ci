@@ -41,6 +41,13 @@
 						Delete
 					</button>
 					
+					<!--
+					<button class="btn btn-sm btn-success btn-round" data-toggle="modal" data-target="#right-tree-menu">
+						<i class="ace-icon glyphicon glyphicon-list-alt bigger-120"></i>
+						<i class="ace-icon fa fa-exchange bigger-120"></i>
+					</button>
+					-->
+					
 					<input id="form_p_application_id" type="hidden" placeholder="ID Module" value="<?php echo getVarClean('p_application_id','int',0); ?>">
 					<input id="form_application_code" type="hidden" placeholder="Module Name" value="<?php echo getVarClean('application_code','str',''); ?>">
 					
@@ -90,7 +97,7 @@
                 menu_delete_records( $("#menu_grid_selection").bootgrid("getSelectedRows") );
             }
         });
-        
+       
         $("#backButton").on(ace.click_event, function () {
             loadContent('adm_sistem-p_application.php');
         });
