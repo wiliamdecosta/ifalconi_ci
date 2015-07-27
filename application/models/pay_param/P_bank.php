@@ -14,7 +14,7 @@ class P_bank extends Abstract_model {
 
 	public $fields 			= array(
 								'p_bank_id' 		=> array('pkey' => true, 'type' => 'int', 'nullable' => false, 'unique' => true, 'display' => 'ID P_bank'),
-								'code'	                => array('nullable' => false, 'type' => 'str', 'unique' => true, 'display' => 'Group Counter Code'),
+								'code'	                => array('nullable' => false, 'type' => 'str', 'unique' => true, 'display' => 'Counter Group Code'),
 								'description'	        => array('nullable' => true, 'type' => 'str', 'unique' => false, 'display' => 'Description'),
 								
 								'create_date'	        => array('nullable' => true, 'type' => 'date', 'unique' => false, 'display' => 'Creation Date'),
