@@ -29,7 +29,7 @@
 	<div class="col-xs-12">
 		<!-- PAGE CONTENT BEGINS -->
 		<div class="row">
-		    <div id="filter-group" class="col-xs-12 col-lg-4">
+		    <div id="filter-group" class="col-xs-12 col-lg-5">
               <div class="input-group">
                 <input id="form_user_name" type="hidden" value="<?php echo getVarClean("user_name","str",""); ?>">
                 <input id="inputServiceNo" class="form-control" placeholder="Input Your Service Number">
