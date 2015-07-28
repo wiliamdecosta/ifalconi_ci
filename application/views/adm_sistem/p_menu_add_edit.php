@@ -39,6 +39,19 @@
             </div>
             
             <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right"> Icon</label>
+                <div class="col-sm-5">
+                    <input id="form_menu_icon" type="hidden" placeholder="Icon ID">
+                    <input id="form_menu_icon_name" class="col-xs-8 col-sm-5 required" type="text" placeholder="Choose Icon">
+                    <span class="input-group-btn">
+						<button class="btn btn-success btn-sm" type="button" id="btn_lov_icon">
+							<span class="ace-icon fa fa-pencil-square-o icon-on-right bigger-110"></span>
+						</button>
+					</span>
+                </div>
+            </div>
+            
+            <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right"> Description </label>
                 <div class="col-sm-9">
                     <textarea id="form_description" class="col-xs-10 col-sm-5" type="text"> </textarea>
@@ -85,6 +98,7 @@
     </div>
 </div>
 
+<?php $this->load->view('adm_lov/lov_p_icon.php'); ?>
 
 <script>
     jQuery(function($) {
@@ -103,6 +117,10 @@
                    step: 1,
                 btn_up_class:'btn-success' , 
                 btn_down_class:'btn-success'
+        });
+        
+        $("#btn_lov_icon").on(ace.click_event, function() {
+            modal_lov_icon_show("form_menu_icon","form_menu_icon_name");
         });
     });
 
@@ -144,6 +162,8 @@
         	        $("#form_listing_no").ace_spinner('value', obj.listing_no);
         	        $("#form_is_active").val(obj.is_active);
         	        $("#form_description").val(obj.description);        	       
+        	        $("#form_menu_icon").val(obj.menu_icon); 
+        	        $("#form_menu_icon_name").val(obj.icon_name); 
         	        
         	        $("#form_created_by").val(obj.created_by);
         	        $("#form_creation_date").val(obj.creation_date);
@@ -170,6 +190,7 @@
                     file_name        : $("#form_file_name").val(),
                     listing_no       : $("#form_listing_no").val(),
                     is_active        : $("#form_is_active").val(),
+                    menu_icon        : $("#form_menu_icon").val(),
                     description      : $("#form_description").val()
                 })
             },
