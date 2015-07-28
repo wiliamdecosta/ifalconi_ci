@@ -21,6 +21,7 @@ class P_menu extends Abstract_model {
 								'listing_no'	        => array('nullable' => true, 'type' => 'int', 'unique' => false, 'display' => 'Listing No'),
 								'is_active'	            => array('nullable' => false, 'type' => 'str', 'unique' => false, 'display' => 'Is Active'),
 								'description'	        => array('nullable' => true, 'type' => 'str', 'unique' => false, 'display' => 'Description'),
+                                'menu_icon'	            => array('nullable' => true, 'type' => 'str', 'unique' => false, 'display' => 'Icon'),
 
 								'creation_date'	        => array('nullable' => true, 'type' => 'date', 'unique' => false, 'display' => 'Creation Date'),
 								'created_by'	        => array('nullable' => true, 'type' => 'str', 'unique' => false, 'display' => 'Created By'),
@@ -28,7 +29,7 @@ class P_menu extends Abstract_model {
 								'updated_by'	        => array('nullable' => true, 'type' => 'str', 'unique' => false, 'display' => 'Updated By')
 							);
 
-	public $selectClause 	= "menu.p_menu_id, menu.p_application_id, menu.code, menu.parent_id, menu.file_name,  menu.listing_no, menu.is_active, menu.description, to_char(menu.creation_date, 'yyyy-mm-dd') as creation_date,
+	public $selectClause 	= "menu.p_menu_id, menu.p_application_id, menu.code, menu.parent_id, menu.file_name,  menu.listing_no, menu.is_active, menu.description, menu.menu_icon, icon.icon_name, to_char(menu.creation_date, 'yyyy-mm-dd') as creation_date,
                                     to_char(menu.updated_date, 'yyyy-mm-dd') as updated_date, menu.created_by, menu.updated_by,
                                     application.code as application_code,
                                     (CASE WHEN menu.is_active = 'N' OR menu.is_active = '' THEN 3
@@ -36,10 +37,11 @@ class P_menu extends Abstract_model {
                                     END) as status
                                     ";
 	public $fromClause 		= "p_menu as menu
-	                            LEFT JOIN p_application as application ON menu.p_application_id = application.p_application_id";
+	                            LEFT JOIN p_application as application ON menu.p_application_id = application.p_application_id
+	                            LEFT JOIN p_icon as icon ON menu.menu_icon = icon.code";
 
 	public $refs			= array('p_menu' => 'parent_id',
-	                                    'role_menu' => 'p_menu_id');
+	                                    'p_role_menu' => 'p_menu_id');
 
 	public $comboDisplay	= array();
 
@@ -65,6 +67,10 @@ class P_menu extends Abstract_model {
             $this->record['updated_by'] = $user_name;
 		}else {
 			//do something
+			if(isset($this->record['parent_id']) && empty($this->record['parent_id'])) {
+                $this->record['parent_id'] = 0;
+            }
+            
 			$this->record['updated_date'] = date('Y-m-d');
             $this->record['updated_by'] = $user_name;
 		}
@@ -73,9 +79,9 @@ class P_menu extends Abstract_model {
 
 	public function getMenuItems($is_admin, $p_application_id, $p_user_id) {
 	    if($is_admin) {
-	        $sql = "SELECT p_menu_id, parent_id, menu, menu as title, '#' as link, file_name, description, listing_no from f_display_menu_tree(".$p_application_id.") a";
+	        $sql = "SELECT p_menu_id, parent_id, menu, menu as title, '#' as link, file_name, description, listing_no, menu_icon from f_display_menu_tree(".$p_application_id.") a";
 	    }else {
-	        $sql = "SELECT p_menu_id, parent_id, menu, menu as title, '#' as link, file_name, description, listing_no from f_display_menu_tree(".$p_application_id.") a "
+	        $sql = "SELECT p_menu_id, parent_id, menu, menu as title, '#' as link, file_name, description, listing_no, menu_icon from f_display_menu_tree(".$p_application_id.") a "
 				." WHERE a.p_menu_id in ( "
 				."	select rm.p_menu_id "
 				."	from p_role_menu rm, p_user_role ur, p_user u "
