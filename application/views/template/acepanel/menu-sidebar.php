@@ -88,43 +88,56 @@ class MenuBuilder {
                       elseif ( !empty( $children[$option['value']['p_menu_id']] ) )
                       {
                               $tab = str_repeat( "\t", ( count( $parent_stack ) + 1 ) * 2 - 1 );
-                             
+                              
+                              $icon_parent = 'menu-icon ace-icon fa fa-folder-open';
+                              if(!empty($option['value']['menu_icon'])) {
+                                    $icon_parent = str_replace("ace-icon","menu-icon",$option['value']['menu_icon']);    
+                              }
                               // HTML for menu item containing childrens (open)
                               $this->html[] = sprintf(
                                       '%1$s<li class="" title="%2$s">
                                       <a href="#" class="dropdown-toggle">
-                                      	<i class="menu-icon ace-icon fa fa-folder-open"></i>
+                                      	<i class="%3$s"></i>
                                       	<span class="menu-text">
-                                      	    %3$s
+                                      	    %4$s
                                       	</span>
                                       	<b class="arrow fa fa-angle-down"></b>
                                       </a>
                                       <b class="arrow"></b>
                                       ',
-                                      $tab,   // %1$s = tabulation
-                                      $option['value']['title'],   // %2$s = title
-                                      $this->beauty_menu($option['value']['menu'])   // %3$s = menu
+                                      $tab,                                          // %1$s = tabulation
+                                      $option['value']['title'],                     // %2$s = title
+                                      $icon_parent,                                  // %3$s = icon
+                                      $this->beauty_menu($option['value']['menu'])   // %4$s = menu
                               );
                               $this->html[] = $tab . "\t" . '<ul class="submenu">';
                              
                               array_push( $parent_stack, $option['value']['parent_id'] );
                               $parent = $option['value']['p_menu_id'];
                       }
-                      else
+                      else {
+                              
+                              $icon_leaf = 'menu-icon ace-icon glyphicon glyphicon-file';
+                              if(!empty($option['value']['menu_icon'])) {
+                                    $icon_leaf = str_replace("ace-icon","menu-icon",$option['value']['menu_icon']);    
+                              }
+                              
                               // HTML for menu item with no children (aka "leaf")
                               $this->html[] = sprintf(
                                       '%1$s<li class="nav-menu-content" data-source="%2$s" title="%3$s">
                                                 <a href="#">
-                                                    <i class="menu-icon ace-icon glyphicon glyphicon-file"></i>
-                                                	<span class="menu-text"> <i>%4$s</i> </span>
+                                                    <i class="%4$s"></i>
+                                                	<span class="menu-text"> <i>%5$s</i> </span>
                                                 </a>
                                                 <b class="arrow"></b>
                                             </li>',
                                       str_repeat( "\t", ( count( $parent_stack ) + 1 ) * 2 - 1 ),   // %1$s = tabulation
                                       str_replace("/","-",$option['value']['file_name']),   // %2$s = file_name (URL)
                                       $option['value']['title'],                            // %3$s = title,
-                                      $this->beauty_menu($option['value']['menu'])          // %4$s = menu
+                                      $icon_leaf,                                           // %4$s = icon,
+                                      $this->beauty_menu($option['value']['menu'])          // %5$s = menu
                               );
+                      }
               }
              
               // HTML wrapper for the menu (close)
