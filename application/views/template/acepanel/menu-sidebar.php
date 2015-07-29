@@ -89,7 +89,7 @@ class MenuBuilder {
                       {
                               $tab = str_repeat( "\t", ( count( $parent_stack ) + 1 ) * 2 - 1 );
                               
-                              $icon_parent = 'menu-icon ace-icon fa fa-folder-open';
+                              $icon_parent = 'menu-icon fa fa-folder-open';
                               if(!empty($option['value']['menu_icon'])) {
                                     $icon_parent = str_replace("ace-icon","menu-icon",$option['value']['menu_icon']);    
                               }
@@ -117,7 +117,7 @@ class MenuBuilder {
                       }
                       else {
                               
-                              $icon_leaf = 'menu-icon ace-icon glyphicon glyphicon-file';
+                              $icon_leaf = 'menu-icon glyphicon glyphicon-file';
                               if(!empty($option['value']['menu_icon'])) {
                                     $icon_leaf = str_replace("ace-icon","menu-icon",$option['value']['menu_icon']);    
                               }
