@@ -125,6 +125,10 @@
     function user_loket_toggle_main_content() {
 
         $("#user_loket_form")[0].reset();
+        
+        //reset date
+        $("#form_exp_pass").datepicker("update", "");
+        
         $("#user_loket_form_add_edit").hide();
         $("#user_loket_row_content").toggle("slow");
         
