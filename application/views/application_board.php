@@ -285,7 +285,7 @@
                             if(response.success) {
                                 $(location).attr('href','<?php echo BASE_URL."panel/index";?>');
                             }else {
-                                showBootDialog(true, BootstrapDialog.TYPE_DANGER, 'Perhatian', response.message);
+                                showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
                             }
                         }
                    );
