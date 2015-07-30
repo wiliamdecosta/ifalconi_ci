@@ -79,7 +79,7 @@
         $("#stamp_group_grid_selection").bootgrid({
     	     formatters: {
                 "opt-edit" : function(col, row) {
-                    return '<a href="#" title="Edit" onclick="stamp_group_show_form_edit(\''+ row.p_stamp_group_id +'\')" class="green"><i class="ace-icon fa fa-pencil bigger-130"></i></a> &nbsp; <a href="#" title="Delete" onclick="stamp_group_delete_records(\''+ row.p_stamp_group_id +'\')" class="red"><i class="ace-icon glyphicon glyphicon-trash bigger-130"></i></a> &nbsp; <a href="#" title="Stamp" onclick="stamp_group_show_loket(\''+ row.p_stamp_group_id +'\',\''+ row.code +'\')" class="purple"><i class="ace-icon fa fa-bookmark bigger-130"></i></a>';
+                    return '<a href="#" title="Edit" onclick="stamp_group_show_form_edit(\''+ row.p_stamp_group_id +'\')" class="green"><i class="ace-icon fa fa-pencil bigger-130"></i></a> &nbsp; <a href="#" title="Delete" onclick="stamp_group_delete_records(\''+ row.p_stamp_group_id +'\')" class="red"><i class="ace-icon glyphicon glyphicon-trash bigger-130"></i></a> &nbsp; <a href="#" title="Stamp" onclick="stamp_group_show_stamp(\''+ row.p_stamp_group_id +'\',\''+ row.code +'\')" class="purple"><i class="ace-icon fa fa-bookmark bigger-130"></i></a>';
                 }
              },
     	     rowCount:[10,25,50,100,-1],
@@ -141,7 +141,7 @@
 		});
     }
     
-    function stamp_group_show_loket(theID, theCode) {
+    function stamp_group_show_stamp(theID, theCode) {
         loadContentWithParams("pay_param-p_stamp.php", {p_stamp_group_id: theID, p_stamp_group_code: theCode});   
     }
 
