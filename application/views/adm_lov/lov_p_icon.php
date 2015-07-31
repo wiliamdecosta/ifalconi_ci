@@ -23,7 +23,7 @@
                   <tr>
                      <th data-column-id="p_icon_id" data-sortable="false" data-visible="false">Icon ID</th>
                      <th data-header-align="center" data-align="center" data-formatter="opt-edit" data-sortable="false" data-width="100">Options</th>
-                     <th data-column-id="code" data-formatter="code" data-width="80">Icon</th>
+                     <th data-column-id="code" data-align="center" data-formatter="code" data-width="80">Icon</th>
                      <th data-column-id="icon_name"> Icon Name</th>
                   </tr>
                 </thead>
@@ -77,13 +77,13 @@
         $("#modal_lov_icon_grid_selection").bootgrid({
     	     formatters: {
                 "opt-edit" : function(col, row) {
-                    return '<a href="#" title="Set Value" onclick="modal_lov_icon_set_value(\''+ row.code +'\', \''+ row.icon_name +'\')" class="green"><i class="ace-icon fa 	fa-pencil-square-o bigger-130"></i></a>';
+                    return '<a href="#" title="Set Value" onclick="modal_lov_icon_set_value(\''+ row.code +'\', \''+ row.icon_name +'\')" class="green"><i class="ace-icon fa 	fa-pencil-square-o bigger-200"></i></a>';
                 },
                 "code" : function(col, row) {
                     return '<i class="'+ row.code +' bigger-200"></i>';
                 }
              },
-    	     rowCount:[5,10,25,50,100,-1],
+    	     rowCount:[5,10],
     		 ajax: true,
     	     requestHandler:function(request) {
     	        if(request.sort) {
