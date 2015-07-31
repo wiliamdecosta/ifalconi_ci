@@ -11,7 +11,7 @@ class P_icon_controller {
 		$start = getVarClean('current','int',0);
     	$limit = getVarClean('rowCount','int',10);
 
-    	$sort = getVarClean('sort','str','p_icon_id');
+    	$sort = getVarClean('sort','str','code');
     	$dir  = getVarClean('dir','str','ASC');
     	
         $searchPhrase = getVarClean('searchPhrase', 'str', '');
