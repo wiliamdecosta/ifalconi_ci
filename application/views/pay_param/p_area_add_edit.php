@@ -1,7 +1,7 @@
 <div class="row" style="display:none;" id="area_form_add_edit">
     <div class="col-xs-12">
         <div class="well well-sm">
-		    <div class="inline middle blue bigger-150" id="area_form_title"> Add/Edit Bank </div>
+		    <div class="inline middle blue bigger-150" id="area_form_title"> Add/Edit Area </div>
 		</div>
         <form class="form-horizontal" role="form" id="area_form">
             <div class="form-group">
