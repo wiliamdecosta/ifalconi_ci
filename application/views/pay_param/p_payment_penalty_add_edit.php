@@ -1,7 +1,7 @@
 <div class="row" style="display:none;" id="payment_penalty_form_add_edit">
     <div class="col-xs-12">
         <div class="well well-sm">
-		    <div class="inline middle blue bigger-150" id="payment_penalty_form_title"> Add/Edit Stamp </div>
+		    <div class="inline middle blue bigger-150" id="payment_penalty_form_title"> Add/Edit Payment Penalty </div>
 		</div>
         <form class="form-horizontal" role="form" id="payment_penalty_form">
             <input id="form_p_payment_penalty_id" type="hidden" placeholder="Payment Penalty ID">
