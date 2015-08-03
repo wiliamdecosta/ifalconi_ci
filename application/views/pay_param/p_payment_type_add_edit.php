@@ -15,7 +15,7 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right"> Description </label>
                 <div class="col-sm-9">
-                    <textpayment_type id="form_description" class="col-xs-10 col-sm-5" type="text"></textpayment_type>
+                    <textarea id="form_description" class="col-xs-10 col-sm-5" type="text"></textarea>
                 </div>
             </div>
 
