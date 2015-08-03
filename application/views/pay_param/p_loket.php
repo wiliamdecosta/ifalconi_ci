@@ -52,7 +52,7 @@
                   <tr>
                     <th data-identifier="true" data-visible="false" data-header-align="center" data-align="center" data-column-id="p_bank_branch_id"> ID Counter</th>
                      <th data-header-align="center" data-align="center" data-formatter="opt-edit" data-sortable="false" data-width="100">Options</th>
-                     <th data-column-id="code" data-width="200">Counter Name</th>
+                     <th data-column-id="code" data-width="200">Counter Code</th>
                      <th data-column-id="bank_code"> Group Counter</th>
                      <th data-column-id="bank_area_code"> Area </th>
                      <th data-column-id="address"> Address </th>
