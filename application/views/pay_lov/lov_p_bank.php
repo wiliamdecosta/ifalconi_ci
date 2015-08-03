@@ -4,26 +4,26 @@
 		    <!-- modal title -->
 			<div class="modal-header no-padding">
 				<div class="table-header">
-					<span class="form-add-edit-title"> Data Bank List </span>
+					<span class="form-add-edit-title"> Data Counter Group List </span>
 				</div>
 			</div>
             <input type="hidden" id="modal_lov_bank_id_val" value="" />
             <input type="hidden" id="modal_lov_bank_code_val" value="" />
-            
+
 			<!-- modal body -->
 			<div class="modal-body">
 			     <p>
                   <button type="button" class="btn btn-sm btn-success" id="modal_lov_bank_btn_blank">
   	                <span class="fa fa-pencil-square-o" aria-hidden="true"></span> BLANK
                   </button>
-                 </p> 
+                 </p>
 
 				<table id="modal_lov_bank_grid_selection" class="table table-striped table-bordered table-hover">
                 <thead>
                   <tr>
                      <th data-column-id="p_bank_id" data-sortable="false" data-visible="false">Bank ID</th>
                      <th data-header-align="center" data-align="center" data-formatter="opt-edit" data-sortable="false" data-width="100"> Options </th>
-                     <th data-column-id="code" data-width="170">Bank Name</th>
+                     <th data-column-id="code" data-width="170">Counter Group Code</th>
                      <th data-column-id="description"> Description </th>
                   </tr>
                 </thead>
@@ -46,33 +46,33 @@
 </div><!-- /.end modal -->
 
 <script>
-    
+
     jQuery(function($) {
         $("#modal_lov_bank_btn_blank").on(ace.click_event, function() {
             $("#"+ $("#modal_lov_bank_id_val").val()).val("");
-            $("#"+ $("#modal_lov_bank_code_val").val()).val("");  
+            $("#"+ $("#modal_lov_bank_code_val").val()).val("");
             $("#modal_lov_bank").modal("toggle");
         });
     });
-    
+
     function modal_lov_bank_show(the_id_field, the_code_field) {
         modal_lov_bank_set_field_value(the_id_field, the_code_field);
         $("#modal_lov_bank").modal({backdrop: 'static'});
         modal_lov_bank_prepare_table();
     }
-    
-    
+
+
     function modal_lov_bank_set_field_value(the_id_field, the_code_field) {
          $("#modal_lov_bank_id_val").val(the_id_field);
          $("#modal_lov_bank_code_val").val(the_code_field);
     }
-    
-    function modal_lov_bank_set_value(the_id_val, the_code_val) {  
+
+    function modal_lov_bank_set_value(the_id_val, the_code_val) {
          $("#"+ $("#modal_lov_bank_id_val").val()).val(the_id_val);
-         $("#"+ $("#modal_lov_bank_code_val").val()).val(the_code_val);                              
+         $("#"+ $("#modal_lov_bank_code_val").val()).val(the_code_val);
          $("#modal_lov_bank").modal("toggle");
     }
-    
+
     function modal_lov_bank_prepare_table() {
         $("#modal_lov_bank_grid_selection").bootgrid({
     	     formatters: {
@@ -80,7 +80,7 @@
                     return '<a href="#" title="Set Value" onclick="modal_lov_bank_set_value(\''+ row.p_bank_id +'\', \''+ row.code +'\')" class="green"><i class="ace-icon fa 	fa-pencil-square-o bigger-130"></i></a>';
                 }
              },
-    	     rowCount:[5,10,25,50,100,-1],
+    	     rowCount:[5,10],
     		 ajax: true,
     	     requestHandler:function(request) {
     	        if(request.sort) {
@@ -107,6 +107,6 @@
     	});
     	resize_bootgrid();
     }
-    
+
 
 </script>
