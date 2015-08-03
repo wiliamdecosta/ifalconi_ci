@@ -60,7 +60,7 @@
                    <tr>
                      <th data-identifier="true" data-visible="false" data-header-align="center" data-align="center" data-column-id="p_menu_id"> ID Menu</th>
                       <th data-header-align="center" data-align="center" data-formatter="opt-edit" data-sortable="false" data-width="100">Options</th>
-                      <th data-column-id="code" data-width="200">Menu Name</th>
+                      <th data-column-id="code" data-width="200">Menu Code</th>
                       <th data-column-id="file_name">File Name</th>
                       <th data-column-id="listing_no">Listing Number</th>
                       <th data-column-id="is_active" data-formatter="is_active">Active</th>
