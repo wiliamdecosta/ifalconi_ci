@@ -47,13 +47,13 @@
             <div class="col-xs-12">
               <p>
                 <button type="button" class="btn btn-pink btn-xs" id="backButton">
-      	          <span class="ace-icon fa fa-angle-double-left" aria-hidden="true"></span> Back
+      	            <span> &larr; Input Service No </span>
                 </button>
               </p>
               <table id="grid-selection" class="table table-striped table-bordered table-hover">
                 <thead>
                   <tr>
-                    <th data-identifier="true" data-visible = "false" data-type="string" data-header-align="center" data-align="center" data-column-id="ID"> ID </th>
+                    <th data-identifier="true" data-visible = "false" data-type="string" data-header-align="center" data-align="center" data-column-id="id"> ID </th>
                      <th data-column-id="account_no" data-header-align="center" data-align="center" data-width="150">Account</th>
                      <th data-column-id="service_no" data-header-align="center" data-align="center" data-width="150">Service No</th>
                      <th data-column-id="finance_period_code" data-header-align="center" data-align="center">Period</th>
@@ -75,23 +75,37 @@
             		   <h5><span class="label label-warning">Stamp Duty Fee (Rp) :  </span></h5> <input type="text" class="form-control priceformat" id="totalStampDutyField" placeholder="0">
             		   <h5><span class="label label-warning">Penalty (Rp) :  </span></h5> <input type="text" class="form-control priceformat" id="totalPenaltyField" placeholder="0">
             		   <h5><span class="label label-success">GRAND TOTAL (Rp) :  </span></h5> <input type="text" class="form-control priceformat" id="grandTotalField" placeholder="0">
-            
-            			<br/>
-            			<button id="btnPembayaran" class="btn btn-primary btn-sm">Do Payment</button>
+                       <h5><span class="label label-primary">Choose Counter * :  </span></h5>
+                       
+                      <input id="form_p_bank_branch_id" type="hidden" placeholder="Counter ID">
+                      <input id="form_bank_branch_code" class="col-xs-10" type="text" placeholder="Choose Counter">
+                      <span class="input-group-btn">
+        					<button class="btn btn-success btn-sm" type="button" id="btn_lov_bank_branch">
+        						<span class="ace-icon fa fa-pencil-square-o icon-on-right bigger-110"></span>
+        					</button>
+        			  </span>
+                       
+            		   <br/>
+            		   <button id="btnPembayaran" class="btn btn-primary btn-sm">Do Payment</button>
             		  </div>
             	 </div>
             </div>  
         </div>
     </div>
 </div>
+<?php $this->load->view('pay_lov/lov_p_bank_branch.php'); ?>
 
 <script>
 
 /* jquery on load */
 jQuery(function($) {
       
-	  $(".priceformat").number( true, 0 , ',', '.'); /* price number format on summary group */
+	  $(".priceformat").number( true, 2 , '.',','); /* price number format */
 	  $(".priceformat").css("font-weight", "bold");
+      
+      $("#btn_lov_bank_branch").on(ace.click_event, function() {
+            modal_lov_bank_branch_show("form_p_bank_branch_id", "form_bank_branch_code");
+      });
 
       $("#btnProses").on(ace.click_event, function () {
           doProses();
@@ -111,19 +125,18 @@ jQuery(function($) {
       });
 
       $("#btnPembayaran").on(ace.click_event, function () {
-
+          
           if($("#grid-selection").bootgrid("getSelectedRows") == "") {
-                BootstrapDialog.show({
-                    type: BootstrapDialog.TYPE_WARNING,
-    		    	size: BootstrapDialog.SIZE_NORMAL,
-    		    	title: 'Attention',
-    		    	message: 'No data payment selected on table. Please put a check <span class="glyphicon glyphicon-check" /> your data payment'
-			    });
+                showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', 'No data payment selected on table. Please put a check <span class="glyphicon glyphicon-check" /> your data payment');
 			    return;
+          }
+          
+          if($("#form_p_bank_branch_id").val() == "") {
+                showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', 'Please choose the counter for payment');
+                return;  
           }
 
           BootstrapDialog.show({
-            size: BootstrapDialog.SIZE_SMALL,
             type: BootstrapDialog.TYPE_INFO,
             title: 'Payment Confirmation',
             message: 'Your Total Payment : <b> Rp. ' + $.number($("#grandTotalField").val(), 0, ',', '.') + '</b>. Are You sure to make a payment?',
@@ -131,8 +144,27 @@ jQuery(function($) {
 
                 cssClass: 'btn-primary btn-sm',
                 label: 'Yes, Do Payment',
-                action: function() {
-
+                action: function(dialogItself) {
+                    /* show progress bar modal */
+                    dialogItself.close();
+                	var progressBarDialog = BootstrapDialog.show({
+                	    closable:false,
+                	    title: 'Processing Your Request',
+                	    message: properties.bootgridinfo.progressbar
+                	});
+                	
+                    $.post( "<?php echo PAYMENT_WS_URL.'ws.php?type=json&module=paymentccbs&class=payment&method=stp_pay_acc'; ?>",
+                        {
+                            action : "p",
+                            service_no : $("#inputServiceNo").val(),
+                            p_bank_branch_id : $("#form_p_bank_branch_id").val(),
+                            i_id : $("#grid-selection").bootgrid("getSelectedRows")
+                        },
+                        function( data ) {
+                            progressBarDialog.close();
+                            showBootDialog(true, BootstrapDialog.TYPE_INFO, 'Information', data.message);
+                        }, "json"
+                    );
                 }
             }, {
                 icon: 'glyphicon glyphicon-remove',
@@ -170,16 +202,16 @@ function doProses() {
 	$("#grid-selection").bootgrid({
 	     formatters: {
             "payment_charge_amt" : function (column, row) {
-				return $.number(row.PAYMENT_CHARGE_AMT, 0, ',', '.') + '<input id="' + row.ID + '-payment_charge_amt" readonly  type="hidden" value="' + row.PAYMENT_CHARGE_AMT + '" />';
+				return $.number(row.payment_charge_amt, 2, '.',',') + '<input id="' + row.id + '-payment_charge_amt" readonly  type="hidden" value="' + row.payment_charge_amt + '" />';
             },
             "payment_vat_amt" : function (column, row) {
-				return $.number(row.PAYMENT_VAT_AMT, 0, ',', '.') + '<input id="' + row.ID + '-payment_vat_amt" readonly  type="hidden" value="' + row.PAYMENT_VAT_AMT + '" />';
+				return $.number(row.payment_vat_amt, 2, '.',',') + '<input id="' + row.id + '-payment_vat_amt" readonly  type="hidden" value="' + row.payment_vat_amt + '" />';
             },
             "stamp_duty_fee" : function (column, row) {
-                return $.number(row.STAMP_DUTY_FEE, 0, ',', '.') + '<input id="' + row.ID + '-stamp_duty_fee" readonly  type="hidden" value="' + row.STAMP_DUTY_FEE + '" />';
+                return $.number(row.stamp_duty_fee, 2, '.',',') + '<input id="' + row.id + '-stamp_duty_fee" readonly  type="hidden" value="' + row.stamp_duty_fee + '" />';
             },
             "penalty_amount" : function (column, row) {
-				return $.number(row.PENALTY_AMOUNT, 0, ',', '.') + '<input id="' + row.ID + '-penalty_amount" readonly  type="hidden" value="' + row.PENALTY_AMOUNT + '" />';
+				return $.number(row.penalty_amount, 2, '.',',') + '<input id="' + row.id + '-penalty_amount" readonly  type="hidden" value="' + row.penalty_amount + '" />';
             }
          },
 	     labels: {
@@ -238,7 +270,7 @@ function doProses() {
     			/* as default , all rows are selected */
     			var arr = new Array();
                 for (var i = 0; i < $("#grid-selection").bootgrid("getCurrentRows").length; i++) {
-                	arr[i] = $("#grid-selection").bootgrid("getCurrentRows")[i].ID;
+                	arr[i] = $("#grid-selection").bootgrid("getCurrentRows")[i].id;
                 }
                 $("#grid-selection").bootgrid("select", arr);
 
@@ -264,10 +296,10 @@ function doProses() {
 
         for (var i = 0; i < selectedRows.length; i++) {
         	row = selectedRows[i];
-            payment_charge_amt = $("#grid-selection").find("#" + row.ID + "-payment_charge_amt").val();
-			payment_vat_amt = $("#grid-selection").find("#" + row.ID + "-payment_vat_amt").val();
-			stamp_duty_fee = $("#grid-selection").find("#" + row.ID + "-stamp_duty_fee").val();
-			penalty_amount = $("#grid-selection").find("#" + row.ID + "-penalty_amount").val();
+            payment_charge_amt = $("#grid-selection").find("#" + row.id + "-payment_charge_amt").val();
+			payment_vat_amt = $("#grid-selection").find("#" + row.id + "-payment_vat_amt").val();
+			stamp_duty_fee = $("#grid-selection").find("#" + row.id + "-stamp_duty_fee").val();
+			penalty_amount = $("#grid-selection").find("#" + row.id + "-penalty_amount").val();
 
             totalInvoice += parseInt(payment_charge_amt) + parseInt(payment_vat_amt);
 			totalStampDuty += parseInt(stamp_duty_fee);
@@ -291,10 +323,10 @@ function doProses() {
 
         for (var i = 0; i < deselectedRows.length; i++) {
         	row = deselectedRows[i];
-            payment_charge_amt = $("#grid-selection").find("#" + row.ID + "-payment_charge_amt").val();
-			payment_vat_amt = $("#grid-selection").find("#" + row.ID + "-payment_vat_amt").val();
-			stamp_duty_fee = $("#grid-selection").find("#" + row.ID + "-stamp_duty_fee").val();
-			penalty_amount = $("#grid-selection").find("#" + row.ID + "-penalty_amount").val();
+            payment_charge_amt = $("#grid-selection").find("#" + row.id + "-payment_charge_amt").val();
+			payment_vat_amt = $("#grid-selection").find("#" + row.id + "-payment_vat_amt").val();
+			stamp_duty_fee = $("#grid-selection").find("#" + row.id + "-stamp_duty_fee").val();
+			penalty_amount = $("#grid-selection").find("#" + row.id + "-penalty_amount").val();
 
             totalInvoice -= parseInt(payment_charge_amt) + parseInt(payment_vat_amt);
 			totalStampDuty -= parseInt(stamp_duty_fee);
