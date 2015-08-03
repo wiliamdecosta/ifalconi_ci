@@ -1,7 +1,7 @@
 <div class="row" style="display:none;" id="user_loket_form_add_edit">
     <div class="col-xs-12">
         <div class="well well-sm">
-		    <div class="inline middle blue bigger-150" id="user_loket_form_title"> Add/Edit Counter </div>
+		    <div class="inline middle blue bigger-150" id="user_loket_form_title"> Add/Edit Counter User</div>
 		</div>
         <form class="form-horizontal" role="form" id="user_loket_form">
             <div class="form-group">
