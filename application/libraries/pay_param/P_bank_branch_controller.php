@@ -38,7 +38,7 @@ class P_bank_branch_controller {
             }
 		    
 		    if(!empty($searchPhrase)) {
-		        $table->setCriteria("(bank_branch.code ".$table->likeOperator." '%".$searchPhrase."%')"); 
+		        $table->setCriteria("(bank_branch.code ".$table->likeOperator." '%".$searchPhrase."%' OR bank.code ".$table->likeOperator." '%".$searchPhrase."%')"); 
 		    }
 		    
 		    		    		    
