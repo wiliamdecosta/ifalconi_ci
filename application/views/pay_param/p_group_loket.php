@@ -39,7 +39,7 @@
                   <tr>
                     <th data-identifier="true" data-visible = "false" data-header-align="center" data-align="center" data-column-id="p_bank_id"> ID Counter Group</th>
                      <th data-header-align="center" data-align="center" data-formatter="opt-edit" data-sortable="false" data-width="100">Options</th>
-                     <th data-column-id="code" data-width="200">Counter Group Name</th>
+                     <th data-column-id="code" data-width="200">Counter Group Code</th>
                      <th data-column-id="description"> Description </th>
                   </tr>
                 </thead>
