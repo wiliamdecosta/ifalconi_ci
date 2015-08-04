@@ -1,9 +1,9 @@
-<?php 
+<?php
     if( getVarClean("user_name","str","") == "" ) :
 ?>
 <script>
     loadContentWithParams("pay_process-payment_login.php",{
-        url_redirect : "pay_process-stp_pay_acc.php"    
+        url_redirect : "pay_process-stp_pay_acc.php"
     });
 </script>
 <?php endif; ?>
@@ -43,7 +43,7 @@
 		</div>
         <div class="space-4"> </div>
         <div class="row" id="table-group" style="display:none;">
-            
+
             <div class="col-xs-12">
               <p>
                 <button type="button" class="btn btn-pink btn-xs" id="backButton">
@@ -53,7 +53,9 @@
               <table id="grid-selection" class="table table-striped table-bordered table-hover">
                 <thead>
                   <tr>
-                    <th data-identifier="true" data-visible = "false" data-type="string" data-header-align="center" data-align="center" data-column-id="id"> ID </th>
+                     <th data-identifier="true" data-visible = "false" data-type="string" data-header-align="center" data-align="center" data-column-id="id"> ID </th>
+                     <th data-visible="false" data-column-id="subscriber_id"> subscriber id </th>
+
                      <th data-column-id="account_no" data-header-align="center" data-align="center" data-width="150">Account</th>
                      <th data-column-id="service_no" data-header-align="center" data-align="center" data-width="150">Service No</th>
                      <th data-column-id="finance_period_code" data-header-align="center" data-align="center">Period</th>
@@ -65,31 +67,63 @@
                 </thead>
               </table>
             </div>
-            
+
             <div class="col-xs-12 col-lg-4">
             	 <div class="panel panel-info">
             		   <!-- Default panel contents -->
             		  <div class="panel-heading"><h4>PAYMENT SUMMARY</h4></div>
             	      <div class="panel-body">
-            	       <h5><span class="label label-warning">Total Invoice (Rp) : </span></h5> <input type="text" class="form-control priceformat" id="totalInvoiceField" placeholder="0">
-            		   <h5><span class="label label-warning">Stamp Duty Fee (Rp) :  </span></h5> <input type="text" class="form-control priceformat" id="totalStampDutyField" placeholder="0">
-            		   <h5><span class="label label-warning">Penalty (Rp) :  </span></h5> <input type="text" class="form-control priceformat" id="totalPenaltyField" placeholder="0">
-            		   <h5><span class="label label-success">GRAND TOTAL (Rp) :  </span></h5> <input type="text" class="form-control priceformat" id="grandTotalField" placeholder="0">
-                       <h5><span class="label label-primary">Choose Counter * :  </span></h5>
-                       
-                      <input id="form_p_bank_branch_id" type="hidden" placeholder="Counter ID">
-                      <input id="form_bank_branch_code" class="col-xs-10" type="text" placeholder="Choose Counter">
-                      <span class="input-group-btn">
-        					<button class="btn btn-success btn-sm" type="button" id="btn_lov_bank_branch">
-        						<span class="ace-icon fa fa-pencil-square-o icon-on-right bigger-110"></span>
-        					</button>
-        			  </span>
-                       
-            		   <br/>
-            		   <button id="btnPembayaran" class="btn btn-primary btn-sm">Do Payment</button>
+                	      <div class="col-xs-12">
+                	       <h5><span class="label label-warning">Total Invoice (Rp) : </span></h5> <input type="text" class="form-control priceformat align-right" id="totalInvoiceField" placeholder="0">
+                		  </div>
+                		  
+                		  <div class="col-xs-12">
+                		   <h5><span class="label label-warning">Stamp Duty Fee (Rp) :  </span></h5> <input type="text" class="form-control priceformat align-right" id="totalStampDutyField" placeholder="0">
+                		  </div> 
+                		  
+                		  <div class="col-xs-12">
+                		   <h5><span class="label label-warning">Penalty (Rp) :  </span></h5> <input type="text" class="form-control priceformat align-right" id="totalPenaltyField" placeholder="0">
+                		  </div>
+                		  
+                		  <div class="col-xs-12">
+                		   <h5><span class="label label-success">GRAND TOTAL (Rp) :  </span></h5> <input type="text" class="form-control priceformat align-right" id="grandTotalField" placeholder="0">
+                          </div>
+                          
+                          
+                          <div class="col-xs-12">
+                              <h5><span class="label label-primary">Deposit Amount :  </span></h5>
+                              <input id="form_deposit_amount" readonly class="col-xs-12 priceformat align-right" type="text">
+                          </div>
+                          
+                          <br/>
+                          <div class="col-xs-12 align-right">
+                              <label>
+                                <small class="muted center">Use your deposit amount ? :</small>
+                                <input type="checkbox" class="ace ace-switch ace-switch-6" id="form_use_deposit">
+                                <span class="lbl middle"></span>
+                              </label>
+                          </div>
+                                                   
+                          <div class="col-xs-12">
+                              <h5><span class="label label-primary">Choose Counter * :  </span></h5>
+                              <input id="form_p_bank_branch_id" type="hidden" placeholder="Counter ID">
+                              <input id="form_bank_branch_code" class="col-xs-10" type="text" placeholder="Choose Counter">
+                              <span class="input-group-btn">
+                					<button class="btn btn-success btn-sm" type="button" id="btn_lov_bank_branch">
+                						<span class="ace-icon fa fa-pencil-square-o icon-on-right bigger-110"></span>
+                					</button>
+                			  </span>
+                          </div>
+                          
+                          <div class="col-xs-12">
+                            </br>
+                              <input type="hidden" class="form-control" id="subscriberID">
+                    		  <button id="btnPembayaran" class="btn btn-primary btn-sm">Do Payment</button>
+                		  </div>
+            		
             		  </div>
             	 </div>
-            </div>  
+            </div>
         </div>
     </div>
 </div>
@@ -99,10 +133,10 @@
 
 /* jquery on load */
 jQuery(function($) {
-      
+
 	  $(".priceformat").number( true, 2 , '.',','); /* price number format */
 	  $(".priceformat").css("font-weight", "bold");
-      
+
       $("#btn_lov_bank_branch").on(ace.click_event, function() {
             modal_lov_bank_branch_show("form_p_bank_branch_id", "form_bank_branch_code");
       });
@@ -116,24 +150,24 @@ jQuery(function($) {
 			doProses();
 		 }
 	  });
-	  
+
 	  $("#backButton").on(ace.click_event, function () {
           loadContentWithParams('pay_process-stp_pay_acc.php',
           {
-            user_name : $("#form_user_name").val() 
+            user_name : $("#form_user_name").val()
           });
       });
 
       $("#btnPembayaran").on(ace.click_event, function () {
-          
+
           if($("#grid-selection").bootgrid("getSelectedRows") == "") {
                 showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', 'No data payment selected on table. Please put a check <span class="glyphicon glyphicon-check" /> your data payment');
 			    return;
           }
-          
+
           if($("#form_p_bank_branch_id").val() == "") {
                 showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', 'Please choose the counter for payment');
-                return;  
+                return;
           }
 
           BootstrapDialog.show({
@@ -152,13 +186,15 @@ jQuery(function($) {
                 	    title: 'Processing Your Request',
                 	    message: properties.bootgridinfo.progressbar
                 	});
-                	
+
                     $.post( "<?php echo PAYMENT_WS_URL.'ws.php?type=json&module=paymentccbs&class=payment&method=stp_pay_acc'; ?>",
                         {
                             action : "p",
                             service_no : $("#inputServiceNo").val(),
                             p_bank_branch_id : $("#form_p_bank_branch_id").val(),
-                            i_id : $("#grid-selection").bootgrid("getSelectedRows")
+                            i_id : $("#grid-selection").bootgrid("getSelectedRows"),
+                            i_subscriberid : $("#subscriberID").val(),
+                            cboxdeposit : $("#form_use_deposit").is(":checked") ? 'Y' : 'N'
                         },
                         function( data ) {
                             progressBarDialog.close();
@@ -262,17 +298,27 @@ function doProses() {
 
        if(!responseError) {
            setTimeout( function(){
-                progressBarDialog.close();
-
-                $("#filter-group").hide();
-                $("#table-group").show();
-
+                
     			/* as default , all rows are selected */
     			var arr = new Array();
                 for (var i = 0; i < $("#grid-selection").bootgrid("getCurrentRows").length; i++) {
                 	arr[i] = $("#grid-selection").bootgrid("getCurrentRows")[i].id;
                 }
                 $("#grid-selection").bootgrid("select", arr);
+                
+                $.post( "<?php echo PAYMENT_WS_URL.'ws.php?type=json&module=paymentccbs&class=deposit&method=get_deposit_amount'; ?>",
+                    {
+                        subscriber_id : $("#subscriberID").val()
+                    },
+                    function( data ) {
+                        $("#form_deposit_amount").val(data.items);
+                    }, "json"
+                );
+                
+                progressBarDialog.close();
+
+                $("#filter-group").hide();
+                $("#table-group").show();
 
            }, 1000 );
        }else {
@@ -305,7 +351,10 @@ function doProses() {
 			totalStampDuty += parseInt(stamp_duty_fee);
 			totalPenalty += parseInt(penalty_amount);
 
+			/* set subscriber id*/
+            $("#subscriberID").val(row.subscriber_id);
         }
+
 		grandTotal = totalInvoice + totalStampDuty - totalPenalty;
 		$("#totalInvoiceField").val( totalInvoice );
 		$("#totalStampDutyField").val( totalStampDuty );
