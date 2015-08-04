@@ -161,7 +161,7 @@ jQuery(function($) {
       $("#btnPembayaran").on(ace.click_event, function () {
 
           if($("#grid-selection").bootgrid("getSelectedRows") == "") {
-                showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', 'No data payment selected on table. Please put a check <span class="glyphicon glyphicon-check" /> your data payment');
+                showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', 'No data payment selected on table. Please put a check <span class="glyphicon glyphicon-check" /> on your data payment table');
 			    return;
           }
 
