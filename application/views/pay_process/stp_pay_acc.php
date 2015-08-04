@@ -91,14 +91,14 @@
                           
                           
                           <div class="col-xs-12">
-                              <h5><span class="label label-primary">Deposit Amount :  </span></h5>
+                              <h5><span class="label label-default">Deposit Amount :  </span></h5>
                               <input id="form_deposit_amount" readonly class="col-xs-12 priceformat align-right" type="text">
                           </div>
                           
                           <br/>
                           <div class="col-xs-12 align-right">
                               <label>
-                                <small class="muted center">Use your deposit amount ? :</small>
+                                <small class="muted center orange">Use your deposit amount ? :</small>
                                 <input type="checkbox" class="ace ace-switch ace-switch-6" id="form_use_deposit">
                                 <span class="lbl middle"></span>
                               </label>
