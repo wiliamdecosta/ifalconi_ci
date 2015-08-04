@@ -77,7 +77,7 @@
         $("#modal_lov_area_grid_selection").bootgrid({
     	     formatters: {
                 "opt-edit" : function(col, row) {
-                    return '<a href="#" title="Set Value" onclick="modal_lov_area_set_value(\''+ row.p_area_id +'\', \''+ row.code +'\')" class="green"><i class="ace-icon fa 	fa-pencil-square-o bigger-130"></i></a>';
+                    return '<a href="#'+ $("#modal_lov_area_code_val").val() +'" title="Set Value" onclick="modal_lov_area_set_value(\''+ row.p_area_id +'\', \''+ row.code +'\')" class="green"><i class="ace-icon fa 	fa-pencil-square-o bigger-130"></i></a>';
                 }
              },
     	     rowCount:[5,10],
