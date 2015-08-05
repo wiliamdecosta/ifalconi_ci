@@ -249,6 +249,32 @@ class P_user_loket_controller {
         return $data;
 
     }
+    
+    function login_payment() {
+        
+        $ci = & get_instance();
+		$ci->load->model('pay_param/p_user_loket');
+		$table = $ci->p_user_loket;
+
+		$data = array('items' => array(), 'success' => false, 'message' => '');
+
+		$user_name = getVarClean('user_name', 'str', '');
+        $password = getVarClean('password', 'str', '');
+
+		try{
+            $p_user_loket_id = $table->valid_login($user_name, $password);
+            if(empty($p_user_loket_id)) {
+                throw new Exception("Your username or password is incorrect or not valid anymore.");    
+            }
+            $data['success'] = true;
+            $data['items'] = $p_user_loket_id;
+        }catch (Exception $e) {
+            $data['message'] = $e->getMessage();
+            $data['total'] = 0;
+        }
+
+        return $data;
+    }
 }
 
 /* End of file P_user_loketcontroller.php */
