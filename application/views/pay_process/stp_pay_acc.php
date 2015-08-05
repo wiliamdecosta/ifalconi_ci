@@ -1,4 +1,4 @@
-<?php 
+<?php
     $this->load->view('pay_process/check_payment_login.php');
     check_payment_login("pay_process-stp_pay_acc.php");
 ?>
@@ -116,7 +116,7 @@
                               <input type="hidden" class="form-control" id="form_client_ip_address" value="<?php echo get_ip_address(); ?>">
                               <input type="hidden" class="form-control" id="form_p_user_loket_id" value="<?php echo getVarClean("p_user_loket_id","str",""); ?>">
                               <input type="hidden" class="form-control" id="form_user_name" value="<?php echo getVarClean("user_name","str",""); ?>">
-                              
+
                     		  <button id="btnPembayaran" class="btn btn-primary btn-sm">Do Payment</button>
                 		  </div>
 
@@ -204,7 +204,7 @@ function do_process() {
 	}
 
     responseError = false; /* global var */
-    
+
 	create_stp_pay_acc_table(true, false);
 	on_load_data_stp_pay_acc_table(true);
 	set_payment_summary();
@@ -261,13 +261,13 @@ function create_stp_pay_acc_table(show_progressbar, is_after_payment) {
 	        return request;
 	     },
 	     responseHandler:function (response) {
-	        
+
 	        /* cek response if needed */
 	        if(response.success == false) {
                 if(show_progressbar) {
 	                progressBarDialog.close();
 	            }
-	        
+
 	            if(!is_after_payment) { //kalau bukan pembayaran, maka tampilkan pesan error
 	                showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
 	                responseError = true;
@@ -307,10 +307,10 @@ function on_load_data_stp_pay_acc_table(is_close_dialog) {
                 }
                 $("#grid-selection").bootgrid("select", arr);
                 get_deposit_amount();
-                
+
                 $("#filter-group").hide();
                 $("#table-group").show();
-                
+
                 if(is_close_dialog) close_all_dialogbox();
            }, 1000 );
        }else {
@@ -368,7 +368,7 @@ function set_payment_summary() {
 		$("#form_summary_total_stamp_duty").val( totalStampDuty );
 		$("#form_summary_total_penalty").val( totalPenalty );
 		$("#form_summary_grand_total").val( grandTotal );
-		
+
 		if(grandTotal == 0) {
 		    $("#btnPembayaran").addClass("disabled");
 		}else {
@@ -401,14 +401,14 @@ function set_payment_summary() {
 		$("#form_summary_total_stamp_duty").val( totalStampDuty );
 		$("#form_summary_total_penalty").val( totalPenalty );
 		$("#form_summary_grand_total").val( grandTotal );
-		
+
 		if(grandTotal == 0) {
 		    $("#btnPembayaran").addClass("disabled");
 		}else {
 		    $("#btnPembayaran").removeClass("disabled");
 		}
     });
-    
+
     if(grandTotal == 0) {
 	    $("#btnPembayaran").addClass("disabled");
 	}else {
@@ -440,15 +440,15 @@ function execute_payment() {
         },
         function( data ) {
             progressBarDialog.close();
-            
+
             if(data.success) {
                 showBootDialog(true, BootstrapDialog.TYPE_SUCCESS, 'Information', 'Your payment has been successfully processed. Thank you.');
-                
+
                 responseError = false; /* global var */
                 create_stp_pay_acc_table(false, true);
                 on_load_data_stp_pay_acc_table(false);
                 set_payment_summary();
-                
+
             }else {
                 showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', data.message);
             }
