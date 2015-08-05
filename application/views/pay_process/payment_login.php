@@ -56,6 +56,13 @@
 
 function check_login() {
 
+    if($.trim($("#form_user_name").val()) == "" ||
+        $.trim($("#form_password").val()) == "" ) {
+
+        showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', 'Username and Password must be filled');
+        return;
+    }
+
     var progressBarDialog = BootstrapDialog.show({
 	    closable: false,
         type: BootstrapDialog.TYPE_PRIMARY,
