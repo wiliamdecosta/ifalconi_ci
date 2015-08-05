@@ -98,7 +98,7 @@
                           <br/>
                           <div class="col-xs-12 align-right">
                               <label>
-                                <small class="muted center orange">Use your deposit amount ? :</small>
+                                <small class="muted center orange"> <strong> Use your deposit amount ? : </strong></small>
                                 <input type="checkbox" class="ace ace-switch ace-switch-6" id="form_use_deposit">
                                 <span class="lbl middle"></span>
                               </label>
@@ -142,12 +142,12 @@ jQuery(function($) {
       });
 
       $("#btnProses").on(ace.click_event, function () {
-          doProses();
+          do_process();
       });
 
 	  $("#inputServiceNo").keyup(function(e){
 		 if(e.keyCode == 13) { /* on enter */
-			doProses();
+			do_process();
 		 }
 	  });
 
@@ -191,12 +191,11 @@ jQuery(function($) {
                     }
                 }]
           });
-
       });
 });
 
 
-function doProses() {
+function do_process() {
 
 	/* cek input */
 	if( $("#inputServiceNo").val() == "" ) {
@@ -422,7 +421,7 @@ function execute_payment() {
         function( data ) {
             progressBarDialog.close();
             if(data.success) {
-                showBootDialog(true, BootstrapDialog.TYPE_SUCCESS, 'Information', 'Thank You. Your payment is success');
+                showBootDialog(true, BootstrapDialog.TYPE_SUCCESS, 'Information', 'Your payment has been successfully processed. Thank you.');
                 
                 responseError = false; /* global var */
                 create_stp_pay_acc_table(false, true);
