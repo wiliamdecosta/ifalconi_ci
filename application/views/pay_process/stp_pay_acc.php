@@ -76,25 +76,25 @@
                 	      <div class="col-xs-12">
                 	       <h5><span class="label label-warning">Total Invoice (Rp) : </span></h5> <input type="text" class="form-control priceformat align-right" id="totalInvoiceField" placeholder="0">
                 		  </div>
-                		  
+
                 		  <div class="col-xs-12">
                 		   <h5><span class="label label-warning">Stamp Duty Fee (Rp) :  </span></h5> <input type="text" class="form-control priceformat align-right" id="totalStampDutyField" placeholder="0">
-                		  </div> 
-                		  
+                		  </div>
+
                 		  <div class="col-xs-12">
                 		   <h5><span class="label label-warning">Penalty (Rp) :  </span></h5> <input type="text" class="form-control priceformat align-right" id="totalPenaltyField" placeholder="0">
                 		  </div>
-                		  
+
                 		  <div class="col-xs-12">
                 		   <h5><span class="label label-success">GRAND TOTAL (Rp) :  </span></h5> <input type="text" class="form-control priceformat align-right" id="grandTotalField" placeholder="0">
                           </div>
-                          
-                          
+
+
                           <div class="col-xs-12">
                               <h5><span class="label label-default">Deposit Amount :  </span></h5>
                               <input id="form_deposit_amount" readonly class="col-xs-12 priceformat align-right" type="text">
                           </div>
-                          
+
                           <br/>
                           <div class="col-xs-12 align-right">
                               <label>
@@ -103,7 +103,7 @@
                                 <span class="lbl middle"></span>
                               </label>
                           </div>
-                                                   
+
                           <div class="col-xs-12">
                               <h5><span class="label label-primary">Choose Counter * :  </span></h5>
                               <input id="form_p_bank_branch_id" type="hidden" placeholder="Counter ID">
@@ -114,13 +114,13 @@
                 					</button>
                 			  </span>
                           </div>
-                          
+
                           <div class="col-xs-12">
                             </br>
                               <input type="hidden" class="form-control" id="subscriberID">
                     		  <button id="btnPembayaran" class="btn btn-primary btn-sm">Do Payment</button>
                 		  </div>
-            		
+
             		  </div>
             	 </div>
             </div>
@@ -130,7 +130,7 @@
 <?php $this->load->view('pay_lov/lov_p_bank_branch.php'); ?>
 
 <script>
-
+var responseError = false;
 /* jquery on load */
 jQuery(function($) {
 
@@ -162,54 +162,34 @@ jQuery(function($) {
 
           if($("#grid-selection").bootgrid("getSelectedRows") == "") {
                 showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', 'No data payment selected on table. Please put a check <span class="glyphicon glyphicon-check" /> on your data payment table');
-			    return;
+			      return;
           }
 
           if($("#form_p_bank_branch_id").val() == "") {
-                showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', 'Please choose the counter for payment');
+                showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', '<h5> Please  <span class="label label-primary">Choose Counter *</span> for the payment </h5>');
                 return;
           }
 
           BootstrapDialog.show({
-            type: BootstrapDialog.TYPE_INFO,
-            title: 'Payment Confirmation',
-            message: 'Your Total Payment : <b> Rp. ' + $.number($("#grandTotalField").val(), 0, ',', '.') + '</b>. Are You sure to make a payment?',
-            buttons: [{
-
-                cssClass: 'btn-primary btn-sm',
-                label: 'Yes, Do Payment',
-                action: function(dialogItself) {
-                    /* show progress bar modal */
-                    dialogItself.close();
-                	var progressBarDialog = BootstrapDialog.show({
-                	    closable:false,
-                	    title: 'Processing Your Request',
-                	    message: properties.bootgridinfo.progressbar
-                	});
-
-                    $.post( "<?php echo PAYMENT_WS_URL.'ws.php?type=json&module=paymentccbs&class=payment&method=stp_pay_acc'; ?>",
-                        {
-                            action : "p",
-                            service_no : $("#inputServiceNo").val(),
-                            p_bank_branch_id : $("#form_p_bank_branch_id").val(),
-                            i_id : $("#grid-selection").bootgrid("getSelectedRows"),
-                            i_subscriberid : $("#subscriberID").val(),
-                            cboxdeposit : $("#form_use_deposit").is(":checked") ? 'Y' : 'N'
-                        },
-                        function( data ) {
-                            progressBarDialog.close();
-                            showBootDialog(true, BootstrapDialog.TYPE_INFO, 'Information', data.message);
-                        }, "json"
-                    );
-                }
-            }, {
-                icon: 'glyphicon glyphicon-remove',
-                cssClass: 'btn-danger btn-sm',
-                label: 'Cancel',
-                action: function(dialogItself){
-                     dialogItself.close();
-                }
-            }]
+                type: BootstrapDialog.TYPE_INFO,
+                title: 'Payment Confirmation',
+                message: 'Your Total Payment : <b> Rp. ' + $.number($("#grandTotalField").val(), 2, '.', ',') + '</b>. Are You sure to make a payment?',
+                buttons: [{
+                    cssClass: 'btn-primary btn-sm',
+                    label: 'Yes, Do Payment',
+                    action: function(dialogItself) {
+                        /* show progress bar modal */
+                        dialogItself.close();
+                    	execute_payment();
+                    }
+                }, {
+                    icon: 'glyphicon glyphicon-remove',
+                    cssClass: 'btn-danger btn-sm',
+                    label: 'Cancel',
+                    action: function(dialogItself){
+                         dialogItself.close();
+                    }
+                }]
           });
 
       });
@@ -217,7 +197,6 @@ jQuery(function($) {
 
 
 function doProses() {
-    var responseError = false;
 
 	/* cek input */
 	if( $("#inputServiceNo").val() == "" ) {
@@ -225,16 +204,28 @@ function doProses() {
 	   return;
 	}
 
-	/* show progress bar modal */
-	var progressBarDialog = BootstrapDialog.show({
-	    closable:false,
-	    title: 'Processing Your Request',
-	    message: properties.bootgridinfo.progressbar
-	});
+    responseError = false; /* global var */
+    
+	create_stp_pay_acc_table(true, false);
+	on_load_data_stp_pay_acc_table(true);
+	set_payment_summary();
+}
+
+
+function create_stp_pay_acc_table(show_progressbar, is_after_payment) {
+
+    if(show_progressbar) {
+        var progressBarDialog = BootstrapDialog.show({
+		    closable: false,
+            type: BootstrapDialog.TYPE_PRIMARY,
+    		title: 'Processing Your Request',
+    		message: properties.bootgridinfo.progressbar
+		});
+    }
 
     $("#grid-selection").bootgrid("destroy");
 
-	/************************** Start Setting Bootgrid ******************/
+    /************************** Start Setting Bootgrid ******************/
 	$("#grid-selection").bootgrid({
 	     formatters: {
             "payment_charge_amt" : function (column, row) {
@@ -271,11 +262,17 @@ function doProses() {
 	        return request;
 	     },
 	     responseHandler:function (response) {
+	        
 	        /* cek response if needed */
 	        if(response.success == false) {
-	            progressBarDialog.close();
-	            showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
-	            responseError = true;
+                if(show_progressbar) {
+	                progressBarDialog.close();
+	            }
+	        
+	            if(!is_after_payment) { //kalau bukan pembayaran, maka tampilkan pesan error
+	                showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
+	                responseError = true;
+	            }
 	        }
 	        return response;
 	     },
@@ -290,44 +287,56 @@ function doProses() {
 	     keepSelection: false,
 	     sorting:false
 	});
-	resize_bootgrid();
 	/************************** End Setting Bootgrid ******************/
 
-	/* bootgrid on leaded data . hide filter, close progress bar, and show table */
+	resize_bootgrid();
+}
+
+
+function on_load_data_stp_pay_acc_table(is_close_dialog) {
+
+    /* bootgrid on leaded data . hide filter, close progress bar, and show table */
     $("#grid-selection").bootgrid().on("loaded.rs.jquery.bootgrid",function(e){
 
        if(!responseError) {
            setTimeout( function(){
-                
+
     			/* as default , all rows are selected */
     			var arr = new Array();
                 for (var i = 0; i < $("#grid-selection").bootgrid("getCurrentRows").length; i++) {
                 	arr[i] = $("#grid-selection").bootgrid("getCurrentRows")[i].id;
                 }
                 $("#grid-selection").bootgrid("select", arr);
+                get_deposit_amount();
                 
-                $.post( "<?php echo PAYMENT_WS_URL.'ws.php?type=json&module=paymentccbs&class=deposit&method=get_deposit_amount'; ?>",
-                    {
-                        subscriber_id : $("#subscriberID").val()
-                    },
-                    function( data ) {
-                        $("#form_deposit_amount").val(data.items);
-                    }, "json"
-                );
-                
-                progressBarDialog.close();
-
                 $("#filter-group").hide();
                 $("#table-group").show();
-
+                
+                if(is_close_dialog) close_all_dialogbox();
            }, 1000 );
        }else {
-            progressBarDialog.close();
             $("#grid-selection").bootgrid("destroy");
        }
 	});
+}
 
-	var totalInvoice = 0;
+function get_deposit_amount() {
+
+    $.post( "<?php echo PAYMENT_WS_URL.'ws.php?type=json&module=paymentccbs&class=deposit&method=get_deposit_amount'; ?>",
+        {
+            subscriber_id : $("#subscriberID").val()
+        },
+        function( data ) {
+            $("#form_deposit_amount").val(data.items);
+        }, "json"
+    );
+}
+
+
+function set_payment_summary() {
+    reset_payment_summary();
+
+    var totalInvoice = 0;
 	var totalStampDuty = 0;
 	var totalPenalty = 0;
 	var grandTotal = 0;
@@ -388,6 +397,62 @@ function doProses() {
 		$("#totalPenaltyField").val( totalPenalty );
 		$("#grandTotalField").val( grandTotal );
     });
+
 }
+
+function execute_payment() {
+
+    /* show progress bar */
+    var progressBarDialog = BootstrapDialog.show({
+		    closable: false,
+            type: BootstrapDialog.TYPE_PRIMARY,
+    		title: 'Processing Your Request',
+    		message: properties.bootgridinfo.progressbar
+		});
+
+    $.post( "<?php echo PAYMENT_WS_URL.'ws.php?type=json&module=paymentccbs&class=payment&method=stp_pay_acc'; ?>",
+        {
+            action : "pay",
+            service_no : $("#inputServiceNo").val(),
+            p_bank_branch_id : $("#form_p_bank_branch_id").val(),
+            i_id : $("#grid-selection").bootgrid("getSelectedRows"),
+            i_subscriberid : $("#subscriberID").val(),
+            cboxdeposit : $("#form_use_deposit").is(":checked") ? 'Y' : 'N'
+        },
+        function( data ) {
+            progressBarDialog.close();
+            if(data.success) {
+                showBootDialog(true, BootstrapDialog.TYPE_SUCCESS, 'Information', 'Thank You. Your payment is success');
+                
+                responseError = false; /* global var */
+                create_stp_pay_acc_table(false, true);
+                on_load_data_stp_pay_acc_table(false);
+                set_payment_summary();
+                
+            }else {
+                showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', data.message);
+            }
+        }, "json"
+    );
+}
+
+function reset_payment_summary() {
+    $("#totalInvoiceField").val(0);
+	$("#totalStampDutyField").val(0);
+	$("#totalPenaltyField").val(0);
+	$("#grandTotalField").val(0);
+
+	$("#form_deposit_amount").val(0);
+	$("#form_use_deposit").attr("checked", false);
+    $("#form_p_bank_branch_id").val("");
+    $("#form_bank_branch_code").val("");
+}
+
+function close_all_dialogbox() {
+    $.each(BootstrapDialog.dialogs, function(id, dialog){
+        dialog.close();
+    });
+}
+
 
 </script>
