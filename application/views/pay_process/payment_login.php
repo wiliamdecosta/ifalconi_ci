@@ -4,7 +4,7 @@
 		    <div class="inline middle pink2 bigger-150"> Payment Login </div>
 		</div>
 		<span class="brown center bigger-110"> <p> You need to login first to access this menu. Please logging in by using your counter user information. </p></span>
-		
+
 		<div class="login-container">
 		    <div class="widget-box">
 		        <div class="widget-header widget-header-flat">
@@ -25,7 +25,7 @@
                     				</span>
                 			    </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <div class="col-sm-12">
                                     <span class="block input-icon input-icon-right">
@@ -34,7 +34,7 @@
                     				</span>
                 			    </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <div class="col-sm-12">
                                     <button class="btn width-35 pull-right btn-sm btn-pink" type="button" id="btn-login">
@@ -43,7 +43,7 @@
                     				</button>
                 				</div>
                             </div>
-                        </form>    
+                        </form>
                     </div>
                 </div>
             </div>
@@ -53,23 +53,49 @@
 
 <script>
 jQuery(function($) {
+
+     $("#form_user_name").keyup(function(e){
+	 	 if(e.keyCode == 13) { /* on enter */
+			check_login();
+		 }
+	 });
+
+	 $("#form_password").keyup(function(e){
+	 	 if(e.keyCode == 13) { /* on enter */
+			check_login();
+		 }
+	 });
+
      $("#btn-login").on(ace.click_event, function() {
-        /*$.post( "<?php echo WS_URL.'payment_login_controller/login'; ?>",
-            {
-                user_name : $("#form_user_name").val(),
-                password : $("#form_password").val()
-            },
-            function( response ) {
-                if(response.success == false) {
-                    showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
-                }else {
-        	        
-                }
-            }
-        );*/
-        loadContentWithParams($("#form_url_redirect").val(), {
-            user_name : $("#form_user_name").val()                                
-        });
+        check_login();
      });
 });
+
+function check_login() {
+    var progressBarDialog = BootstrapDialog.show({
+	    closable: false,
+        type: BootstrapDialog.TYPE_PRIMARY,
+    	title: 'Processing Your Request',
+    	message: properties.bootgridinfo.progressbar
+	});
+		
+    $.post( "<?php echo WS_URL.'pay_param.p_user_loket_controller/login_payment'; ?>",
+        {
+            user_name : $("#form_user_name").val(),
+            password : $("#form_password").val()
+        },
+        function( response ) {
+            progressBarDialog.close();
+            if(response.success == false) {
+                showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', response.message);
+            }else {
+    	        loadContentWithParams($("#form_url_redirect").val(), {
+                    p_user_loket_id : response.items,
+                    user_name : $("#form_user_name").val()
+                });
+            }
+        }, "json"
+    );
+
+}
 </script>
