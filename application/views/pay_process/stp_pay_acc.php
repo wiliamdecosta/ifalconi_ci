@@ -1,12 +1,7 @@
-<?php
-    if( getVarClean("user_name","str","") == "" ) :
+<?php 
+    $this->load->view('pay_process/check_payment_login.php');
+    check_payment_login("pay_process-stp_pay_acc.php");
 ?>
-<script>
-    loadContentWithParams("pay_process-payment_login.php",{
-        url_redirect : "pay_process-stp_pay_acc.php"
-    });
-</script>
-<?php endif; ?>
 
 <!-- Bootgrid Dialog -->
 <link rel="stylesheet" href="<?php echo BS_PATH; ?>bootgrid/jquery.bootgrid.css" />
@@ -119,6 +114,8 @@
                             </br>
                               <input type="hidden" class="form-control" id="form_summary_subscriber_id">
                               <input type="hidden" class="form-control" id="form_client_ip_address" value="<?php echo get_ip_address(); ?>">
+                              <input type="hidden" class="form-control" id="form_p_user_loket_id" value="<?php echo getVarClean("p_user_loket_id","str",""); ?>">
+                              <input type="hidden" class="form-control" id="form_user_name" value="<?php echo getVarClean("user_name","str",""); ?>">
                               
                     		  <button id="btnPembayaran" class="btn btn-primary btn-sm">Do Payment</button>
                 		  </div>
@@ -156,7 +153,8 @@ jQuery(function($) {
 	  $("#backButton").on(ace.click_event, function () {
           loadContentWithParams('pay_process-stp_pay_acc.php',
           {
-            user_name : $("#form_user_name").val()
+            user_name : $("#form_user_name").val(),
+            p_user_loket_id : $("#form_p_user_loket_id").val()
           });
       });
 
@@ -419,10 +417,13 @@ function execute_payment() {
             i_id : $("#grid-selection").bootgrid("getSelectedRows"),
             i_subscriberid : $("#form_summary_subscriber_id").val(),
             cboxdeposit : $("#form_summary_use_deposit").is(":checked") ? 'Y' : 'N',
-            client_ip_address : $("#form_client_ip_address").val()
+            client_ip_address : $("#form_client_ip_address").val(),
+            p_user_loket_id : $("#form_p_user_loket_id").val(),
+            user_name : $("#form_user_name").val()
         },
         function( data ) {
             progressBarDialog.close();
+            
             if(data.success) {
                 showBootDialog(true, BootstrapDialog.TYPE_SUCCESS, 'Information', 'Your payment has been successfully processed. Thank you.');
                 
