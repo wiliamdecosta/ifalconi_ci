@@ -53,16 +53,16 @@
 </div>
 
 <script>
-    
+
 function check_login() {
-    
+
     var progressBarDialog = BootstrapDialog.show({
 	    closable: false,
         type: BootstrapDialog.TYPE_PRIMARY,
     	title: 'Processing Your Request',
     	message: properties.bootgridinfo.progressbar
 	});
-		
+
     $.post( "<?php echo WS_URL.'pay_param.p_user_loket_controller/login_payment'; ?>",
         {
             user_name : $("#form_user_name").val(),
@@ -81,7 +81,7 @@ function check_login() {
         }, "json"
    );
 }
-    
+
 jQuery(function($) {
 
      $("#form_user_name").keyup(function(e){
@@ -99,7 +99,7 @@ jQuery(function($) {
      $("#btn-login").on(ace.click_event, function() {
         check_login();
      });
-     
+
 });
 
 
