@@ -69,25 +69,25 @@
             		  <div class="panel-heading"><h4>PAYMENT SUMMARY</h4></div>
             	      <div class="panel-body">
                 	      <div class="col-xs-12">
-                	       <h5><span class="label label-warning">Total Invoice (Rp) : </span></h5> <input type="text" class="form-control priceformat align-right" id="form_summary_total_invoice" placeholder="0">
+                	       <h5><span class="label label-warning">Total Invoice (Rp) : </span></h5> <input type="text" class="form-control priceformat align-right" readonly id="form_summary_total_invoice" placeholder="0">
                 		  </div>
 
                 		  <div class="col-xs-12">
-                		   <h5><span class="label label-warning">Stamp Duty Fee (Rp) :  </span></h5> <input type="text" class="form-control priceformat align-right" id="form_summary_total_stamp_duty" placeholder="0">
+                		   <h5><span class="label label-warning">Stamp Duty Fee (Rp) :  </span></h5> <input type="text" class="form-control priceformat align-right" readonly id="form_summary_total_stamp_duty" placeholder="0">
                 		  </div>
 
                 		  <div class="col-xs-12">
-                		   <h5><span class="label label-warning">Penalty (Rp) :  </span></h5> <input type="text" class="form-control priceformat align-right" id="form_summary_total_penalty" placeholder="0">
+                		   <h5><span class="label label-warning">Penalty (Rp) :  </span></h5> <input type="text" class="form-control priceformat align-right" readonly id="form_summary_total_penalty" placeholder="0">
                 		  </div>
 
                 		  <div class="col-xs-12">
-                		   <h5><span class="label label-success">GRAND TOTAL (Rp) :  </span></h5> <input type="text" class="form-control priceformat align-right" id="form_summary_grand_total" placeholder="0">
+                		   <h5><span class="label label-success">GRAND TOTAL (Rp) :  </span></h5> <input type="text" class="form-control priceformat align-right" readonly  id="form_summary_grand_total" placeholder="0">
                           </div>
 
 
                           <div class="col-xs-12">
                               <h5><span class="label label-default">Deposit Amount :  </span></h5>
-                              <input id="form_summary_deposit_amount" readonly class="col-xs-12 priceformat align-right" type="text">
+                              <input id="form_summary_deposit_amount"  class="col-xs-12 priceformat align-right" readonly type="text">
                           </div>
 
                           <br/>
