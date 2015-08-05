@@ -1,3 +1,4 @@
+<script src="<?php echo BS_PATH; ?>bootgrid/properties.js"></script>
 <div class="row">
     <div class="col-xs-12">
         <div class="well well-sm">
@@ -52,26 +53,9 @@
 </div>
 
 <script>
-jQuery(function($) {
-
-     $("#form_user_name").keyup(function(e){
-	 	 if(e.keyCode == 13) { /* on enter */
-			check_login();
-		 }
-	 });
-
-	 $("#form_password").keyup(function(e){
-	 	 if(e.keyCode == 13) { /* on enter */
-			check_login();
-		 }
-	 });
-
-     $("#btn-login").on(ace.click_event, function() {
-        check_login();
-     });
-});
-
+    
 function check_login() {
+    
     var progressBarDialog = BootstrapDialog.show({
 	    closable: false,
         type: BootstrapDialog.TYPE_PRIMARY,
@@ -95,7 +79,28 @@ function check_login() {
                 });
             }
         }, "json"
-    );
-
+   );
 }
+    
+jQuery(function($) {
+
+     $("#form_user_name").keyup(function(e){
+	 	 if(e.keyCode == 13) { /* on enter */
+			check_login();
+		 }
+	 });
+
+	 $("#form_password").keyup(function(e){
+	 	 if(e.keyCode == 13) { /* on enter */
+			check_login();
+		 }
+	 });
+
+     $("#btn-login").on(ace.click_event, function() {
+        check_login();
+     });
+     
+});
+
+
 </script>
