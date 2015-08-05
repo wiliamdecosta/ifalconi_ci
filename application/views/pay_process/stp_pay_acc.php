@@ -368,6 +368,12 @@ function set_payment_summary() {
 		$("#form_summary_total_stamp_duty").val( totalStampDuty );
 		$("#form_summary_total_penalty").val( totalPenalty );
 		$("#form_summary_grand_total").val( grandTotal );
+		
+		if(grandTotal == 0) {
+		    $("#btnPembayaran").addClass("disabled");
+		}else {
+		    $("#btnPembayaran").removeClass("disabled");
+		}
     });
 
 	/* ketika row deselected */
@@ -395,8 +401,19 @@ function set_payment_summary() {
 		$("#form_summary_total_stamp_duty").val( totalStampDuty );
 		$("#form_summary_total_penalty").val( totalPenalty );
 		$("#form_summary_grand_total").val( grandTotal );
+		
+		if(grandTotal == 0) {
+		    $("#btnPembayaran").addClass("disabled");
+		}else {
+		    $("#btnPembayaran").removeClass("disabled");
+		}
     });
-
+    
+    if(grandTotal == 0) {
+	    $("#btnPembayaran").addClass("disabled");
+	}else {
+	    $("#btnPembayaran").removeClass("disabled");
+	}
 }
 
 function execute_payment() {
