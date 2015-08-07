@@ -18,7 +18,7 @@
   	                <span aria-hidden="true"></span> Cancel Deposit
                   </button>
                  </p>
-
+                <span class="green"> <strong><i>Note : Cancel deposit will remove the first record of the table below.</i></strong></span>
 				<table id="modal_lov_deposit_grid_selection" class="table table-striped table-bordered table-hover">
                 <thead>
                   <tr>
