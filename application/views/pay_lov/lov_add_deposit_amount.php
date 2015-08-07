@@ -87,7 +87,7 @@
             BootstrapDialog.show({
                 type: BootstrapDialog.TYPE_INFO,
                 title: 'Cancel Confirmation',
-                message: 'The first record of the deposit list will be remove from table. Are You sure to continue?',
+                message: 'The first record of the deposit will be remove from table. Are You sure to continue?',
                 buttons: [{
                     cssClass: 'btn-primary btn-sm',
                     label: 'Yes, Cancel Deposit',
