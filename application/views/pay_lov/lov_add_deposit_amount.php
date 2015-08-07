@@ -169,6 +169,7 @@
     	        loading     : properties.bootgridinfo.loading
 	         }
     	});
+
     	resize_bootgrid();
     }
     

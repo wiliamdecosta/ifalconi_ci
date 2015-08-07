@@ -212,7 +212,7 @@ jQuery(function($) {
             var service_no = $("#form_service_no").val();
             var subscriber_id = $("#form_summary_subscriber_id").val();
             
-            modal_lov_deposit_show(account_no, service_no, subscriber_id);
+            modal_lov_deposit_show(service_no, account_no, subscriber_id);
       });
     
       $("#form_summary_grand_total").on("change",function(){
