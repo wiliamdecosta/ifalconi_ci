@@ -250,7 +250,7 @@ class P_user_loket_controller {
 
     }
     
-    function login_payment() {
+    /*function login_payment() {
         
         $ci = & get_instance();
 		$ci->load->model('pay_param/p_user_loket');
@@ -274,7 +274,35 @@ class P_user_loket_controller {
         }
 
         return $data;
+    }*/
+    
+    function login_payment() {
+        
+        
+		$data = array('items' => array(), 'success' => false, 'message' => '');
+
+		$user_name = getVarClean('user_name', 'str', '');
+        $password = getVarClean('password', 'str', '');
+
+		try{
+            $data = file_get_contents(PAYMENT_WS_URL.'ws.php?type=json&module=paymentccbs&class=p_user_loket&method=valid_login&user_name='.$user_name.'&password='.$password);
+            $data = json_decode($data, true);
+            
+            $p_user_loket_id = $data['rows'];
+            
+            if(empty($p_user_loket_id)) {
+                throw new Exception("Your username or password is incorrect or not valid anymore.");    
+            }
+            $data['success'] = true;
+            $data['items'] = $p_user_loket_id;
+        }catch (Exception $e) {
+            $data['message'] = $e->getMessage();
+            $data['total'] = 0;
+        }
+
+        return $data;
     }
+    
 }
 
 /* End of file P_user_loketcontroller.php */
