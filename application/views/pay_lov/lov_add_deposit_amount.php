@@ -3,7 +3,11 @@
 		<div class="modal-content">
 		    <!-- modal title -->
 			<div class="modal-header no-padding">
-				<div class="table-header">
+			    <div>
+			        <button class="close" data-dismiss="modal">&times;</button>
+			    </div>
+			    
+			    <div class="table-header">
 					<span class="form-add-edit-title"> Add/Cancel Deposit </span>
 				</div>
 			</div>
@@ -18,17 +22,17 @@
   	                <span aria-hidden="true"></span> Cancel Deposit
                   </button>
                  </p>
-                <span class="green"> <strong><i>Note : Cancel deposit will remove the first record of the table below.</i></strong></span>
+                <span class="green"> <strong><i>Note : Cancel deposit will remove the 1st top record of the table below.</i></strong></span>
 				<table id="modal_lov_deposit_grid_selection" class="table table-striped table-bordered table-hover">
                 <thead>
                   <tr>
                      <th data-column-id="t_deposit_id" data-sortable="false" data-visible="false">Deposit ID</th>
-                     <th data-column-id="service_no" data-sortable="false" data-width="120">Service Number</th>
-                     <th data-column-id="account_no" data-sortable="false" >Account Number</th>
+                     <th data-column-id="service_no" data-formatter="service_no" data-sortable="false" data-width="120">Service Number</th>
+                     <th data-column-id="account_no" data-formatter="account_no"  data-sortable="false" >Account Number</th>
                      <th data-column-id="deposit_amount" data-formatter="deposit_amount" data-width="130" data-sortable="false" data-align="right">Deposit Amount</th>
-                     <th data-column-id="trans_date" data-sortable="false">Trans. Date</th>
-                     <th data-column-id="subs_name" data-sortable="false">Subscriber Name</th>
-                     <th data-column-id="pic_name" data-sortable="false">PIC Name</th>
+                     <th data-column-id="trans_date" data-formatter="trans_date" data-sortable="false">Trans. Date</th>
+                     <th data-column-id="subs_name" data-formatter="subs_name" data-sortable="false">Subscriber Name</th>
+                     <th data-column-id="pic_name" data-formatter="pic_name" data-sortable="false">PIC Name</th>
                   </tr>
                 </thead>
                 </table>
@@ -39,18 +43,20 @@
 		        
 		        <form class="form-horizontal" application="form" id="deposit_form">
                     <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right"> Deposit Amount (Rp) </label>
-                        <div class="col-sm-4">
-                            <input id="form_deposit_amount" class="col-xs-12 required priceformat align-right" type="text">
-                        </div>
                         
-                        <label class="col-sm-2 control-label no-padding-right"> Returnable </label>
+                        <label class="col-sm-2 control-label no-padding-right"> Returnable : </label>
                         <div class="col-sm-2">
                             <select id="form_is_returnable" class="col-xs-12">
                                 <option value="Y">YES</option>
                                 <option value="N">NO</option>
                     	    </select>
                         </div>
+                        
+                        <label class="col-sm-3 control-label no-padding-right"> Deposit Amount (Rp) : </label>
+                        <div class="col-sm-4">
+                            <input id="form_deposit_amount" class="col-xs-12 required priceformat align-right" type="text">
+                        </div>
+                        
                     </div>
             
                     <div class="clearfix form-actions align-right">
@@ -87,7 +93,7 @@
             BootstrapDialog.show({
                 type: BootstrapDialog.TYPE_INFO,
                 title: 'Cancel Confirmation',
-                message: 'The first record of the deposit will be remove from table. Are You sure to continue?',
+                message: 'The 1st top record of the deposit will be remove from table. Are You sure to continue?',
                 buttons: [{
                     cssClass: 'btn-warning btn-sm',
                     label: 'Yes, Cancel Deposit',
@@ -110,7 +116,7 @@
         
         $("#form_btn_save_deposit").on(ace.click_event, function() {
             if($("#form_deposit_amount").val() == 0) {
-                showBootDialog(true, BootstrapDialog.TYPE_INFO, 'Attention', 'Deposit amount is Rp.0, Please fill deposit amount value');
+                showBootDialog(true, BootstrapDialog.TYPE_INFO, 'Information', 'Deposit amount is Rp.0, Please fill deposit amount value');
                 return;   
             }
             modal_lov_deposit_add_deposit();    
@@ -135,6 +141,21 @@
             formatters: {
                 "deposit_amount" : function (column, row) {
     				return $.number(row.deposit_amount, 2, '.',',');
+                },
+                "service_no" : function (column, row) {
+    				return '<span title="'+row.service_no+'">'+row.service_no+'</span>';
+                },
+                "account_no" : function (column, row) {
+    				return '<span title="'+row.account_no+'">'+row.account_no+'</span>';
+                },
+                "trans_date" : function (column, row) {
+    				return '<span title="'+row.trans_date+'">'+row.trans_date+'</span>';
+                },
+                "subs_name" : function (column, row) {
+    				return '<span title="'+row.subs_name+'">'+row.subs_name+'</span>';
+                },
+                "pic_name" : function (column, row) {
+    				return '<span title="'+row.pic_name+'">'+row.pic_name+'</span>';
                 }
              },
     		 ajax: true,
