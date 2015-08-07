@@ -83,21 +83,11 @@ class P_user_loket extends Abstract_model {
 	    
 	    if(empty($user_name) or empty($password)) return "";
 	    
-	    $sql = "SELECT p_user_loket_id FROM p_user_loket WHERE user_name = ? AND user_pwd = ?";
+	    $sql = "SELECT p_user_loket_id FROM p_user_loket WHERE user_name = ? AND md5(user_pwd) = ?";
 	    $query = $this->db->query($sql, array($user_name, $password));
 		$row = $query->row_array();
 		
 		return $row['p_user_loket_id'];
-	}
-	
-	function revalid_login($p_user_loket_id, $user_name) {
-	    if(empty($p_user_loket_id) or empty($user_name)) return "";
-	    
-	    $sql = "SELECT p_user_loket_id FROM p_user_loket WHERE user_name = ?";
-	    $query = $this->db->query($sql, array($user_name));
-		$row = $query->row_array();
-		
-		return ($p_user_loket_id == $row['p_user_loket_id']) ? $row['p_user_loket_id'] : "";
 	}
 
 }
