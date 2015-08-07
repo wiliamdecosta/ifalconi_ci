@@ -25,7 +25,7 @@
                      <th data-column-id="t_deposit_id" data-sortable="false" data-visible="false">Deposit ID</th>
                      <th data-column-id="service_no" data-sortable="false" data-width="100">Service Number</th>
                      <th data-column-id="account_no" data-sortable="false" data-width="170">Account Number</th>
-                     <th data-column-id="deposit_amount" data-formatter="deposit_amount" data-sortable="false">Deposit Amount</th>
+                     <th data-column-id="deposit_amount" data-formatter="deposit_amount" data-sortable="false" data-align="right">Deposit Amount</th>
                      <th data-column-id="trans_date" data-sortable="false">Trans. Date</th>
                      <th data-column-id="subs_name" data-sortable="false">Subscriber Name</th>
                      <th data-column-id="pic_name" data-sortable="false">PIC Name</th>
@@ -55,7 +55,7 @@
             
                     <div class="clearfix form-actions align-right">
                         <div class="col-sm-2">
-                            <button type="button" class="btn btn-primary btn-round" id="form_btn_save_deposit">
+                            <button type="button" class="btn btn-success btn-round" id="form_btn_save_deposit">
         			      		<i class="ace-icon fa fa-floppy-o bigger-120"></i>
         			      		Save Deposit
     			      	    </button>
@@ -84,39 +84,36 @@
     jQuery(function($) {
                 
         $("#modal_lov_deposit_btn_cancel_deposit").on(ace.click_event, function() {
-            alert('cancel deposit');
+            BootstrapDialog.show({
+                type: BootstrapDialog.TYPE_INFO,
+                title: 'Cancel Confirmation',
+                message: 'The first record of the deposit list will be remove from table. Are You sure to continue?',
+                buttons: [{
+                    cssClass: 'btn-primary btn-sm',
+                    label: 'Yes, Cancel Deposit',
+                    action: function(dialogItself) {
+                        /* show progress bar modal */
+                        dialogItself.close();
+                    	modal_lov_deposit_cancel_deposit();
+                    }
+                }, {
+                    icon: 'glyphicon glyphicon-remove',
+                    cssClass: 'btn-danger btn-sm',
+                    label: 'No',
+                    action: function(dialogItself){
+                         dialogItself.close();
+                    }
+                }]
+            });       
         });
         
+        
         $("#form_btn_save_deposit").on(ace.click_event, function() {
-            /* show progress bar */
-            var progressBarDialog = BootstrapDialog.show({
-        		    closable: false,
-                    type: BootstrapDialog.TYPE_PRIMARY,
-            		title: 'Processing Your Request',
-            		message: properties.bootgridinfo.progressbar
-        		});
-        
-            $.post( "<?php echo PAYMENT_WS_URL.'ws.php?type=json&module=paymentccbs&class=t_deposit&method=add_deposit'; ?>",
-                {
-                    service_no          : $("#modal_lov_service_no_val").val(),
-                    account_no          : $("#modal_lov_account_no_val").val(),
-                    subscriber_id       : $("#modal_lov_subscriber_id_val").val(),
-                    p_user_loket_id     : 2,
-                    deposit_amount      : $("#form_deposit_amount").val(),
-                    is_returnable       : $("#form_is_returnable").val()
-                },
-                function( data ) {
-                    progressBarDialog.close();
-        
-                    if(data.success) {
-                        showBootDialog(true, BootstrapDialog.TYPE_SUCCESS, 'Information', data.message);
-                        $("#modal_lov_deposit_grid_selection").bootgrid("reload");
-                        $("#form_deposit_amount").val(0);
-                    }else {
-                        showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', data.message);
-                    }
-                }, "json"
-            );
+            if($("#form_deposit_amount").val() == 0) {
+                showBootDialog(true, BootstrapDialog.TYPE_INFO, 'Attention', 'Please fill your deposit amount');
+                return;   
+            }
+            modal_lov_deposit_add_deposit();    
         });
     });
 
@@ -140,9 +137,9 @@
     				return $.number(row.deposit_amount, 2, '.',',');
                 }
              },
-    	     rowCount:[-1],
     		 ajax: true,
-    		 navigation: 3,
+    		 rowCount:[-1],
+    		 navigation: 0,
     	     requestHandler:function(request) {
     	        if(request.sort) {
     	            var sortby = Object.keys(request.sort)[0];
@@ -174,5 +171,68 @@
     	});
     	resize_bootgrid();
     }
+    
+    function modal_lov_deposit_cancel_deposit() {
+        /* show progress bar */
+            var progressBarDialog = BootstrapDialog.show({
+        		    closable: false,
+                    type: BootstrapDialog.TYPE_PRIMARY,
+            		title: 'Processing Your Request',
+            		message: properties.bootgridinfo.progressbar
+        		});
+        
+            $.post( "<?php echo PAYMENT_WS_URL.'ws.php?type=json&module=paymentccbs&class=t_deposit&method=cancel_deposit'; ?>",
+                {
+                    subscriber_id       : $("#modal_lov_subscriber_id_val").val(),
+                    p_user_loket_id     : 2
+                },
+                function( data ) {
+                    progressBarDialog.close();
+        
+                    if(data.success) {
+                        showBootDialog(true, BootstrapDialog.TYPE_SUCCESS, 'Information', data.message);
+                        $("#modal_lov_deposit_grid_selection").bootgrid("reload");
+                        get_deposit_amount();
+                    }else {
+                        showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', data.message);
+                    }
+                }, "json"
+            );
+    }
+    
+    function modal_lov_deposit_add_deposit() {
+        
+        /* show progress bar */
+            var progressBarDialog = BootstrapDialog.show({
+        		    closable: false,
+                    type: BootstrapDialog.TYPE_PRIMARY,
+            		title: 'Processing Your Request',
+            		message: properties.bootgridinfo.progressbar
+        		});
+        
+            $.post( "<?php echo PAYMENT_WS_URL.'ws.php?type=json&module=paymentccbs&class=t_deposit&method=add_deposit'; ?>",
+                {
+                    service_no          : $("#modal_lov_service_no_val").val(),
+                    account_no          : $("#modal_lov_account_no_val").val(),
+                    subscriber_id       : $("#modal_lov_subscriber_id_val").val(),
+                    p_user_loket_id     : 2,
+                    deposit_amount      : $("#form_deposit_amount").val(),
+                    is_returnable       : $("#form_is_returnable").val()
+                },
+                function( data ) {
+                    progressBarDialog.close();
+        
+                    if(data.success) {
+                        showBootDialog(true, BootstrapDialog.TYPE_SUCCESS, 'Information', data.message);
+                        $("#modal_lov_deposit_grid_selection").bootgrid("reload");
+                        $("#form_deposit_amount").val(0);
+                        get_deposit_amount();
+                    }else {
+                        showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', data.message);
+                    }
+                }, "json"
+            );   
+    }
+    
 
 </script>

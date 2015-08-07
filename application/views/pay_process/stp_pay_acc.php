@@ -222,6 +222,7 @@ jQuery(function($) {
                 $("#btnPembayaran").removeClass("disabled");    
             }
       });
+      
 });
 
 function do_process() {
