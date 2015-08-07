@@ -23,9 +23,9 @@
                 <thead>
                   <tr>
                      <th data-column-id="t_deposit_id" data-sortable="false" data-visible="false">Deposit ID</th>
-                     <th data-column-id="service_no" data-sortable="false" data-width="100">Service Number</th>
-                     <th data-column-id="account_no" data-sortable="false" data-width="170">Account Number</th>
-                     <th data-column-id="deposit_amount" data-formatter="deposit_amount" data-sortable="false" data-align="right">Deposit Amount</th>
+                     <th data-column-id="service_no" data-sortable="false" data-width="120">Service Number</th>
+                     <th data-column-id="account_no" data-sortable="false" >Account Number</th>
+                     <th data-column-id="deposit_amount" data-formatter="deposit_amount" data-width="130" data-sortable="false" data-align="right">Deposit Amount</th>
                      <th data-column-id="trans_date" data-sortable="false">Trans. Date</th>
                      <th data-column-id="subs_name" data-sortable="false">Subscriber Name</th>
                      <th data-column-id="pic_name" data-sortable="false">PIC Name</th>
@@ -89,7 +89,7 @@
                 title: 'Cancel Confirmation',
                 message: 'The first record of the deposit will be remove from table. Are You sure to continue?',
                 buttons: [{
-                    cssClass: 'btn-primary btn-sm',
+                    cssClass: 'btn-warning btn-sm',
                     label: 'Yes, Cancel Deposit',
                     action: function(dialogItself) {
                         /* show progress bar modal */
@@ -98,7 +98,7 @@
                     }
                 }, {
                     icon: 'glyphicon glyphicon-remove',
-                    cssClass: 'btn-danger btn-sm',
+                    cssClass: 'btn-primary btn-sm',
                     label: 'No',
                     action: function(dialogItself){
                          dialogItself.close();
@@ -110,7 +110,7 @@
         
         $("#form_btn_save_deposit").on(ace.click_event, function() {
             if($("#form_deposit_amount").val() == 0) {
-                showBootDialog(true, BootstrapDialog.TYPE_INFO, 'Attention', 'Please fill your deposit amount');
+                showBootDialog(true, BootstrapDialog.TYPE_INFO, 'Attention', 'Deposit amount is Rp.0, Please fill deposit amount value');
                 return;   
             }
             modal_lov_deposit_add_deposit();    
