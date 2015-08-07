@@ -98,6 +98,10 @@
                                 <span class="lbl middle"></span>
                               </label>
                           </div>
+                          
+                          <div class="col-xs-12 align-right">
+                              <button id="btnAddDeposit" class="btn btn-success btn-xs">Add Deposit</button>
+                          </div>
 
                           <div class="col-xs-12">
                               <h5><span class="label label-primary">Choose Counter * :  </span></h5>
@@ -116,7 +120,7 @@
                               <input type="hidden" class="form-control" id="form_client_ip_address" value="<?php echo get_ip_address(); ?>">
                               <input type="hidden" class="form-control" id="form_p_user_loket_id" value="<?php echo getVarClean("p_user_loket_id","str",""); ?>">
                               <input type="hidden" class="form-control" id="form_user_name" value="<?php echo getVarClean("user_name","str",""); ?>">
-
+                              <input type="hidden" class="form-control" id="form_password" value="<?php echo getVarClean("password","str",""); ?>">
                     		  <button id="btnPembayaran" class="btn btn-primary btn-sm">Do Payment</button>
                 		  </div>
 
@@ -126,7 +130,8 @@
         </div>
     </div>
 </div>
-<?php $this->load->view('pay_lov/lov_p_bank_branch.php'); ?>
+<?php $this->load->view('pay_lov/lov_ws_p_bank_branch.php'); ?>
+<?php $this->load->view('pay_lov/lov_add_deposit_amount.php'); ?>
 
 <script>
 var responseError = false;
@@ -151,10 +156,11 @@ jQuery(function($) {
 	  });
 
 	  $("#backButton").on(ace.click_event, function () {
-          loadContentWithParams('pay_process-stp_pay_acc.php',
+          loadContentWithParams('pay_process-stp_pay_acc.php', 
           {
-            user_name : $("#form_user_name").val(),
-            p_user_loket_id : $("#form_p_user_loket_id").val()
+                user_name       : $("#form_user_name").val(),
+                password        : $("#form_password").val(),
+                p_user_loket_id : $("#form_p_user_loket_id").val()
           });
       });
 
@@ -192,8 +198,31 @@ jQuery(function($) {
                 }]
           });
       });
+      
+      $("#btnAddDeposit").on(ace.click_event, function () {
+        
+            if($("#grid-selection").bootgrid("getSelectedRows") == "") {
+                showBootDialog(true, BootstrapDialog.TYPE_WARNING, 'Attention', 'No data payment selected on table. Please put a check <span class="glyphicon glyphicon-check" /> on your data payment table');
+			    return;
+            } 
+          
+            var account_no = $("#grid-selection").bootgrid("getSelectedRows")[0];
+            account_no = account_no.substr(account_no.indexOf("_")+1);
+            
+            var service_no = $("#form_service_no").val();
+            var subscriber_id = $("#form_summary_subscriber_id").val();
+            
+            modal_lov_deposit_show(account_no, service_no, subscriber_id);
+      });
+    
+      $("#form_summary_grand_total").on("change",function(){
+            if( $(this).val() == 0 ) {
+                $("#btnPembayaran").addClass("disabled");
+            }else {
+                $("#btnPembayaran").removeClass("disabled");    
+            }
+      });
 });
-
 
 function do_process() {
 
@@ -368,12 +397,8 @@ function set_payment_summary() {
 		$("#form_summary_total_stamp_duty").val( totalStampDuty );
 		$("#form_summary_total_penalty").val( totalPenalty );
 		$("#form_summary_grand_total").val( grandTotal );
-
-		if(grandTotal == 0) {
-		    $("#btnPembayaran").addClass("disabled");
-		}else {
-		    $("#btnPembayaran").removeClass("disabled");
-		}
+        
+        $("#form_summary_grand_total").trigger("change");
     });
 
 	/* ketika row deselected */
@@ -401,19 +426,11 @@ function set_payment_summary() {
 		$("#form_summary_total_stamp_duty").val( totalStampDuty );
 		$("#form_summary_total_penalty").val( totalPenalty );
 		$("#form_summary_grand_total").val( grandTotal );
-
-		if(grandTotal == 0) {
-		    $("#btnPembayaran").addClass("disabled");
-		}else {
-		    $("#btnPembayaran").removeClass("disabled");
-		}
+		
+		$("#form_summary_grand_total").trigger("change");
     });
-
-    if(grandTotal == 0) {
-	    $("#btnPembayaran").addClass("disabled");
-	}else {
-	    $("#btnPembayaran").removeClass("disabled");
-	}
+    
+    $("#form_summary_grand_total").trigger("change");
 }
 
 function execute_payment() {
@@ -428,21 +445,21 @@ function execute_payment() {
 
     $.post( "<?php echo PAYMENT_WS_URL.'ws.php?type=json&module=paymentccbs&class=payment&method=stp_pay_acc'; ?>",
         {
-            action : "pay",
-            service_no : $("#form_service_no").val(),
-            p_bank_branch_id : $("#form_p_bank_branch_id").val(),
-            i_id : $("#grid-selection").bootgrid("getSelectedRows"),
-            i_subscriberid : $("#form_summary_subscriber_id").val(),
-            cboxdeposit : $("#form_summary_use_deposit").is(":checked") ? 'Y' : 'N',
-            client_ip_address : $("#form_client_ip_address").val(),
-            p_user_loket_id : $("#form_p_user_loket_id").val(),
-            user_name : $("#form_user_name").val()
+            action              : "pay",
+            service_no          : $("#form_service_no").val(),
+            p_bank_branch_id    : $("#form_p_bank_branch_id").val(),
+            i_id                : $("#grid-selection").bootgrid("getSelectedRows"),
+            i_subscriberid      : $("#form_summary_subscriber_id").val(),
+            cboxdeposit         : $("#form_summary_use_deposit").is(":checked") ? 'Y' : 'N',
+            client_ip_address   : $("#form_client_ip_address").val(),
+            p_user_loket_id     : $("#form_p_user_loket_id").val(),
+            user_name           : $("#form_user_name").val()
         },
         function( data ) {
             progressBarDialog.close();
 
             if(data.success) {
-                showBootDialog(true, BootstrapDialog.TYPE_SUCCESS, 'Information', 'Your payment has been successfully processed. Thank you.');
+                showBootDialog(true, BootstrapDialog.TYPE_SUCCESS, 'Information', data.message);
 
                 responseError = false; /* global var */
                 create_stp_pay_acc_table(false, true);
