@@ -90,6 +90,12 @@
     jQuery(function($) {
                 
         $("#modal_lov_deposit_btn_cancel_deposit").on(ace.click_event, function() {
+            
+            if( $("#modal_lov_deposit_grid_selection").bootgrid("getTotalRowCount") == 0 ) {
+                showBootDialog(true, BootstrapDialog.TYPE_INFO, 'Information', 'No deposit data on table');
+                return;    
+            }
+            
             BootstrapDialog.show({
                 type: BootstrapDialog.TYPE_INFO,
                 title: 'Cancel Confirmation',

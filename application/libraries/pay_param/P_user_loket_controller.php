@@ -291,8 +291,10 @@ class P_user_loket_controller {
             $p_user_loket_id = $data['rows'];
             
             if(empty($p_user_loket_id)) {
+                $data['success'] = false;
                 throw new Exception("Your username or password is incorrect or not valid anymore.");    
             }
+            
             $data['success'] = true;
             $data['items'] = $p_user_loket_id;
         }catch (Exception $e) {

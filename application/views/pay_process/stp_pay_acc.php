@@ -15,7 +15,7 @@
 		Payment Process
 		<small>
 			<i class="ace-icon fa fa-angle-double-right"></i>
-			STP Pay Acc
+			Normal Payment
 		</small>
 	</h1>
 </div><!-- /.page-header -->
