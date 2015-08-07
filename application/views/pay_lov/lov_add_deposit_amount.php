@@ -55,7 +55,7 @@
             
                     <div class="clearfix form-actions align-right">
                         <div class="col-sm-2">
-                            <button type="button" class="btn btn-success btn-round" id="form_btn_save_deposit">
+                            <button type="button" class="btn btn-primary btn-round" id="form_btn_save_deposit">
         			      		<i class="ace-icon fa fa-floppy-o bigger-120"></i>
         			      		Save Deposit
     			      	    </button>
