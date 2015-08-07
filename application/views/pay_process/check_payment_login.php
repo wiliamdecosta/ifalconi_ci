@@ -14,18 +14,20 @@ function check_payment_login($url_redirect) {
     else :
 
          /* re-check login */
-        $ci = & get_instance();
-    	$ci->load->model('pay_param/p_user_loket');
-    	$table = $ci->p_user_loket;
-
-    	$p_user_loket_id = $table->valid_login( getVarClean("user_name","str",""), getVarClean("password","str","") );
+        $user_name = getVarClean("user_name","str","");
+        $password = getVarClean("password","str","");
+        
+    	$data = file_get_contents(PAYMENT_WS_URL.'ws.php?type=json&module=paymentccbs&class=p_user_loket&method=valid_login&user_name='.$user_name.'&password='.$password);
+        $data = json_decode($data, true);
+        
+        $p_user_loket_id = $data['rows'];
+                
     	if(empty($p_user_loket_id)) :
     	    echo '<script>
                 loadContentWithParams("pay_process-payment_login.php",{
                     url_redirect : "'.$url_redirect.'"
                 });
             </script>';
-
     	endif;
     endif;
     /* ----------------------- end check login ------------------------ */
