@@ -1,4 +1,6 @@
 <script src="<?php echo BS_PATH; ?>bootgrid/properties.js"></script>
+<script src="<?php echo BS_PATH; ?>encrypt/jquery.md5.js"></script>
+
 <div class="row">
     <div class="col-xs-12">
         <div class="well well-sm">
@@ -73,7 +75,7 @@ function check_login() {
     $.post( "<?php echo WS_URL.'pay_param.p_user_loket_controller/login_payment'; ?>",
         {
             user_name : $("#form_user_name").val(),
-            password : $("#form_password").val()
+            password : $.md5($("#form_password").val())
         },
         function( response ) {
             progressBarDialog.close();
@@ -82,7 +84,8 @@ function check_login() {
             }else {
     	        loadContentWithParams($("#form_url_redirect").val(), {
                     p_user_loket_id : response.items,
-                    user_name : $("#form_user_name").val()
+                    user_name : $("#form_user_name").val(),
+                    password : $.md5($("#form_password").val())
                 });
             }
         }, "json"
