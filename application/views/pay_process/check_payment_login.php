@@ -3,7 +3,8 @@ function check_payment_login($url_redirect) {
 
     /* ----------------------- check login first ------------------------ */
     if( getVarClean("p_user_loket_id","str","") == "" or
-            getVarClean("user_name","str","") == "" ) :
+            getVarClean("user_name","str","") == "" or 
+            getVarClean("password","str","") == "") :
         echo '<script>
                 loadContentWithParams("pay_process-payment_login.php",{
                     url_redirect : "'.$url_redirect.'"
@@ -17,7 +18,7 @@ function check_payment_login($url_redirect) {
     	$ci->load->model('pay_param/p_user_loket');
     	$table = $ci->p_user_loket;
 
-    	$p_user_loket_id = $table->revalid_login( getVarClean("p_user_loket_id","int",0), getVarClean("user_name","str",""));
+    	$p_user_loket_id = $table->valid_login( getVarClean("user_name","str",""), getVarClean("password","str","") );
     	if(empty($p_user_loket_id)) :
     	    echo '<script>
                 loadContentWithParams("pay_process-payment_login.php",{
