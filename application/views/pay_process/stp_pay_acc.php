@@ -351,7 +351,7 @@ function on_load_data_stp_pay_acc_table(is_close_dialog) {
 
 function get_deposit_amount() {
 
-    $.post( "<?php echo PAYMENT_WS_URL.'ws.php?type=json&module=paymentccbs&class=deposit&method=get_deposit_amount'; ?>",
+    $.post( "<?php echo PAYMENT_WS_URL.'ws.php?type=json&module=paymentccbs&class=subscriber_deposit&method=get_deposit_amount'; ?>",
         {
             subscriber_id : $("#form_summary_subscriber_id").val()
         },
