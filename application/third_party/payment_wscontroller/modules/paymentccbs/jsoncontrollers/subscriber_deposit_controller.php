@@ -16,7 +16,7 @@ class subscriber_deposit_controller extends wbController{
             $ws_client = self::getNusoap();
 		    $params = array('search' => '',
 					'getParams' => json_encode($_GET),
-					'controller' => json_encode(array('module' => 'paymentccbs','class' => 'deposit', 'method' => 'get_deposit_amount', 'type' => 'json' )),
+					'controller' => json_encode(array('module' => 'paymentccbs','class' => 'subscriber_deposit', 'method' => 'get_deposit_amount', 'type' => 'json' )),
 					'postParams' => json_encode($_POST),
 					'jsonItems' => '');
 			
