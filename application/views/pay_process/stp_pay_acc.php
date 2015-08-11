@@ -12,7 +12,7 @@
 
 <div class="page-header">
 	<h1>
-		Payment Process
+		Transaction
 		<small>
 			<i class="ace-icon fa fa-angle-double-right"></i>
 			Normal Payment
