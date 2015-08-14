@@ -103,6 +103,8 @@
 
     function application_toggle_main_content() {
         $("#application_form")[0].reset();
+        $("#form_p_application_id").val("");
+        
         $("#application_form_add_edit").hide();
         $("#application_row_content").toggle("slow");
     }
