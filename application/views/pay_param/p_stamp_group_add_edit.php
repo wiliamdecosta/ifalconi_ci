@@ -73,6 +73,8 @@
 
     function stamp_group_toggle_main_content() {
         $("#stamp_group_form")[0].reset();
+        $("#form_p_stamp_group_id").val("");
+        
         $("#stamp_group_form_add_edit").hide();
         $("#stamp_group_row_content").toggle("slow");
     }
