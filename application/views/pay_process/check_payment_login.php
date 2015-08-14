@@ -22,7 +22,7 @@ function check_payment_login($url_redirect) {
         
         $p_user_loket_id = $data['rows'];
                 
-    	if(empty($p_user_loket_id)) :
+    	if($p_user_loket_id < 0) :
     	    echo '<script>
                 loadContentWithParams("pay_process-payment_login.php",{
                     url_redirect : "'.$url_redirect.'"
