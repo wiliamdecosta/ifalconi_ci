@@ -73,6 +73,8 @@
 
     function penalty_group_toggle_main_content() {
         $("#penalty_group_form")[0].reset();
+        $("#form_p_penalty_group_id").val("");
+        
         $("#penalty_group_form_add_edit").hide();
         $("#penalty_group_row_content").toggle("slow");
     }
