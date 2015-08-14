@@ -15,7 +15,7 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right"> Password *</label>
                 <div class="col-sm-9">
-                    <input id="form_user_pwd" class="col-xs-10 col-sm-5 required" type="text">
+                    <input id="form_user_pwd" class="col-xs-10 col-sm-5 required" type="password">
                 </div>
             </div>
             
@@ -125,6 +125,7 @@
     function user_loket_toggle_main_content() {
 
         $("#user_loket_form")[0].reset();
+        $("#form_p_user_loket_id").val("");
         
         //reset date
         $("#form_exp_pass").datepicker("update", "");
@@ -159,7 +160,7 @@
         	        $("#form_p_user_loket_id").val(obj.p_user_loket_id);
         	        $("#form_p_bank_branch_id").val(obj.p_bank_branch_id);
         	        $("#form_user_name").val(obj.user_name);
-        	        $("#form_user_pwd").val(obj.user_pwd);
+        	        
         	        $("#form_full_name").val(obj.full_name);
         	        $("#form_description").val(obj.description);        	        
         	        $("#form_status").val(obj.user_loket_status);
