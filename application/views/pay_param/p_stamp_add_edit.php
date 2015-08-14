@@ -115,6 +115,7 @@
     function stamp_toggle_main_content() {
         
         $("#stamp_form")[0].reset();
+        $("#form_p_stamp_id").val("");
         //reset date
         $("#form_valid_from").datepicker("update", "");
         $("#form_valid_to").datepicker("update", "");
