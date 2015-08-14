@@ -75,7 +75,7 @@ function check_login() {
     $.post( "<?php echo WS_URL.'pay_param.p_user_loket_controller/login_payment'; ?>",
         {
             user_name : $("#form_user_name").val(),
-            password : $.md5($("#form_password").val())
+            password : $("#form_password").val()
         },
         function( response ) {
             progressBarDialog.close();
@@ -85,7 +85,7 @@ function check_login() {
     	        loadContentWithParams($("#form_url_redirect").val(), {
                     p_user_loket_id : response.items,
                     user_name : $("#form_user_name").val(),
-                    password : $.md5($("#form_password").val())
+                    password : $("#form_password").val()
                 });
             }
         }, "json"
