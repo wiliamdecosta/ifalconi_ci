@@ -73,6 +73,8 @@
 
     function area_toggle_main_content() {
         $("#area_form")[0].reset();
+        $("#form_p_area_id").val("");
+        
         $("#area_form_add_edit").hide();
         $("#area_row_content").toggle("slow");
     }
