@@ -84,6 +84,8 @@
 
     function role_toggle_main_content() {
         $("#role_form")[0].reset();
+        $("#form_p_role_id").val("");
+        
         $("#role_form_add_edit").hide();
         $("#role_row_content").toggle("slow");
     }
