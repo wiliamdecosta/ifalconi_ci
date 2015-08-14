@@ -120,6 +120,8 @@
     function loket_toggle_main_content() {
 
         $("#loket_form")[0].reset();
+        $("#form_p_bank_branch_id").val("");
+        
         $("#loket_form_add_edit").hide();
         $("#loket_row_content").toggle("slow");
         
