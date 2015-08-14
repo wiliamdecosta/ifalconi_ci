@@ -126,6 +126,8 @@
 
     function menu_toggle_main_content() {
         $("#menu_form")[0].reset();
+        $("#form_p_menu_id").val("");
+        
         $("#menu_form_add_edit").hide();
         $("#menu_row_content").toggle("slow");
     }
