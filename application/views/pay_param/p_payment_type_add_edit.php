@@ -73,6 +73,8 @@
 
     function payment_type_toggle_main_content() {
         $("#payment_type_form")[0].reset();
+        $("#form_p_payment_type_id").val("");
+        
         $("#payment_type_form_add_edit").hide();
         $("#payment_type_row_content").toggle("slow");
     }
