@@ -42,7 +42,7 @@ class payment_controller extends wbController{
     }
     
     
-    public static function stp_pay_acc($args = array()){
+    public static function normal_payment($args = array()){
         
         $data = array('rows' => array(), 'total' => 0, 'success' => false, 'message' => '');
 
@@ -50,7 +50,41 @@ class payment_controller extends wbController{
             $ws_client = self::getNusoap();
 		    $params = array('search' => '',
 					'getParams' => json_encode($_GET),
-					'controller' => json_encode(array('module' => 'paymentccbs','class' => 'payment', 'method' => 'stp_pay_acc', 'type' => 'json' )),
+					'controller' => json_encode(array('module' => 'paymentccbs','class' => 'payment', 'method' => 'normal_payment', 'type' => 'json' )),
+					'postParams' => json_encode($_POST),
+					'jsonItems' => '');
+			
+            $ws_data = self::getResultData($ws_client, $params);
+            /*if($ws_data['data'] == null) {
+                throw new Exception($ws_data['message']);
+            }*/
+            
+            $data['rows']       = $ws_data ['data'];
+            $data['total']      = $ws_data ['total'];
+            $data['current']    = $ws_data['current'];
+            $data['rowCount']   = $ws_data['rowCount']; 
+            
+            $data['message']    = $ws_data ['message'];
+            $data['success']    = $ws_data ['success'];
+
+        }catch (Exception $e) {
+            $data['message'] = $e->getMessage();
+        }
+        echo json_encode($data);
+        exit;
+        
+    }
+    
+    
+    public static function cancel_payment($args = array()){
+        
+        $data = array('rows' => array(), 'total' => 0, 'success' => false, 'message' => '');
+
+        try{
+            $ws_client = self::getNusoap();
+		    $params = array('search' => '',
+					'getParams' => json_encode($_GET),
+					'controller' => json_encode(array('module' => 'paymentccbs','class' => 'payment', 'method' => 'cancel_payment', 'type' => 'json' )),
 					'postParams' => json_encode($_POST),
 					'jsonItems' => '');
 			

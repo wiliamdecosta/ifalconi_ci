@@ -1,6 +1,6 @@
 <?php
     $this->load->view('pay_process/check_payment_login.php');
-    check_payment_login("pay_process-stp_pay_acc.php");
+    check_payment_login("pay_process-normal_payment.php");
 ?>
 
 <!-- Bootgrid Dialog -->
@@ -156,7 +156,7 @@ jQuery(function($) {
 	  });
 
 	  $("#backButton").on(ace.click_event, function () {
-          loadContentWithParams('pay_process-stp_pay_acc.php', 
+          loadContentWithParams('pay_process-normal_payment.php', 
           {
                 user_name       : $("#form_user_name").val(),
                 password        : $("#form_password").val(),
@@ -305,7 +305,7 @@ function create_stp_pay_acc_table(show_progressbar, is_after_payment) {
 	        }
 	        return response;
 	     },
-	     url: "<?php echo PAYMENT_WS_URL.'ws.php?type=json&module=paymentccbs&class=payment&method=stp_pay_acc'; ?>",
+	     url: "<?php echo PAYMENT_WS_URL.'ws.php?type=json&module=paymentccbs&class=payment&method=normal_payment'; ?>",
 	     searchSettings:{
 	        delay:100,
 	        characters: 3
@@ -444,7 +444,7 @@ function execute_payment() {
     		message: properties.bootgridinfo.progressbar
 		});
 
-    $.post( "<?php echo PAYMENT_WS_URL.'ws.php?type=json&module=paymentccbs&class=payment&method=stp_pay_acc'; ?>",
+    $.post( "<?php echo PAYMENT_WS_URL.'ws.php?type=json&module=paymentccbs&class=payment&method=normal_payment'; ?>",
         {
             action              : "pay",
             service_no          : $("#form_service_no").val(),
