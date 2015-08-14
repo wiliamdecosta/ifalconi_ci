@@ -73,6 +73,8 @@
 
     function group_loket_toggle_main_content() {
         $("#group_loket_form")[0].reset();
+        $("#form_p_group_loket_id").val("");
+        
         $("#group_loket_form_add_edit").hide();
         $("#group_loket_row_content").toggle("slow");
     }
