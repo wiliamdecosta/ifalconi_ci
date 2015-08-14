@@ -129,6 +129,8 @@
 
     function user_toggle_main_content() {
         $("#user_form")[0].reset();
+        $("#form_p_user_id").val("");
+        
         $("#user_form_add_edit").hide();
         $("#user_row_content").toggle("slow");
     }
