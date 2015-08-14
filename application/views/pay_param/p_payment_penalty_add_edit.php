@@ -133,6 +133,7 @@
     function payment_penalty_toggle_main_content() {
         
         $("#payment_penalty_form")[0].reset();
+        $("#form_p_payment_penalty_id").val("");
         //reset date
         $("#form_valid_from").datepicker("update", "");
         $("#form_valid_to").datepicker("update", "");
