@@ -16,7 +16,7 @@ class P_user_loket extends Abstract_model {
 								'p_user_loket_id' 		=> array('pkey' => true, 'type' => 'int', 'nullable' => false, 'unique' => true, 'display' => 'ID User Loket'),
 								'p_bank_branch_id'	    => array('nullable' => false, 'type' => 'int', 'unique' => false, 'display' => 'ID Bank Branch'),
 								'user_name'	            => array('nullable' => false, 'type' => 'str', 'unique' => true, 'display' => 'User Name'),
-								'user_pwd'	            => array('nullable' => false, 'type' => 'str', 'unique' => false, 'display' => 'Password'),
+								'user_pwd'	            => array('nullable' => true, 'type' => 'str', 'unique' => false, 'display' => 'Password'),
 								'full_name'	            => array('nullable' => true, 'type' => 'str', 'unique' => false, 'display' => 'Full Name'),
 								'description'           => array('nullable' => true, 'type' => 'str', 'unique' => false, 'display' => 'Descripiton'),
 								'status'                => array('nullable' => true, 'type' => 'int', 'unique' => false, 'display' => 'Status'),
@@ -33,7 +33,7 @@ class P_user_loket extends Abstract_model {
 							);
 
 	public $selectClause 	= "user_loket.p_user_loket_id, user_loket.p_bank_branch_id, user_loket.user_name, 
-                                user_loket.user_pwd, user_loket.full_name, user_loket.description, user_loket.status as user_loket_status,
+                                user_loket.full_name, user_loket.description, user_loket.status as user_loket_status,
                                 user_loket.user_level, user_loket.client_ip, to_char(user_loket.exp_pass, 'yyyy-mm-dd') as exp_pass, user_loket.total_error_login, user_loket.last_change_pwd,
                                 to_char(user_loket.create_date, 'yyyy-mm-dd') as create_date, 
                                 to_char(user_loket.update_date, 'yyyy-mm-dd') as update_date, 
@@ -61,6 +61,17 @@ class P_user_loket extends Abstract_model {
 		        $this->record['exp_pass'] = null;        
 		    }
 		    
+		    if(isset($this->record['user_pwd'])) {
+		        if(empty($this->record['user_pwd'])) {
+		            throw new Exception('Password required');    
+		        }else {
+		            if(strlen($this->record['user_pwd']) < 6) {
+                        throw new Exception('Password minimum character is 6 characters');
+		            }
+		            $this->record['user_pwd'] = $this->encrypt_pwd( $this->record['user_pwd'] );
+		        }
+		    }
+		    
 			//do something
 			$this->record['p_user_loket_id'] = $this->generate_id('ifp','p_user_loket','p_user_loket_id');
             
@@ -72,6 +83,18 @@ class P_user_loket extends Abstract_model {
 		    if(empty($this->record['exp_pass'])) {
 		        $this->record['exp_pass'] = null;        
 		    }
+		    
+		    if(isset($this->record['user_pwd'])) {
+		        if(empty($this->record['user_pwd'])) {
+		            unset($this->record['user_pwd']); 
+		        }else {
+		            if(strlen($this->record['user_pwd']) < 6) {
+                        throw new Exception('Password minimum character is 6 characters');
+		            }
+		            $this->record['user_pwd'] = $this->encrypt_pwd( $this->record['user_pwd'] );
+		        }
+		    }
+		    
 			//do something
 			$this->record['update_date'] = date('Y-m-d');
             $this->record['update_by'] = $user_name;
@@ -88,6 +111,15 @@ class P_user_loket extends Abstract_model {
 		$row = $query->row_array();
 		
 		return $row['p_user_loket_id'];
+	}
+	
+	function encrypt_pwd($text) {
+	        
+	    $sql = "SELECT encrypt('".$text."') AS hasil";
+	    $query = $this->db->query($sql);
+		$row = $query->row_array();
+		
+		return $row['hasil'];
 	}
 
 }
