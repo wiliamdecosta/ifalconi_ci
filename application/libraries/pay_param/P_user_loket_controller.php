@@ -290,9 +290,12 @@ class P_user_loket_controller {
             
             $p_user_loket_id = $data['rows'];
             
-            if(empty($p_user_loket_id)) {
+            if( $p_user_loket_id < 0 and $p_user_loket_id == -11 ) {
                 $data['success'] = false;
-                throw new Exception("Your username or password is incorrect or not valid anymore.");    
+                throw new Exception("Your password has been expired. Please contact Your administrators.");           
+            }else if( $p_user_loket_id < 0 or empty($p_user_loket_id) ) {
+                $data['success'] = false;
+                throw new Exception("Your username or password is incorrect");
             }
             
             $data['success'] = true;
