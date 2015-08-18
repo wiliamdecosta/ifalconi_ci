@@ -4,7 +4,7 @@
 		    <div class="inline middle blue bigger-150" id="payment_penalty_form_title"> Add/Edit Payment Penalty </div>
 		</div>
         <form class="form-horizontal" role="form" id="payment_penalty_form">
-            <input id="form_p_payment_penalty_id" type="hidden" placeholder="Payment Penalty ID">
+            <input id="form_p_payment_penalty_id" type="text" style="display:none;" placeholder="Payment Penalty ID">
             
             <div class="form-group">
                 <label class="col-sm-2 control-label no-padding-right"> Valid From *</label>
@@ -133,7 +133,6 @@
     function payment_penalty_toggle_main_content() {
         
         $("#payment_penalty_form")[0].reset();
-        $("#form_p_payment_penalty_id").val("");
         //reset date
         $("#form_valid_from").datepicker("update", "");
         $("#form_valid_to").datepicker("update", "");

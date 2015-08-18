@@ -7,7 +7,7 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right"> Code *</label>
                 <div class="col-sm-9">
-                    <input id="form_p_payment_type_id" type="hidden" placeholder="Payment Type ID">
+                    <input id="form_p_payment_type_id" type="text" style="display:none;" placeholder="Payment Type ID">
                     <input id="form_code" class="col-xs-10 col-sm-5 required" type="text">
                 </div>
             </div>
@@ -73,7 +73,6 @@
 
     function payment_type_toggle_main_content() {
         $("#payment_type_form")[0].reset();
-        $("#form_p_payment_type_id").val("");
         
         $("#payment_type_form_add_edit").hide();
         $("#payment_type_row_content").toggle("slow");

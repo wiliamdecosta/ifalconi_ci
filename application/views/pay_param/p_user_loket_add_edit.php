@@ -7,7 +7,7 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right"> User Name *</label>
                 <div class="col-sm-9">
-                    <input id="form_p_user_loket_id" type="hidden" placeholder="ID User Loket">
+                    <input id="form_p_user_loket_id" type="text" style="display:none;" placeholder="ID User Loket">
                     <input id="form_user_name" class="col-xs-10 col-sm-5 required" type="text">
                 </div>
             </div>
@@ -125,8 +125,7 @@
     function user_loket_toggle_main_content() {
 
         $("#user_loket_form")[0].reset();
-        $("#form_p_user_loket_id").val("");
-        
+                
         //reset date
         $("#form_exp_pass").datepicker("update", "");
         

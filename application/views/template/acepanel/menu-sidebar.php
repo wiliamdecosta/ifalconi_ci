@@ -43,8 +43,8 @@ class MenuBuilder {
       }
       
       function beauty_menu($text) {
-        if(strlen($text) > 19) {
-            return substr($text,0,16)."...";
+        if(strlen($text) > 16) {
+            return substr($text,0,14)."..";
         } 
         return $text;
       }

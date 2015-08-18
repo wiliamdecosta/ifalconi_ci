@@ -8,7 +8,7 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right"> Code *</label>
                 <div class="col-sm-9">
-                    <input id="form_p_application_id" type="hidden" placeholder="Role ID">
+                    <input id="form_p_application_id" type="text" style="display:none;" placeholder="Role ID">
                     <input id="form_code" class="col-xs-10 col-sm-5 required" type="text">
                 </div>
             </div>
@@ -103,7 +103,6 @@
 
     function application_toggle_main_content() {
         $("#application_form")[0].reset();
-        $("#form_p_application_id").val("");
         
         $("#application_form_add_edit").hide();
         $("#application_row_content").toggle("slow");

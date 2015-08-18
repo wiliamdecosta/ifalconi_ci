@@ -7,7 +7,7 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label no-padding-right"> User Name *</label>
                 <div class="col-sm-3">
-                    <input id="form_p_user_id" type="hidden" placeholder="ID User">
+                    <input id="form_p_user_id" type="text" style="display:none;" placeholder="ID User">
                     <input id="form_user_name" class="col-xs-12 required" type="text">
                 </div>
                 
@@ -129,8 +129,7 @@
 
     function user_toggle_main_content() {
         $("#user_form")[0].reset();
-        $("#form_p_user_id").val("");
-        
+                
         $("#user_form_add_edit").hide();
         $("#user_row_content").toggle("slow");
     }

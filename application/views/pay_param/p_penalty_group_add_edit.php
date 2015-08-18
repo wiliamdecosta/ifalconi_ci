@@ -7,7 +7,7 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right"> Code *</label>
                 <div class="col-sm-9">
-                    <input id="form_p_penalty_group_id" type="hidden" placeholder="Penalty Group ID">
+                    <input id="form_p_penalty_group_id" type="text" style="display:none;" placeholder="Penalty Group ID">
                     <input id="form_code" class="col-xs-10 col-sm-5 required" type="text">
                 </div>
             </div>
@@ -73,7 +73,6 @@
 
     function penalty_group_toggle_main_content() {
         $("#penalty_group_form")[0].reset();
-        $("#form_p_penalty_group_id").val("");
         
         $("#penalty_group_form_add_edit").hide();
         $("#penalty_group_row_content").toggle("slow");

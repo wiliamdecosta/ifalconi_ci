@@ -4,7 +4,7 @@
 		    <div class="inline middle blue bigger-150" id="stamp_form_title"> Add/Edit Stamp </div>
 		</div>
         <form class="form-horizontal" role="form" id="stamp_form">
-            <input id="form_p_stamp_id" type="hidden" placeholder="Stamp ID">
+            <input id="form_p_stamp_id" type="text" style="display:none;" placeholder="Stamp ID">
             
             <div class="form-group">
                 <label class="col-sm-2 control-label no-padding-right"> Valid From *</label>
@@ -115,7 +115,6 @@
     function stamp_toggle_main_content() {
         
         $("#stamp_form")[0].reset();
-        $("#form_p_stamp_id").val("");
         //reset date
         $("#form_valid_from").datepicker("update", "");
         $("#form_valid_to").datepicker("update", "");

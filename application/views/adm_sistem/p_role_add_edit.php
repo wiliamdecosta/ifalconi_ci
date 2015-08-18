@@ -7,7 +7,7 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right"> Code *</label>
                 <div class="col-sm-9">
-                    <input id="form_p_role_id" type="hidden" placeholder="Role ID">
+                    <input id="form_p_role_id" type="text" style="display:none;" placeholder="Role ID">
                     <input id="form_code" class="col-xs-10 col-sm-5 required" type="text">
                 </div>
             </div>
@@ -84,7 +84,6 @@
 
     function role_toggle_main_content() {
         $("#role_form")[0].reset();
-        $("#form_p_role_id").val("");
         
         $("#role_form_add_edit").hide();
         $("#role_row_content").toggle("slow");

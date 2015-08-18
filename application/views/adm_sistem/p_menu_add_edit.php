@@ -9,7 +9,7 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right"> Code *</label>
                 <div class="col-sm-9">
-                    <input id="form_p_menu_id" type="hidden" placeholder="Menu ID">
+                    <input id="form_p_menu_id" type="text" style="display:none;" placeholder="Menu ID">
                     <input id="form_code" class="col-xs-10 col-sm-5 required" type="text">
                 </div>
             </div>
@@ -41,7 +41,7 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right"> Icon</label>
                 <div class="col-sm-5">
-                    <input id="form_menu_icon" type="hidden" placeholder="Icon ID">
+                    <input id="form_menu_icon" type="text" placeholder="Icon ID" style="display:none;">
                     <input id="form_menu_icon_name" class="col-xs-8 col-sm-5 required" type="text" placeholder="Choose Icon">
                     <span class="input-group-btn">
 						<button class="btn btn-success btn-sm" type="button" id="btn_lov_icon">
@@ -126,7 +126,6 @@
 
     function menu_toggle_main_content() {
         $("#menu_form")[0].reset();
-        $("#form_p_menu_id").val("");
         
         $("#menu_form_add_edit").hide();
         $("#menu_row_content").toggle("slow");

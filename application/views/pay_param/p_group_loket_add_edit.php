@@ -7,7 +7,7 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right"> Code *</label>
                 <div class="col-sm-9">
-                    <input id="form_p_group_loket_id" type="hidden" placeholder="Group ID">
+                    <input id="form_p_group_loket_id" type="text" style="display:none;" placeholder="Group ID">
                     <input id="form_code" class="col-xs-10 col-sm-5 required" type="text">
                 </div>
             </div>
@@ -73,8 +73,7 @@
 
     function group_loket_toggle_main_content() {
         $("#group_loket_form")[0].reset();
-        $("#form_p_group_loket_id").val("");
-        
+                
         $("#group_loket_form_add_edit").hide();
         $("#group_loket_row_content").toggle("slow");
     }

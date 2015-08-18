@@ -7,7 +7,7 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right"> Code *</label>
                 <div class="col-sm-9">
-                    <input id="form_p_area_id" type="hidden" placeholder="Area ID">
+                    <input id="form_p_area_id" type="text" style="display:none;" placeholder="Area ID">
                     <input id="form_code" class="col-xs-10 col-sm-5 required" type="text">
                 </div>
             </div>
@@ -73,7 +73,6 @@
 
     function area_toggle_main_content() {
         $("#area_form")[0].reset();
-        $("#form_p_area_id").val("");
         
         $("#area_form_add_edit").hide();
         $("#area_row_content").toggle("slow");
