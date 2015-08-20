@@ -108,8 +108,7 @@
         </div>
     </div>
 </div>
-<?php $this->load->view('pay_lov/lov_ws_p_bank_branch.php'); ?>
-<?php $this->load->view('pay_lov/lov_add_deposit_amount.php'); ?>
+
 
 <script>
 var responseError = false;
