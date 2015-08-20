@@ -10,7 +10,7 @@ function check_payment_login($url_redirect) {
                     url_redirect : "'.$url_redirect.'"
                 });
             </script>';
-
+            exit;
     else :
 
          /* re-check login */
@@ -28,6 +28,7 @@ function check_payment_login($url_redirect) {
                     url_redirect : "'.$url_redirect.'"
                 });
             </script>';
+            exit;
     	endif;
     endif;
     /* ----------------------- end check login ------------------------ */
