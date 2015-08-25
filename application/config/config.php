@@ -16,7 +16,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 | environments.
 |
 */
-$config['base_url'] = 'http://localhost/ifalconi_ci/';
+$config['base_url'] = base_ci_url().'/ifalconi_ci/';
 
 /*
 |--------------------------------------------------------------------------
@@ -362,7 +362,18 @@ $config['proxy_ips'] = '';
 
 //added by wiliam 18/06/2015 15:53:11
 $config['default_page'] = "application/index";
-$config['common_path']	= define('COM_URL','http://localhost/ifalconi_ci/');
+$config['common_path']	= define('COM_URL',base_ci_url().'/ifalconi_ci/');
+
+
+function base_ci_url(){
+    if(isset($_SERVER['HTTPS'])){
+        $protocol = ($_SERVER['HTTPS'] && $_SERVER['HTTPS'] != "off") ? "https" : "http";
+    }
+    else{
+        $protocol = 'http';
+    }
+    return $protocol . "://" . $_SERVER['HTTP_HOST'];
+}
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */
