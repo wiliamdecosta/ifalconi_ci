@@ -1,6 +1,6 @@
 <?php
     $this->load->view('pay_process/check_payment_login.php');
-    check_payment_login("pay_process-normal_payment.php");
+    check_payment_login("pay_process-manual_payment.php");
 ?>
 
 <!-- Bootgrid Dialog -->
@@ -15,7 +15,7 @@
 		Transaction
 		<small>
 			<i class="ace-icon fa fa-angle-double-right"></i>
-			Normal Payment
+			Manual Payment
 		</small>
 	</h1>
 </div><!-- /.page-header -->

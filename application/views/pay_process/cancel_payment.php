@@ -1,6 +1,6 @@
 <?php
     $this->load->view('pay_process/check_payment_login.php');
-    check_payment_login("pay_process-cancel_receipt.php");
+    check_payment_login("pay_process-cancel_payment.php");
 ?>
 
 <!-- Bootgrid Dialog -->
@@ -15,7 +15,7 @@
 		Transaction
 		<small>
 			<i class="ace-icon fa fa-angle-double-right"></i>
-			Cancel Receipt
+			Cancel Payment
 		</small>
 	</h1>
 </div><!-- /.page-header -->
@@ -99,7 +99,7 @@
                               <input type="hidden" class="form-control" id="form_p_user_loket_id" value="<?php echo getVarClean("p_user_loket_id","str",""); ?>">
                               <input type="hidden" class="form-control" id="form_user_name" value="<?php echo getVarClean("user_name","str",""); ?>">
                               <input type="hidden" class="form-control" id="form_password" value="<?php echo getVarClean("password","str",""); ?>">
-                    		  <button id="btnPembatalan" class="btn btn-primary btn-sm">Cancel Receipt</button>
+                    		  <button id="btnPembatalan" class="btn btn-primary btn-sm">Cancel Payment</button>
                 		  </div>
 
             		  </div>
@@ -129,7 +129,7 @@ jQuery(function($) {
 	  });
 
 	  $("#backButton").on(ace.click_event, function () {
-          loadContentWithParams('pay_process-cancel_receipt.php', 
+          loadContentWithParams('pay_process-cancel_receipt.php',
           {
                 user_name       : $("#form_user_name").val(),
                 password        : $("#form_password").val(),
@@ -147,14 +147,14 @@ jQuery(function($) {
           BootstrapDialog.show({
                 type: BootstrapDialog.TYPE_INFO,
                 title: 'Cancel Receipt Confirmation',
-                message: 'Your Total Cancel Receipt : <b> Rp. ' + $.number($("#form_summary_grand_total").val(), 2, '.', ',') + '</b>. Are You sure to make a cancel receipt?',
+                message: 'Your Total Cancel Payment : <b> Rp. ' + $.number($("#form_summary_grand_total").val(), 2, '.', ',') + '</b>. Are You sure to make a cancel receipt?',
                 buttons: [{
                     cssClass: 'btn-warning btn-sm',
-                    label: 'Yes, Cancel Receipt',
+                    label: 'Yes, Cancel Payment',
                     action: function(dialogItself) {
                         /* show progress bar modal */
                         dialogItself.close();
-                    	execute_cancel_receipt();
+                    	execute_cancel_payment();
                     }
                 }, {
                     icon: 'glyphicon glyphicon-remove',
@@ -166,15 +166,15 @@ jQuery(function($) {
                 }]
           });
       });
-    
+
       $("#form_summary_grand_total").on("change",function(){
             if( $(this).val() == 0 ) {
                 $("#btnPembatalan").addClass("disabled");
             }else {
-                $("#btnPembatalan").removeClass("disabled");    
+                $("#btnPembatalan").removeClass("disabled");
             }
       });
-      
+
 });
 
 function do_process() {
@@ -350,7 +350,7 @@ function set_payment_summary() {
 		$("#form_summary_total_stamp_duty").val( totalStampDuty );
 		$("#form_summary_total_penalty").val( totalPenalty );
 		$("#form_summary_grand_total").val( grandTotal );
-        
+
         $("#form_summary_grand_total").trigger("change");
     });
 
@@ -379,14 +379,14 @@ function set_payment_summary() {
 		$("#form_summary_total_stamp_duty").val( totalStampDuty );
 		$("#form_summary_total_penalty").val( totalPenalty );
 		$("#form_summary_grand_total").val( grandTotal );
-		
+
 		$("#form_summary_grand_total").trigger("change");
     });
-    
+
     $("#form_summary_grand_total").trigger("change");
 }
 
-function execute_cancel_receipt() {
+function execute_cancel_payment() {
 
     /* show progress bar */
     var progressBarDialog = BootstrapDialog.show({
@@ -398,7 +398,7 @@ function execute_cancel_receipt() {
 
     $.post( "<?php echo PAYMENT_WS_URL.'ws.php?type=json&module=paymentccbs&class=payment&method=cancel_payment'; ?>",
         {
-            action              : "cancelreceipt",
+            action              : "cancelpay",
             service_no          : $("#form_service_no").val(),
             p_bank_branch_id    : 1,
             i_id                : $("#grid-selection").bootgrid("getSelectedRows"),
