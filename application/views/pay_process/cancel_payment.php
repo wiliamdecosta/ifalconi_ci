@@ -1,6 +1,6 @@
 <?php
-    $this->load->view('pay_process/check_payment_login.php');
-    check_payment_login("pay_process-cancel_payment.php");
+    /*$this->load->view('pay_process/check_payment_login.php');
+    check_payment_login("pay_process-cancel_payment.php");*/
 ?>
 
 <!-- Bootgrid Dialog -->
@@ -129,7 +129,7 @@ jQuery(function($) {
 	  });
 
 	  $("#backButton").on(ace.click_event, function () {
-          loadContentWithParams('pay_process-cancel_receipt.php',
+          loadContentWithParams('pay_process-cancel_payment.php',
           {
                 user_name       : $("#form_user_name").val(),
                 password        : $("#form_password").val(),
@@ -405,7 +405,8 @@ function execute_cancel_payment() {
             i_subscriberid      : $("#form_summary_subscriber_id").val(),
             cboxdeposit         : 'N',
             client_ip_address   : $("#form_client_ip_address").val(),
-            p_user_loket_id     : $("#form_p_user_loket_id").val(),
+            /*p_user_loket_id     : $("#form_p_user_loket_id").val(),*/
+            p_user_loket_id     : 1,
             user_name           : $("#form_user_name").val()
         },
         function( data ) {

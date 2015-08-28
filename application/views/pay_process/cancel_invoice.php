@@ -129,7 +129,7 @@ jQuery(function($) {
 	  });
 
 	  $("#backButton").on(ace.click_event, function () {
-          loadContentWithParams('pay_process-cancel_payment.php',
+          loadContentWithParams('pay_process-cancel_invoice.php',
           {
                 user_name       : $("#form_user_name").val(),
                 password        : $("#form_password").val(),
