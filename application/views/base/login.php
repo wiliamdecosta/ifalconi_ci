@@ -60,7 +60,8 @@
 					<div class="col-sm-10 col-sm-offset-1">
 						<div class="login-container">
 							<div class="center">
-								<h3><img border="0" src="<?php echo IMAGE_APP_PATH; ?>ifalconi_v_rb.gif"/></h3>
+							    <br/>
+								<img src="<?php echo IMAGE_APP_PATH; ?>ifalconi_v_rb.gif"/>
 								<h5 class="blue" id="id-company-text">Version: 1.07.15, &copy; PT. Triklin Rekatama, 2015</h5>
 							</div>
 
@@ -77,7 +78,7 @@
 
 											<div class="space-6"></div>
 
-											<form action="<?php echo $login_url;?>" method="post" role="form" enctype="application/x-www-form-urlencoded">
+											<form action="<?php echo $login_url;?>" method="post" enctype="application/x-www-form-urlencoded">
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
