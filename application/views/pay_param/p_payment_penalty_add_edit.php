@@ -8,7 +8,7 @@
             
             <div class="form-group">
                 <label class="col-sm-2 control-label no-padding-right"> Valid From *</label>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <div class="input-group col-xs-12">
                         <input type="text" data-date-format="yyyy-mm-dd" id="form_valid_from" class="form-control required date-picker">
                         <span class="input-group-addon">
@@ -18,7 +18,7 @@
                 </div>
 
                 <label class="col-sm-1 control-label no-padding-right"> To </label>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <div class="input-group col-xs-12">
                         <input type="text" data-date-format="yyyy-mm-dd" id="form_valid_to" class="form-control date-picker">
                         <span class="input-group-addon">
@@ -96,7 +96,7 @@
            <div class="space-4"></div>
 
            <div class="clearfix form-actions">
-		        <div class="col-md-offset-3 col-md-9">
+		        <div class="center col-md-9">
 			      	<button type="button" class="btn btn-primary btn-round" id="payment_penalty_form_btn_save">
 			      		<i class="ace-icon fa fa-floppy-o bigger-120"></i>
 			      		Save

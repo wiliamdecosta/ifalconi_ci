@@ -98,7 +98,7 @@
            <div class="space-4"></div>
 
            <div class="clearfix form-actions">
-		        <div class="col-md-offset-3 col-md-9">
+		        <div class="center col-md-9">
 			      	<button type="button" class="btn btn-primary btn-round" id="user_form_btn_save">
 			      		<i class="ace-icon fa fa-floppy-o bigger-120"></i>
 			      		Save
