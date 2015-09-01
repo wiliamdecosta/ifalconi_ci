@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-	<link href="<?php echo IMAGE_APP_PATH; ?>ccbs.ico" rel="shortcut icon" />
 	<head>
+	    <link href="<?php echo IMAGE_APP_PATH; ?>ccbs.ico" rel="shortcut icon" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
 		<title>iFalconi - Rating and Billing System</title>
@@ -61,7 +61,7 @@
 						<div class="login-container">
 							<div class="center">
 							    <br/>
-								<img src="<?php echo IMAGE_APP_PATH; ?>ifalconi_v_rb.gif"/>
+								<img src="<?php echo IMAGE_APP_PATH; ?>ifalconi_v_rb.gif" alt="Logo"/>
 								<h5 class="blue" id="id-company-text">Version: 1.07.15, &copy; PT. Triklin Rekatama, 2015</h5>
 							</div>
 
