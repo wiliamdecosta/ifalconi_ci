@@ -56,7 +56,7 @@
                   <tr>
                     <th data-identifier="true" data-visible="false" data-header-align="center" data-align="center" data-column-id="p_payment_penalty_id"> ID Payment Penalty</th>
                      <th data-header-align="center" data-align="center" data-formatter="opt-edit" data-sortable="false" data-width="100">Options</th>
-                     <th data-column-id="month_late" data-formatter="month_late" data-width="200" data-header-align="center" data-align="right">Month Late</th>
+                     <th data-column-id="month_late" data-formatter="month_late" data-width="190" data-header-align="center" data-align="right">Month Late</th>
                      <th data-column-id="day_low_limit" data-formatter="day_low_limit" data-header-align="center" data-align="right"> Day Low Limit</th>
                      <th data-column-id="day_up_limit" data-formatter="day_up_limit" data-header-align="center" data-align="right"> Day Up Limit </th>
                      <th data-column-id="penalty_amount" data-formatter="penalty_amount" data-header-align="center" data-align="right"> Penalty Amount </th>
