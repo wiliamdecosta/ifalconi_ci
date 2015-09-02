@@ -65,7 +65,7 @@
                   <tr>
                     <th data-identifier="true" data-visible="false" data-header-align="center" data-align="center" data-column-id="p_user_loket_id"> ID Counter User</th>
                      <th data-header-align="center" data-align="center" data-formatter="opt-edit" data-sortable="false" data-width="100">Options</th>
-                     <th data-column-id="user_name" data-width="200"> Username </th>
+                     <th data-column-id="user_name" data-width="190"> Username </th>
                      <th data-column-id="full_name"> Full Name </th>
                      <th data-column-id="user_loket_status" data-formatter="user_loket_status"> Status </th>
                      <th data-column-id="user_level" data-formatter="user_level"> Level </th>
