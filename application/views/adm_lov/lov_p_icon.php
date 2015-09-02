@@ -1,4 +1,4 @@
-<div id="modal_lov_icon" class="modal fade" tabindex="-1">
+<div id="modal_lov_icon" class="modal fade" tabindex="-1" style="overflow-y: scroll;">
 	<div class="modal-dialog">
 		<div class="modal-content">
 		    <!-- modal title -->
