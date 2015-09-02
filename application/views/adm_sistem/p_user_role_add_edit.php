@@ -14,7 +14,7 @@
             ?>           
             <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right"> Role *</label>
-                <input id="form_p_user_role_id" type="hidden">
+                <input id="form_p_user_role_id" type="text" style="display:none;">
                 <div class="col-sm-9">
                     <select id="form_p_role_id" class="col-xs-10 col-sm-5 required">
                         <option value=""> -- Please Select Role -- </option>
