@@ -16,7 +16,7 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label no-padding-right"> Area *</label>
                 <div class="col-sm-8">
-                    <input id="form_p_area_id" type="hidden" placeholder="Area ID">
+                    <input id="form_p_area_id" type="text" style="display:none;" placeholder="Area ID">
                     <input id="form_bank_area_code" class="col-xs-8 col-sm-5 required" type="text" placeholder="Choose Area">
                     <span class="input-group-btn">
 						<button class="btn btn-success btn-sm" type="button" id="btn_lov_area">
