@@ -56,7 +56,7 @@
                   <tr>
                     <th data-identifier="true" data-visible="false" data-header-align="center" data-align="center" data-column-id="p_stamp_id"> ID Stamp</th>
                      <th data-header-align="center" data-align="center" data-formatter="opt-edit" data-sortable="false" data-width="100">Options</th>
-                     <th data-column-id="amt_low_limit" data-formatter="amt_low_limit" data-width="200" data-header-align="center" data-align="right">Low Limit Amount</th>
+                     <th data-column-id="amt_low_limit" data-formatter="amt_low_limit" data-width="190" data-header-align="center" data-align="right">Low Limit Amount</th>
                      <th data-column-id="amt_up_limit" data-formatter="amt_up_limit" data-header-align="center" data-align="right"> Up Limit Amount</th>
                      <th data-column-id="stamp_amount" data-formatter="stamp_amount" data-header-align="center" data-align="right"> Stamp Amount </th>
                   </tr>
