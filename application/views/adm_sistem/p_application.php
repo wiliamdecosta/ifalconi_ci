@@ -39,7 +39,7 @@
                   <tr>
                     <th data-identifier="true" data-visible="false" data-header-align="center" data-align="center" data-column-id="p_application_id"> ID Module</th>
                      <th data-header-align="center" data-align="center" data-formatter="opt-edit" data-sortable="false" data-width="100">Options</th>
-                     <th data-column-id="code" data-width="200">Module Code</th>
+                     <th data-column-id="code" data-width="190">Module Code</th>
                      <th data-column-id="listing_no">Listing Number</th>
                      <th data-column-id="is_active" data-formatter="is_active">Status</th>
                      <th data-column-id="description"> Description </th>
