@@ -11,7 +11,7 @@
 
 <script>
     jQuery(function($) {
-        $( ".actionBar" ).append(".search-criteria");
+        $(".actionBar").append(".search-criteria");
         $(".search-criteria").show();
     });
 </script>
