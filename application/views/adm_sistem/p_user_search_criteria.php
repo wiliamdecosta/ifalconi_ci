@@ -10,7 +10,6 @@
 </div>
 
 <script>
-    jQuery(function($) {
-       $("#user_search_criteria").prependTo("#user_grid_selection-header");
-    });
+$("#user_search_criteria").prependTo("#user_grid_selection-header");
+$("#user_search_criteria").show();
 </script>
