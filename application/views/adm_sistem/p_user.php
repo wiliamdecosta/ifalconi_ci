@@ -53,6 +53,7 @@
 </div><!-- /.row -->
 
 <?php $this->load->view('adm_sistem/p_user_add_edit.php'); ?>
+<?php $this->load->view('adm_sistem/p_user_search_criteria.php'); ?>
 
 <script>
     jQuery(function($) {
