@@ -34,7 +34,6 @@
 					</button>
 				</p>
 				
-                <?php $this->load->view('adm_sistem/p_user_search_criteria.php'); ?>
 		        <table id="user_grid_selection" class="table table-striped table-bordered table-hover">
                 <thead>
                   <tr>
@@ -47,6 +46,7 @@
                   </tr>
                 </thead>
               </table>
+              <?php $this->load->view('adm_sistem/p_user_search_criteria.php'); ?>
 		    </div>
 	    </div>
         <!-- PAGE CONTENT ENDS -->
