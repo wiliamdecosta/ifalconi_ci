@@ -33,7 +33,8 @@
 						Delete
 					</button>
 				</p>
-
+				
+                <?php $this->load->view('adm_sistem/p_user_search_criteria.php'); ?>
 		        <table id="user_grid_selection" class="table table-striped table-bordered table-hover">
                 <thead>
                   <tr>
@@ -51,7 +52,6 @@
         <!-- PAGE CONTENT ENDS -->
 	</div><!-- /.col -->
 </div><!-- /.row -->
-<?php $this->load->view('adm_sistem/p_user_search_criteria.php'); ?>
 <?php $this->load->view('adm_sistem/p_user_add_edit.php'); ?>
 
 <script>
