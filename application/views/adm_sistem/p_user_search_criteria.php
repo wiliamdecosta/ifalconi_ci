@@ -12,7 +12,7 @@
 <script>
     
     jQuery(function($) {
-        $("#user_search_criteria").detach().appendTo(".actionBar");
+        $("#user_search_criteria").detach().appendTo("#user_grid_selection-header");
     });
 
 </script>
