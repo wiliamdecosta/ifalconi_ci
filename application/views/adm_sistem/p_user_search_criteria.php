@@ -1,4 +1,4 @@
-<div class="search-criteria" id"user_search_criteria">
+<div class="search-criteria" id="user_search_criteria">
     Filter : 
     <select id="user_status_criteria">
         <option value=""> Choose Status </option>
