@@ -1,4 +1,4 @@
-<div class="search-criteria">
+<div class="search-criteria" style="display:none;">
     Filter : 
     <select id="user_status_criteria">
         <option value=""> Choose Status </option>
@@ -12,5 +12,6 @@
 <script>
     jQuery(function($) {
         $( ".search-criteria" ).insertAfter(".actionBar");
+        $(".search-criteria").show();
     });
 </script>
