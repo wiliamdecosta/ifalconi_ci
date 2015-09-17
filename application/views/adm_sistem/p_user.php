@@ -14,7 +14,6 @@
 	</h1>
 </div><!-- /.page-header -->
 
-<?php $this->load->view('adm_sistem/p_user_search_criteria.php'); ?>
 <div class="row" id="user_row_content" style="display:none;">
 	<div class="col-xs-12">
 		<!-- PAGE CONTENT BEGINS -->
@@ -52,7 +51,7 @@
         <!-- PAGE CONTENT ENDS -->
 	</div><!-- /.col -->
 </div><!-- /.row -->
-
+<?php $this->load->view('adm_sistem/p_user_search_criteria.php'); ?>
 <?php $this->load->view('adm_sistem/p_user_add_edit.php'); ?>
 
 <script>
